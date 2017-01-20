@@ -1,5 +1,6 @@
 @extends('layouts.backoffice')
 
 @section('content')
-    <user></user>
+    <backofficetemplate tab="user"></backofficetemplate>
+
 @endsection

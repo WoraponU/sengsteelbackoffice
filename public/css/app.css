@@ -8555,4 +8555,17 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   }
 }
 
+.nav-wrapper.second-nav {
+  background-color: white;
+}
+
+.nav-wrapper.second-nav li {
+  width: 50%;
+}
+
+.nav-wrapper.second-nav li a {
+  color: black;
+  text-align: center;
+}
+
 /*# sourceMappingURL=app.css.map */

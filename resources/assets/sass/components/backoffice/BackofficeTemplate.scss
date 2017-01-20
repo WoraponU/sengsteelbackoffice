@@ -1,0 +1,12 @@
+.nav-wrapper {
+    &.second-nav {
+        background-color: white;
+        li {
+            width: 50%;
+            a {
+                color: black;
+                text-align: center;
+            }
+        }
+    }
+}

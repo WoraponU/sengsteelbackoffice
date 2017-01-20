@@ -13,7 +13,8 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-Vue.component('user', require('./components/backoffice/User.vue'));
+Vue.component('User', require('./components/backoffice/User.vue'));
+Vue.component('backofficetemplate', require('./components/backoffice/BackofficeTemplate.vue'));
 
 const app = new Vue({
     el: '#app'
