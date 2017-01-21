@@ -18,6 +18,6 @@ Route::get('/', function () {
 // Auth::routes();
 
 // Route::get('/home', 'HomeController@index');
-Route::get('/backoffice/user', function () {
-    return view('backoffice.user');
+Route::get('/backoffice', function () {
+    return view('backoffice.main');
 });

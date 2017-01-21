@@ -1,12 +1,31 @@
-.nav-wrapper {
-    &.second-nav {
-        background-color: white;
-        li {
-            width: 50%;
-            a {
-                color: black;
-                text-align: center;
+$font-color: grey;
+body {
+    color: $font-color;
+    
+    .nav-wrapper {
+        &.second-nav {
+            background-color: white;
+            li {
+                width: 50%;
+                a {
+                    color: $font-color;
+                    text-align: center;
+                }
             }
+        }
+    }
+    .card {
+        .card-image {
+            height: 220px;
+
+            img {
+                position: fixed; 
+                top: -5%; 
+                left: 0; 
+                min-width: 100%;
+                min-height: 100%;
+            }
+            
         }
     }
 }
