@@ -8585,4 +8585,8 @@ body .card .card-image img {
   min-height: 100%;
 }
 
+body .container {
+  margin-top: 20px;
+}
+
 /*# sourceMappingURL=app.css.map */

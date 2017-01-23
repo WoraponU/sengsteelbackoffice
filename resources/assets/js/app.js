@@ -16,6 +16,7 @@ require('./bootstrap');
 // Vue.component('User', require('./components/backoffice/User.vue'));
 Vue.component('Tabs', require('./components/backoffice/Tabs.vue'));
 Vue.component('Tab', require('./components/backoffice/Tab.vue'));
+Vue.component('Card', require('./components/backoffice/Card.vue'));
 
 const app = new Vue({
     el: '#app'
