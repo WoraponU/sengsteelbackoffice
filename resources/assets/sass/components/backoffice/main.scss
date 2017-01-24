@@ -1,4 +1,5 @@
 $font-color: grey;
+
 body {
     color: $font-color;
     
@@ -26,6 +27,10 @@ body {
                 min-height: 100%;
             }
             
+        }
+
+        .card-action {
+            padding: 15px;
         }
     }
     

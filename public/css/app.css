@@ -8585,6 +8585,10 @@ body .card .card-image img {
   min-height: 100%;
 }
 
+body .card .card-action {
+  padding: 15px;
+}
+
 body .container {
   margin-top: 20px;
 }

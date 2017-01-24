@@ -16,10 +16,11 @@ require('laravel-elixir-vue-2');
 elixir(mix => {
     mix.sass([
         'app.scss',
-        'components/backoffice/BackofficeTemplate.scss'
+        'components/backoffice/main.scss'
     ], 'public/css/app.css')
        .webpack([
             'app.js',
-            'plugins/materialize.js'
+            'plugins/materialize.js',
+            'components/backoffice/main.js'            
         ], 'public/js/app.js');
 });

@@ -20,6 +20,8 @@
                 <a class="btn-floating waves-effect waves-light red">
                     <i class="material-icons">delete</i>
                 </a>
+                <!--<a href="#">Edit</a>
+                <a href="#">Delete</a>-->
             </div>
             
         </div>

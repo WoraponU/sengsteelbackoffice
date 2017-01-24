@@ -14,9 +14,12 @@ require('./bootstrap');
  */
 
 // Vue.component('User', require('./components/backoffice/User.vue'));
+Vue.component('Index', require('./components/backoffice/Index.vue'));
+Vue.component('NavBar', require('./components/backoffice/NavBar.vue'));
 Vue.component('Tabs', require('./components/backoffice/Tabs.vue'));
 Vue.component('Tab', require('./components/backoffice/Tab.vue'));
 Vue.component('Card', require('./components/backoffice/Card.vue'));
+Vue.component('Modal', require('./components/backoffice/Modal.vue'));
 
 const app = new Vue({
     el: '#app'
