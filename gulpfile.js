@@ -18,7 +18,7 @@ elixir(mix => {
         'app.scss',
         'components/backoffice/main.scss'
     ], 'public/css/app.css')
-       .webpack([
+       .webpack([           
             'app.js',
             'plugins/materialize.js',
             'components/backoffice/main.js'            

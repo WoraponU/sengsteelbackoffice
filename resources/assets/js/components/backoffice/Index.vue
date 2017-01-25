@@ -5,7 +5,7 @@
             <tab name="User Management" :selected="true">
                 <div class="container center-align">
                     <div class="row">
-                        <a href="#modal1" class="btn-floating btn-large waves-effect waves-light red right"><i class="material-icons">add</i></a>
+                        <a href="#modalUser" class="btn-floating btn-large waves-effect waves-light right "><i class="material-icons">add</i></a>
                     </div>
 
                     <div class="row">
@@ -18,7 +18,7 @@
             <tab name="Tuck Management">
             <div class="container center-align">
                     <div class="row">
-                        <a href="#modal1" class="btn-floating btn-large waves-effect waves-light red right"><i class="material-icons">add</i></a>
+                        <a href="#modal" class="btn-floating btn-large waves-effect waves-light right"><i class="material-icons">add</i></a>
                     </div>
 
                     <div class="row">
@@ -34,6 +34,8 @@
 </template>
 
 <script>
+    import axios from 'axios';
+    
     export default {
         // props: {
         //     name: { require: true },
@@ -50,7 +52,7 @@
         //     }
         // },
         // mounted() {
-        //     this.isActive = this.selected
+        //     // axios.get('/skills').then(response => console.log(response))
         // }
     }
 </script>

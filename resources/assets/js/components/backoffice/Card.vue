@@ -14,10 +14,10 @@
                 <p>More infomation</p>
             </div>
             <div class="card-action right-align">
-                <a class="btn-floating waves-effect waves-light red">
+                <a class="btn-floating waves-effect waves-light">
                     <i class="material-icons">mode_edit</i>
                 </a>
-                <a class="btn-floating waves-effect waves-light red">
+                <a class="btn-floating waves-effect waves-light">
                     <i class="material-icons">delete</i>
                 </a>
                 <!--<a href="#">Edit</a>

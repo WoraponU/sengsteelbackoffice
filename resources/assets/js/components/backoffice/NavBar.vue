@@ -2,11 +2,13 @@
   <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo">Logo</a>
-                <ul id="nav-mobile" class="right">
-                    <li><a href="sass.html">Sass</a></li>
-                    <li><a href="badges.html">Components</a></li>
-                    <li><a href="collapsible.html">JavaScript</a></li>
+                <a href="/backoffice" class="brand-logo">Seng Backoffice</a>
+                <ul class="right">
+                    <li class="logout teal">
+                        <a class="waves-effect waves-block waves-light">
+                            <i class="Large material-icons">power_settings_new</i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>

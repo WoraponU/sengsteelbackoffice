@@ -18,6 +18,12 @@ Route::get('/', function () {
 // Auth::routes();
 
 // Route::get('/home', 'HomeController@index');
-Route::get('/backoffice', function () {
+Route::get('backoffice', function () {
     return view('backoffice.main');
 });
+
+Route::resource('user', 'UserController');
+
+// Route::get('skills', function () {
+//     return ['a', 'b', 'c'];
+// });

@@ -4,6 +4,13 @@ body {
     color: $font-color;
     
     .nav-wrapper {
+        .brand-logo {
+            padding: 10px;
+        }
+        .logout {
+            width: 50px;
+            text-align: center;
+        }
         &.second-nav {
             background-color: white;
             li {
