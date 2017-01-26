@@ -5,7 +5,7 @@
             <tab name="User Management" :selected="true">
                 <div class="container center-align">
                     <div class="row">
-                        <a href="#modalUser" class="btn-floating btn-large waves-effect waves-light right "><i class="material-icons">add</i></a>
+                        <a href="#modalUser" class="btn-floating btn-large waves-effect waves-light right"><i class="material-icons">add</i></a>
                     </div>
 
                     <div class="row">

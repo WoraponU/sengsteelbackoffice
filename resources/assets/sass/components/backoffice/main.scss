@@ -40,6 +40,16 @@ body {
             padding: 15px;
         }
     }
+
+    .modal {
+        .input-field {
+            .icon-star {
+                font-size: 12px;
+                color: red;
+                vertical-align: top;
+            }
+        }
+    }
     
     .container {
         margin-top: 20px;
