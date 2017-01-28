@@ -8604,6 +8604,18 @@ body .modal .input-field .icon-star {
   vertical-align: top;
 }
 
+body .modal .role-label {
+  font-size: 1rem;
+}
+
+body .modal img.responsive-img {
+  max-width: 18%;
+}
+
+body .modal img.responsive-img:hover {
+  cursor: pointer;
+}
+
 body .container {
   margin-top: 20px;
 }

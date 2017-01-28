@@ -49,6 +49,18 @@ body {
                 vertical-align: top;
             }
         }
+        .role-label {
+            font-size: 1rem;
+        }
+        img {
+            &.responsive-img {
+                max-width: 18%;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
     }
     
     .container {
