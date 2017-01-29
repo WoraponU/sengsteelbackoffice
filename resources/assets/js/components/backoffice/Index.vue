@@ -34,9 +34,9 @@
                     </div>
 
                     <div class="row">
+                        <!--<Card></Card>
                         <Card></Card>
-                        <Card></Card>
-                        <Card></Card>
+                        <Card></Card>-->
                     </div>
                 </div>
             </tab>

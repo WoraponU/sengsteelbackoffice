@@ -10,7 +10,6 @@
             </div>
             <div class="card-reveal left-align">
                 <span class="card-title grey-text text-darken-4">{{ firstname }} {{ lastname }}<i class="material-icons right">close</i></span>
-                <!--<div class="divider"></div>-->
                 <div class="section">
                     <blockquote>
                         <p>Role: {{ role }}</p>
@@ -22,7 +21,7 @@
                 </div>
             </div>
             <div class="card-action right-align">
-                <a @click="onCallModalEdit" href="#modalEdit" class="btn-floating waves-effect waves-light">
+                <a @click="onCallModalEdit" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">mode_edit</i>
                 </a>
                 <a href="#modalUser" class="btn-floating waves-effect waves-light">
@@ -55,9 +54,9 @@
         methods: {
             onCallModalEdit() {
                 this.showModalEdit = true
+                $('.modal').modal();
+                $('#modalEdit').modal('open');
             }
         }
-        
-
     }
 </script>

@@ -119,8 +119,6 @@
                     this.isShowUserPass = true
                 }
             },
-        },
-        mounted() {
         }
     }
 </script>
