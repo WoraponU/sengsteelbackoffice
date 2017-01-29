@@ -5,13 +5,25 @@
             <tab name="User Management" :selected="true">
                 <div class="container center-align">
                     <div class="row">
-                        <a href="#modalUser" class="btn-floating btn-large waves-effect waves-light right"><i class="material-icons">add</i></a>
+                        <a href="#modalAdd" class="btn-floating btn-large waves-effect waves-light right"><i class="material-icons">add</i></a>
+                    </div>
+                    <div class="row">
+                        <Card v-for="user in users" 
+                            :firstname="user.firstname"
+                            :lastname="user.lastname"
+                            :identificationNumber="user.identification_number"
+                            :email="user.email"
+                            :phone="user.phone"
+                            :photo="user.photo"
+                            :address="user.address"
+                            :role="user.role"
+                        ></Card>
                     </div>
 
-                    <div class="row">
-                        <Card></Card>
-                        <Card></Card>
-                        <Card></Card>
+                    <div class="row" v-if="dataNotFound">
+                        <div class="col s12 m12 l12 center-align">
+                            <h4>Data Not Found</h4>
+                        </div>
                     </div>
                 </div>
             </tab>
@@ -29,30 +41,33 @@
                 </div>
             </tab>
         </tabs>
-        <Modal></Modal>
+
+        <ModalAdd></ModalAdd>
     </div>
 </template>
 
 <script>
     import axios from 'axios';
-    
+
     export default {
-        // props: {
-        //     name: { require: true },
-        //     selected: { default: false }
-        // },
-        // data() {
-        //     return {
-        //         isActive: true
-        //     }
-        // },
-        // computed: {
-        //     href() {
-        //         return '#' + this.name.toLowerCase().replace(/ /g, '-');
-        //     }
-        // },
-        // mounted() {
-        //     // axios.get('/skills').then(response => console.log(response))
-        // }
+        data() {
+            return {
+                users: [],
+                dataNotFound: false
+            }
+        },
+        beforeMount() {
+            axios.get('/backoffice/user')
+            .then((response) => {
+                this.users = response.data
+                
+                if (!this.users.length) {
+                    this.dataNotFound = true
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        }
     }
 </script>

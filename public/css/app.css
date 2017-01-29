@@ -8556,6 +8556,10 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   }
 }
 
+.mt25 {
+  margin-top: 25px;
+}
+
 body {
   color: grey;
 }
@@ -8598,7 +8602,7 @@ body .card .card-action {
   padding: 15px;
 }
 
-body .modal .input-field .icon-star {
+body .modal .icon-star {
   font-size: 12px;
   color: red;
   vertical-align: top;

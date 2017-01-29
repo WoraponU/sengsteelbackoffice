@@ -53,8 +53,8 @@ class ClassLoader
 
     private $useIncludePath = false;
     private $classMap = array();
+
     private $classMapAuthoritative = false;
-    private $missingClasses = array();
 
     public function getPrefixes()
     {
@@ -147,7 +147,7 @@ class ClassLoader
      * appending or prepending to the ones previously set for this namespace.
      *
      * @param string       $prefix  The prefix/namespace, with trailing '\\'
-     * @param array|string $paths   The PSR-4 base directories
+     * @param array|string $paths   The PSR-0 base directories
      * @param bool         $prepend Whether to prepend the directories
      *
      * @throws \InvalidArgumentException
@@ -322,20 +322,20 @@ class ClassLoader
         if (isset($this->classMap[$class])) {
             return $this->classMap[$class];
         }
-        if ($this->classMapAuthoritative || isset($this->missingClasses[$class])) {
+        if ($this->classMapAuthoritative) {
             return false;
         }
 
         $file = $this->findFileWithExtension($class, '.php');
 
         // Search for Hack files if we are running on HHVM
-        if (false === $file && defined('HHVM_VERSION')) {
+        if ($file === null && defined('HHVM_VERSION')) {
             $file = $this->findFileWithExtension($class, '.hh');
         }
 
-        if (false === $file) {
+        if ($file === null) {
             // Remember that this class does not exist.
-            $this->missingClasses[$class] = true;
+            return $this->classMap[$class] = false;
         }
 
         return $file;
@@ -344,7 +344,7 @@ class ClassLoader
     private function findFileWithExtension($class, $ext)
     {
         // PSR-4 lookup
-        $logicalPathPsr4 = strtr($class, '\\', DIRECTORY_SEPARATOR) . $ext;
+        $logicalPathPsr4 = ('\\' !== DIRECTORY_SEPARATOR ? str_replace('\\', DIRECTORY_SEPARATOR, $class) : $class) . $ext;
 
         $first = $class[0];
         if (isset($this->prefixLengthsPsr4[$first])) {
@@ -370,10 +370,10 @@ class ClassLoader
         if (false !== $pos = strrpos($class, '\\')) {
             // namespaced class name
             $logicalPathPsr0 = substr($logicalPathPsr4, 0, $pos + 1)
-                . strtr(substr($logicalPathPsr4, $pos + 1), '_', DIRECTORY_SEPARATOR);
+                . str_replace('_', DIRECTORY_SEPARATOR, substr($logicalPathPsr4, $pos + 1));
         } else {
             // PEAR-like class name
-            $logicalPathPsr0 = strtr($class, '_', DIRECTORY_SEPARATOR) . $ext;
+            $logicalPathPsr0 = str_replace('_', DIRECTORY_SEPARATOR, $class) . $ext;
         }
 
         if (isset($this->prefixesPsr0[$first])) {
@@ -399,8 +399,6 @@ class ClassLoader
         if ($this->useIncludePath && $file = stream_resolve_include_path($logicalPathPsr0)) {
             return $file;
         }
-
-        return false;
     }
 }
 

@@ -18,15 +18,16 @@ class CreateUsersTable extends Migration
             $table->string('firstname');
             $table->string('lastname');
 
-            $table->integer('Identification Number')->unique();
-            $table->string('email')->unique()->nullable();
-            $table->string('image')->nullable();
+            $table->bigInteger('identification_number')->unique();
+            $table->integer('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->longText('photo')->nullable();
             $table->string('address')->nullable();
 
+            $table->string('role');
             $table->string('username')->nullable();
             $table->string('password')->nullable();
 
-            $table->string('role');
             $table->rememberToken();
             $table->timestamps();
         });

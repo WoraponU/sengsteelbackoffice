@@ -9,3 +9,4 @@ $( document ).ready(function() {
         Materialize.toast(toastContent, 5000, 'red');
     }
 });
+//# sourceMappingURL=main.js.map

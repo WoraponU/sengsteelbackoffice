@@ -20,7 +20,11 @@ elixir(mix => {
     ], 'public/css/app.css')
        .webpack([           
             'app.js',
+        ], 'public/js/app.js')
+        .scripts([
             'plugins/materialize.js',
-            'components/backoffice/main.js'            
-        ], 'public/js/app.js');
+        ], 'public/js/materialize.js')
+        .scripts([
+            'components/backoffice/main.js',
+        ], 'public/js/main.js');
 });

@@ -1,5 +1,9 @@
 $font-color: grey;
 
+.mt25 {
+    margin-top: 25px;
+}
+
 body {
     color: $font-color;
     
@@ -42,12 +46,10 @@ body {
     }
 
     .modal {
-        .input-field {
-            .icon-star {
-                font-size: 12px;
-                color: red;
-                vertical-align: top;
-            }
+        .icon-star {
+            font-size: 12px;
+            color: red;
+            vertical-align: top;
         }
         .role-label {
             font-size: 1rem;

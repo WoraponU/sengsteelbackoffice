@@ -18,7 +18,8 @@ Vue.component('NavBar', require('./components/backoffice/NavBar.vue'));
 Vue.component('Tabs', require('./components/backoffice/Tabs.vue'));
 Vue.component('Tab', require('./components/backoffice/Tab.vue'));
 Vue.component('Card', require('./components/backoffice/Card.vue'));
-Vue.component('Modal', require('./components/backoffice/Modal.vue'));
+Vue.component('ModalAdd', require('./components/backoffice/ModalAdd.vue'));
+Vue.component('ModalEdit', require('./components/backoffice/ModalEdit.vue'));
 
 const app = new Vue({
     el: '#app'

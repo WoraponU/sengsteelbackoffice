@@ -20,13 +20,16 @@
     </script>
 </head>
 <body>
+    @if (count($errors) > 0)
+        <input type="hidden" id="errorMessage" value="{{ $errors->first() }}">
+    @endif
     <div id="app">
         @yield('content')
     </div>
 
     <!-- Scripts -->
-
-    
     <script src="/js/app.js"></script>
+    <script src="/js/materialize.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 </html>

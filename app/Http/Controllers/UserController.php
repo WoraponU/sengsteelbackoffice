@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\MessageBag;
 
 class UserController extends Controller
 {
@@ -11,9 +14,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
-        //
+        return $user->all();
     }
 
     /**
@@ -32,10 +35,29 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
-        return 'test';
+        $validator = $this->validate($request, [
+            'identificationNumber' => 'unique:users,identification_number|numeric',
+            'phone' => 'numeric',
+        ]);
+
+        $params = [
+            'firstname' => $request->firstname,
+            'lastname'  => $request->lastname,
+            'identification_number' => $request->identificationNumber,
+            'email'     => $request->email,
+            'phone'       => $request->phone,
+            'photo'     => $request->photo,
+            'address'   => $request->address,
+            'role'      => $request->role,
+            'username'  => $request->has('password') ? $request->username : null,
+            'password'  => $request->has('password') ? $request->password : null,
+        ];
+
+        $create = $user->create($params);
         
+        return view('backoffice.main');
     }
 
     /**
@@ -57,7 +79,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return 'eiei';
     }
 
     /**

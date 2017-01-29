@@ -22,7 +22,7 @@ Route::get('backoffice', function () {
     return view('backoffice.main');
 });
 
-Route::resource('user', 'UserController');
+Route::resource('backoffice/user', 'UserController');
 
 // Route::get('skills', function () {
 //     return ['a', 'b', 'c'];
