@@ -55,7 +55,7 @@ class UserController extends Controller
             'password'  => $request->has('password') ? $request->password : null,
         ];
 
-        $create = $user->create($params);
+        $user->create($params);
         
         return view('backoffice.main');
     }
@@ -79,7 +79,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return 'eiei';
+        $user = new User;
+        return $user->find($id);
     }
 
     /**
@@ -91,7 +92,28 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = $this->validate($request, [
+            'identificationNumber' => 'numeric',
+            'phone' => 'numeric',
+        ]);
+
+        $params = [
+            'firstname' => $request->firstname,
+            'lastname'  => $request->lastname,
+            'identification_number' => $request->identificationNumber,
+            'email'     => $request->email,
+            'phone'       => $request->phone,
+            'photo'     => $request->photo,
+            'address'   => $request->address,
+            'role'      => $request->role,
+            'username'  => $request->has('password') ? $request->username : null,
+            'password'  => $request->has('password') ? $request->password : null,
+        ];
+
+        $user = new User;
+        $user->find($id)->update($params);
+        
+        return view('backoffice.main');
     }
 
     /**

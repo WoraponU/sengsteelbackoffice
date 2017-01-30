@@ -9,6 +9,7 @@
                     </div>
                     <div class="row">
                         <Card v-for="user in users" 
+                            :id="user.id"
                             :firstname="user.firstname"
                             :lastname="user.lastname"
                             :identificationNumber="user.identification_number"

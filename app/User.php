@@ -24,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'remember_token',
     ];
 
     public function getFirstnameAttribute($value)
@@ -33,11 +33,6 @@ class User extends Authenticatable
     }
 
     public function getLastnameAttribute($value)
-    {
-        return title_case($value);
-    }
-
-    public function getRoleAttribute($value)
     {
         return title_case($value);
     }

@@ -92,7 +92,7 @@
                     { text: 'Admin', value: 'admin' },
                     { text: 'Truck Driver', value: 'truckDriver' }
                 ],
-                photoPreview: '../img/user_icon.png',
+                photoPreview: '../images/user_icon.png',
             }
         },
         methods: {

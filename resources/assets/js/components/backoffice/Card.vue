@@ -28,15 +28,15 @@
                     <i class="material-icons">delete</i>
                 </a>
             </div>
-
-            <ModalEdit></ModalEdit>
         </div>
+        <ModalEdit v-if="showModalEdit" :id="id"></ModalEdit>        
     </div>
 </template>
 
 <script>
     export default {
         props: {
+            id: { require: true },
             firstname: { require: true },
             lastname: { require: true },
             identificationNumber: { require: true },
@@ -48,14 +48,20 @@
         },
         data() {
             return {
-                showModalEdit: false
+                showModalEdit: false,
             }
+        },
+        updated: function() {
+            $('.modal').modal({
+                complete: () => {
+                    this.showModalEdit = false
+                }
+            });
+            $('#modalEdit').modal('open');
         },
         methods: {
             onCallModalEdit() {
                 this.showModalEdit = true
-                $('.modal').modal();
-                $('#modalEdit').modal('open');
             }
         }
     }
