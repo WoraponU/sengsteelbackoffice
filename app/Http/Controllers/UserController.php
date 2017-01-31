@@ -20,7 +20,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return $this->user->all();
+        return response()->json($this->user->all());
     }
 
     /**
@@ -82,7 +82,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return $this->user->find($id);
+        return response()->json($this->user->find($id));
     }
 
     /**
@@ -113,13 +113,15 @@ class UserController extends Controller
         ];
 
         $user = $this->user->find($id);
-        
+
         if(is_null($user)) {
-            return view('backoffice.main')->withErrors('Not Found User');
+            return redirect('backoffice')->withErrors('Not Found User');
         }
 
         $this->user->update($params);
-        return view('backoffice.main');
+        return redirect('backoffice');
+        
+        // return view('backoffice.main');
     }
 
     /**
@@ -133,10 +135,10 @@ class UserController extends Controller
         $user = $this->user->find($id);
         
         if(is_null($user)) {
-            return view('backoffice.main')->withErrors('Not Found User');
+            return redirect('backoffice')->withErrors('Not Found User');
         }
 
         $user->delete();
-        return view('backoffice.main');        
+        return redirect('backoffice');        
     }
 }

@@ -13,7 +13,7 @@
                 <div class="section">
                     <blockquote>
                         <p>Role: {{ role }}</p>
-                        <p>Identification Number: {{ identificationNumber }}</p>
+                        <p>ID Number: {{ identificationNumber }}</p>
                         <p>Tel. {{ phone }}</p>
                         <p>Email: {{ email }}</p>
                         <p>Address: {{ address }}</p>
