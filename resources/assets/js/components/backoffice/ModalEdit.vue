@@ -4,7 +4,7 @@
             <input type="hidden" name="_token" v-model="csrfToken">
             <input type="hidden" name="_method" value="PUT">
             <div class="modal-content">
-                <h4>User Infomation</h4>
+                <h4>Edit User Infomation</h4>
                 <div class="divider"></div>
 
                 <div class="row mt25">
@@ -72,7 +72,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="modal-action waves-effect waves-green btn-flat">Update User</button>
+                <button type="submit" class="modal-action waves-effect waves-green btn-flat">Update</button>
                 <button type="button" class="modal-close modal-action waves-effect waves-green btn-flat">Cancel</button>
             </div>
         </form>
@@ -97,7 +97,7 @@
                     { text: 'Admin', value: 'admin' },
                     { text: 'Truck Driver', value: 'truckDriver' }
                 ],
-                photoPreview: '../images/user_icon.png',
+                photoPreview: '/images/user_icon.png',
                 user: [],
             }
         },
@@ -115,9 +115,6 @@
             .catch(function (error) {
                 console.log(error);
             });
-        },
-        mounted() {
-            
         },
         updated: function() {
             Materialize.updateTextFields()

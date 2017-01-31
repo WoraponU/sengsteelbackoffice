@@ -71,7 +71,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="modal-action waves-effect waves-green btn-flat">Add User</button>
+                <button type="submit" class="modal-action waves-effect waves-green btn-flat">Add</button>
                 <button type="button" class="modal-close modal-action waves-effect waves-green btn-flat">Cancel</button>
             </div>
         </form>
@@ -92,7 +92,7 @@
                     { text: 'Admin', value: 'admin' },
                     { text: 'Truck Driver', value: 'truckDriver' }
                 ],
-                photoPreview: '../images/user_icon.png',
+                photoPreview: '/images/user_icon.png',
             }
         },
         methods: {

@@ -24,12 +24,13 @@
                 <a @click="onCallModalEdit" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">mode_edit</i>
                 </a>
-                <a href="#modalUser" class="btn-floating waves-effect waves-light">
+                <a @click="onCallModalDelete" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">delete</i>
                 </a>
             </div>
         </div>
         <ModalEdit v-if="showModalEdit" :id="id"></ModalEdit>        
+        <ModalDelete v-if="showModalDelete" :id="id" :firstname="firstname" :lastname="lastname"></ModalEdit>        
     </div>
 </template>
 
@@ -49,19 +50,25 @@
         data() {
             return {
                 showModalEdit: false,
+                showModalDelete: false,
             }
         },
         updated: function() {
             $('.modal').modal({
                 complete: () => {
                     this.showModalEdit = false
+                    this.showModalDelete = false
                 }
             });
             $('#modalEdit').modal('open');
+            $('#modalDelete').modal('open');
         },
         methods: {
             onCallModalEdit() {
                 this.showModalEdit = true
+            },
+            onCallModalDelete() {
+                this.showModalDelete = true
             }
         }
     }

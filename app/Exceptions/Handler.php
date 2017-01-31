@@ -44,8 +44,8 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        // if ($exception instanceof \Illuminate\Database\QueryException) {
-        //     return response()->json(['error' => 'unprocessable entity'], 422);
+        // if ($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException) {
+        //     return response()->json(['error' => 'Not Found'], 404);
         // }
         return parent::render($request, $exception);
     }

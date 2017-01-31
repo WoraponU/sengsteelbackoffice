@@ -20,6 +20,7 @@ Vue.component('Tab', require('./components/backoffice/Tab.vue'));
 Vue.component('Card', require('./components/backoffice/Card.vue'));
 Vue.component('ModalAdd', require('./components/backoffice/ModalAdd.vue'));
 Vue.component('ModalEdit', require('./components/backoffice/ModalEdit.vue'));
+Vue.component('ModalDelete', require('./components/backoffice/ModalDelete.vue'));
 
 const app = new Vue({
     el: '#app'

@@ -9,14 +9,18 @@ use Illuminate\Support\MessageBag;
 
 class UserController extends Controller
 {
+    protected $user;
+    function __construct(User $user) {
+        $this->user = $user;
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user)
+    public function index()
     {
-        return $user->all();
+        return $this->user->all();
     }
 
     /**
@@ -26,7 +30,6 @@ class UserController extends Controller
      */
     public function create()
     {
-        // return 'test';
     }
 
     /**
@@ -35,7 +38,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, User $user)
+    public function store(Request $request)
     {
         $validator = $this->validate($request, [
             'identificationNumber' => 'unique:users,identification_number|numeric',
@@ -55,7 +58,7 @@ class UserController extends Controller
             'password'  => $request->has('password') ? $request->password : null,
         ];
 
-        $user->create($params);
+        $this->user->create($params);
         
         return view('backoffice.main');
     }
@@ -79,8 +82,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = new User;
-        return $user->find($id);
+        return $this->user->find($id);
     }
 
     /**
@@ -110,9 +112,13 @@ class UserController extends Controller
             'password'  => $request->has('password') ? $request->password : null,
         ];
 
-        $user = new User;
-        $user->find($id)->update($params);
+        $user = $this->user->find($id);
         
+        if(is_null($user)) {
+            return view('backoffice.main')->withErrors('Not Found User');
+        }
+
+        $this->user->update($params);
         return view('backoffice.main');
     }
 
@@ -124,6 +130,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = $this->user->find($id);
+        
+        if(is_null($user)) {
+            return view('backoffice.main')->withErrors('Not Found User');
+        }
+
+        $user->delete();
+        return view('backoffice.main');        
     }
 }
