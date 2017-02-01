@@ -1,14 +1,14 @@
 <template>
-    <div id="modalAddUser" class="modal modal-fixed-footer">
+    <div id="modalAddTruck" class="modal modal-fixed-footer">
         <form action="/backoffice/user" method="POST">
             <input type="hidden" name="_token" v-model="csrfToken">
             <div class="modal-content">
-                <h4>User Infomation</h4>
+                <h4>Truck Infomation</h4>
                 <div class="divider"></div>
 
                 <div class="row mt25">
                     <div class="col s12 m12 l12 center-align">
-                        <img class="circle responsive-img" :src="photoPreview" alt="photo">
+                        <img class="responsive-img" :src="photoPreview" alt="photo">
                     </div>
                 </div>
                 <div class="row">
@@ -19,25 +19,22 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m12 l6">
-                        <input name="firstname" id="firstname" type="text" class="validate" required>
-                        <label for="firstname">First Name <span class="icon-star">*</span></label>
+                        <input name="license_plate" id="license_plate" type="text" class="validate" required>
+                        <label for="license_plate">License Plate <span class="icon-star">*</span></label>
                     </div>
                     <div class="input-field col s12 m12 l6">
-                        <input name="lastname" id="lastname" type="text" class="validate" required>
-                        <label for="lastname">Last Name <span class="icon-star">*</span></label>
+                        <input name="owner" id="owner" type="text" class="validate" required>
+                        <label for="owner">Owner <span class="icon-star">*</span></label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m12 l6">
-                        <input name="identificationNumber" id="identificationNumber" type="text" class="validate" required>
-                        <label for="identificationNumber">Identification Number <span class="icon-star">*</span></label>
+                        <input name="register_date" id="register_date" type="date" class="datepicker" required>
+                        <label for="register_date">Register Date <span class="icon-star">*</span></label>
                     </div>
-                    <div class="input-field col s12 m12 l6">
-                        <input name="driverLicense" id="driverLicense" type="text" class="validate" required>
-                        <label for="driverLicense">Driver's License <span class="icon-star">*</span></label>
-                    </div>
+                    
                 </div>
-                <div class="row">
+                <!--<div class="row">
                     <div class="input-field col s12 m12 l6">
                         <input name="phone" id="phone" type="text" class="validate" required>
                         <label for="phone">Tel <span class="icon-star">*</span></label>
@@ -46,8 +43,8 @@
                         <input name="email" id="email" type="email" class="validate">
                         <label for="email" data-error="wrong format">Email</label>
                     </div>
-                </div>
-                <div class="row">
+                </div>-->
+                <!--<div class="row">
                     <div class="input-field col s12 m12 l12">
                         <textarea name="address" id="address" class="materialize-textarea"></textarea>
                         <label for="address">Address</label>
@@ -72,7 +69,7 @@
                         <input name="password" id="password" type="password" class="validate" required>
                         <label for="password">Password</label>
                     </div>
-                </div>
+                </div>-->
             </div>
             <div class="modal-footer">
                 <button type="submit" class="modal-action waves-effect waves-green btn-flat">Add</button>
@@ -96,7 +93,7 @@
                     { text: 'Admin', value: 'admin' },
                     { text: 'Truck Driver', value: 'truckDriver' }
                 ],
-                photoPreview: '/images/user_icon.png',
+                photoPreview: '/images/truck_icon.png',
             }
         },
         methods: {

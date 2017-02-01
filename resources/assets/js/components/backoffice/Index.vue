@@ -5,7 +5,7 @@
             <tab name="User Management" :selected="true">
                 <div class="container center-align">
                     <div class="row">
-                        <a href="#modalAdd" class="btn-floating btn-large waves-effect waves-light right"><i class="material-icons">add</i></a>
+                        <a href="#modalAddUser" class="btn-floating btn-large waves-effect waves-light right"><i class="material-icons">add</i></a>
                     </div>
                     <div class="row">
                         <CardUser v-for="user in users" 
@@ -32,19 +32,38 @@
             <tab name="Tuck Management">
             <div class="container center-align">
                     <div class="row">
-                        <a href="#modal" class="btn-floating btn-large waves-effect waves-light right"><i class="material-icons">add</i></a>
+                        <a href="#modalAddTruck" class="btn-floating btn-large waves-effect waves-light right"><i class="material-icons">add</i></a>
                     </div>
 
                     <div class="row">
-                        <!--<Card></Card>
-                        <Card></Card>
-                        <Card></Card>-->
+                        <CardTruck v-for="user in users" 
+                            :id="user.id"
+                            :licensePlate="user.license_plate"
+                            :owner="user.owner"
+                            :photo="user.photo"
+                            :registerDate="user.register_date"
+                            :annualTaxDate="user.annual_tax_date"
+                            :gasoline="user.gasoline"
+                            :lubricator="user.lubricator"
+                            :gearBoxOil="user.gear_box_oil"
+                            :finalGearOil="user.final_gear_oil"
+                            :numberOfWheel="user.number_of_wheel"
+                            :rowOfWheel="user.row_of_wheel"
+                            :lastNumberCar="user.last_number_car"
+                        ></CardTruck>
+                    </div>
+
+                    <div class="row" v-if="dataTruckNotFound">
+                        <div class="col s12 m12 l12 center-align">
+                            <h4>Data Not Found</h4>
+                        </div>
                     </div>
                 </div>
             </tab>
         </tabs>
 
         <ModalAddUser></ModalAddUser>
+        <ModalAddTruck></ModalAddTruck>
     </div>
 </template>
 
@@ -55,7 +74,9 @@
         data() {
             return {
                 users: [],
-                dataUserNotFound: false
+                trucks: [],
+                dataUserNotFound: false,
+                dataTruckNotFound: false
             }
         },
         beforeMount() {
@@ -65,6 +86,18 @@
                 
                 if (!this.users.length) {
                     this.dataUserNotFound = true
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+            axios.get('/backoffice/truck')
+            .then((response) => {
+                this.truck = response.data
+                
+                if (!this.truck.length) {
+                    this.dataTruckNotFound = true
                 }
             })
             .catch(function (error) {

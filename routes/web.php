@@ -15,15 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Auth::routes();
+Route::group(['prefix' => 'backoffice'], function () {
+    Route::get('', function () {
+        return view('backoffice.main');
+    });
 
-// Route::get('/home', 'HomeController@index');
-Route::get('backoffice', function () {
-    return view('backoffice.main');
+    Route::resource('user', 'UserController');
+    Route::resource('truck', 'TruckController');
 });
-
-Route::resource('backoffice/user', 'UserController');
-
-// Route::get('skills', function () {
-//     return ['a', 'b', 'c'];
-// });

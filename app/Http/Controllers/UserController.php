@@ -122,8 +122,6 @@ class UserController extends Controller
 
         $user->update($params);
         return redirect('backoffice');
-        
-        // return view('backoffice.main');
     }
 
     /**
