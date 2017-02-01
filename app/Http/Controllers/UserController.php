@@ -118,7 +118,7 @@ class UserController extends Controller
             return redirect('backoffice')->withErrors('Not Found User');
         }
 
-        $this->user->update($params);
+        $user->update($params);
         return redirect('backoffice');
         
         // return view('backoffice.main');
