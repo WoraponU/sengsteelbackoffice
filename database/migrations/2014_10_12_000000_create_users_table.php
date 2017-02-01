@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('lastname');
 
             $table->bigInteger('identification_number')->unique();
+            $table->bigInteger('driver_license')->unique();
             $table->integer('phone')->nullable();
             $table->string('email')->nullable();
             $table->longText('photo')->nullable();

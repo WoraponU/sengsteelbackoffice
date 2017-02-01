@@ -33,14 +33,18 @@
                         <label for="identificationNumber">Identification Number <span class="icon-star">*</span></label>
                     </div>
                     <div class="input-field col s12 m12 l6">
-                        <input name="email" id="email" type="email" class="validate">
-                        <label for="email" data-error="wrong format">Email</label>
+                        <input name="driverLicense" id="driverLicense" type="text" class="validate" required>
+                        <label for="driverLicense">Driver's License <span class="icon-star">*</span></label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m12 l6">
                         <input name="phone" id="phone" type="text" class="validate" required>
                         <label for="phone">Tel <span class="icon-star">*</span></label>
+                    </div>
+                    <div class="input-field col s12 m12 l6">
+                        <input name="email" id="email" type="email" class="validate">
+                        <label for="email" data-error="wrong format">Email</label>
                     </div>
                 </div>
                 <div class="row">

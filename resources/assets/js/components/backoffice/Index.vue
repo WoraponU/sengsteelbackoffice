@@ -13,6 +13,7 @@
                             :firstname="user.firstname"
                             :lastname="user.lastname"
                             :identificationNumber="user.identification_number"
+                            :driverLicense="user.driver_license"
                             :email="user.email"
                             :phone="user.phone"
                             :photo="user.photo"

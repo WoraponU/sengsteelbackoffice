@@ -14,6 +14,7 @@
                     <blockquote>
                         <p>Role: {{ role }}</p>
                         <p>ID Number: {{ identificationNumber }}</p>
+                        <p>Driver's License: {{ driverLicense }}</p>
                         <p>Tel. {{ phone }}</p>
                         <p>Email: {{ email }}</p>
                         <p>Address: {{ address }}</p>
@@ -41,6 +42,7 @@
             firstname: { require: true },
             lastname: { require: true },
             identificationNumber: { require: true },
+            driverLicense: { require: true },
             email: { require: true },
             phone: { require: true },
             photo: { require: true },
