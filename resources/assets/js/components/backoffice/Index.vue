@@ -8,7 +8,7 @@
                         <a href="#modalAdd" class="btn-floating btn-large waves-effect waves-light right"><i class="material-icons">add</i></a>
                     </div>
                     <div class="row">
-                        <Card v-for="user in users" 
+                        <CardUser v-for="user in users" 
                             :id="user.id"
                             :firstname="user.firstname"
                             :lastname="user.lastname"
@@ -19,10 +19,10 @@
                             :photo="user.photo"
                             :address="user.address"
                             :role="user.role"
-                        ></Card>
+                        ></CardUser>
                     </div>
 
-                    <div class="row" v-if="dataNotFound">
+                    <div class="row" v-if="dataUserNotFound">
                         <div class="col s12 m12 l12 center-align">
                             <h4>Data Not Found</h4>
                         </div>
@@ -44,7 +44,7 @@
             </tab>
         </tabs>
 
-        <ModalAdd></ModalAdd>
+        <ModalAddUser></ModalAddUser>
     </div>
 </template>
 
@@ -55,7 +55,7 @@
         data() {
             return {
                 users: [],
-                dataNotFound: false
+                dataUserNotFound: false
             }
         },
         beforeMount() {
@@ -64,7 +64,7 @@
                 this.users = response.data
                 
                 if (!this.users.length) {
-                    this.dataNotFound = true
+                    this.dataUserNotFound = true
                 }
             })
             .catch(function (error) {
