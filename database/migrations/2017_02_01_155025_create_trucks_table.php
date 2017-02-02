@@ -27,8 +27,8 @@ class CreateTrucksTable extends Migration
             $table->string('gear_box_oil')->comment('น้ำมัน');
             $table->string('final_gear_oil')->comment('น้ำมัน');
 
-            $table->integer('number_of_wheel');
             $table->integer('row_of_wheel');
+            $table->string('number_wheel_per_row');
             $table->integer('last_number_car');
 
             $table->timestamps();

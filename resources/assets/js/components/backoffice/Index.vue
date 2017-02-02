@@ -36,20 +36,20 @@
                     </div>
 
                     <div class="row">
-                        <CardTruck v-for="user in users" 
-                            :id="user.id"
-                            :licensePlate="user.license_plate"
-                            :owner="user.owner"
-                            :photo="user.photo"
-                            :registerDate="user.register_date"
-                            :annualTaxDate="user.annual_tax_date"
-                            :gasoline="user.gasoline"
-                            :lubricator="user.lubricator"
-                            :gearBoxOil="user.gear_box_oil"
-                            :finalGearOil="user.final_gear_oil"
-                            :numberOfWheel="user.number_of_wheel"
-                            :rowOfWheel="user.row_of_wheel"
-                            :lastNumberCar="user.last_number_car"
+                        <CardTruck v-for="truck in trucks" 
+                            :id="truck.id"
+                            :licensePlate="truck.license_plate"
+                            :owner="truck.owner"
+                            :photo="truck.photo"
+                            :registerDate="truck.register_date"
+                            :annualTaxDate="truck.annual_tax_date"
+                            :gasoline="truck.gasoline"
+                            :lubricator="truck.lubricator"
+                            :gearBoxOil="truck.gear_box_oil"
+                            :finalGearOil="truck.final_gear_oil"
+                            :lastNumberCar="truck.last_number_car"
+                            :numberWheelPerRow="truck.number_wheel_per_row"
+                            :rowOfWheel="truck.row_of_wheel"
                         ></CardTruck>
                     </div>
 
@@ -91,12 +91,12 @@
             .catch(function (error) {
                 console.log(error);
             });
-
+            //////////////////////////////
             axios.get('/backoffice/truck')
             .then((response) => {
-                this.truck = response.data
+                this.trucks = response.data
                 
-                if (!this.truck.length) {
+                if (!this.trucks.length) {
                     this.dataTruckNotFound = true
                 }
             })

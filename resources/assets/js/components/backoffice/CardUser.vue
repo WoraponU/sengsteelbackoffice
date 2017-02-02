@@ -5,23 +5,19 @@
                 <img class="activator" :src="photo">
             </div>
             <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">{{ licensePlate }}<i class="material-icons right">more_vert</i></span>
-                <p>{{ owner }}</p>
+                <span class="card-title activator grey-text text-darken-4">{{ firstname }} {{ lastname }}<i class="material-icons right">more_vert</i></span>
+                <p>{{ role }}</p>
             </div>
             <div class="card-reveal left-align">
-                <span class="card-title grey-text text-darken-4">{{ licensePlate }}<i class="material-icons right">close</i></span>
+                <span class="card-title grey-text text-darken-4">{{ firstname }} {{ lastname }}<i class="material-icons right">close</i></span>
                 <div class="section">
                     <blockquote>
-                        <p>Role: {{ owner }}</p>
-                        <p>Role: {{ registerDate }}</p>
-                        <p>Role: {{ annualTaxDate }}</p>
-                        <p>Role: {{ gasoline }}</p>
-                        <p>Role: {{ lubricator }}</p>
-                        <p>Role: {{ gearBoxOil }}</p>
-                        <p>Role: {{ finalGearOil }}</p>
-                        <p>Role: {{ numberOfWheel }}</p>
-                        <p>Role: {{ rowOfWheel }}</p>
-                        <p>Role: {{ lastNumberCar }}</p>
+                        <p>Role: {{ role }}</p>
+                        <p>ID Number: {{ identificationNumber }}</p>
+                        <p>Driver's License: {{ driverLicense }}</p>
+                        <p>Tel. {{ phone }}</p>
+                        <p>Email: {{ email }}</p>
+                        <p>Address: {{ address }}</p>
                     </blockquote>
                 </div>
             </div>
@@ -43,18 +39,15 @@
     export default {
         props: {
             id: { require: true },
-            licensePlate: { require: true },
-            owner: { require: true },
+            firstname: { require: true },
+            lastname: { require: true },
+            identificationNumber: { require: true },
+            driverLicense: { require: true },
+            email: { require: true },
+            phone: { require: true },
             photo: { require: true },
-            registerDate: { require: true },
-            annualTaxDate: { require: true },
-            gasoline: { require: true },
-            lubricator: { require: true },
-            gearBoxOil: { require: true },
-            finalGearOil: { require: true },
-            numberOfWheel: { require: true },
-            rowOfWheel: { require: true },
-            lastNumberCar: { require: true },
+            address: { require: true },
+            role: { require: true },
         },
         data() {
             return {

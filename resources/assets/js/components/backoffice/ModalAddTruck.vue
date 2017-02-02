@@ -1,6 +1,6 @@
 <template>
     <div id="modalAddTruck" class="modal modal-fixed-footer">
-        <form action="/backoffice/user" method="POST">
+        <form action="/backoffice/truck" method="POST">
             <input type="hidden" name="_token" v-model="csrfToken">
             <div class="modal-content">
                 <h4>Truck Infomation</h4>
@@ -19,8 +19,8 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m12 l6">
-                        <input name="license_plate" id="license_plate" type="text" class="validate" required>
-                        <label for="license_plate">License Plate <span class="icon-star">*</span></label>
+                        <input name="licensePlate" id="licensePlate" type="text" class="validate" required>
+                        <label for="licensePlate">License Plate <span class="icon-star">*</span></label>
                     </div>
                     <div class="input-field col s12 m12 l6">
                         <input name="owner" id="owner" type="text" class="validate" required>
@@ -29,47 +29,52 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m12 l6">
-                        <input name="register_date" id="register_date" type="date" class="datepicker" required>
-                        <label for="register_date">Register Date <span class="icon-star">*</span></label>
-                    </div>
-                    
-                </div>
-                <!--<div class="row">
-                    <div class="input-field col s12 m12 l6">
-                        <input name="phone" id="phone" type="text" class="validate" required>
-                        <label for="phone">Tel <span class="icon-star">*</span></label>
+                        <input name="registerDate" id="registerDate" type="date" class="datepicker" required>
+                        <label for="registerDate">Register Date <span class="icon-star">*</span></label>
                     </div>
                     <div class="input-field col s12 m12 l6">
-                        <input name="email" id="email" type="email" class="validate">
-                        <label for="email" data-error="wrong format">Email</label>
-                    </div>
-                </div>-->
-                <!--<div class="row">
-                    <div class="input-field col s12 m12 l12">
-                        <textarea name="address" id="address" class="materialize-textarea"></textarea>
-                        <label for="address">Address</label>
+                        <input name="annualTaxDate" id="annualTaxDate" type="date" class="datepicker" required>
+                        <label for="annualTaxDate">Annual Tax Date <span class="icon-star">*</span></label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s12 m12 l6">
-                        <label class="role-label">Role <span class="icon-star">*</span></label>
-                        <select name="role" class="browser-default" v-model="selected" @change="onRoleChange" required>
-                            <option v-for="option in options" v-bind:value="option.value" :disabled="option.disabled">
-                                {{ option.text }}
-                            </option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row" v-if="isShowUserPass">
-                    <div class="input-field col s12 m12 l6" >
-                        <input name="username" id="username" type="text" class="validate" required>
-                        <label for="username">Username</label>
+                    <div class="input-field col s12 m12 l6">
+                        <input name="gasoline" id="gasoline" type="text" class="validate" required>
+                        <label for="gasoline">Gasoline <span class="icon-star">*</span></label>
                     </div>
                     <div class="input-field col s12 m12 l6">
-                        <input name="password" id="password" type="password" class="validate" required>
-                        <label for="password">Password</label>
+                        <input name="lubricator" id="lubricator" type="text" class="validate" required>
+                        <label for="lubricator">Lubricator <span class="icon-star">*</span></label>
                     </div>
-                </div>-->
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m12 l6">
+                        <input name="gearBoxOil" id="gearBoxOil" type="text" class="validate" required>
+                        <label for="gearBoxOil">gearBoxOil <span class="icon-star">*</span></label>
+                    </div>
+                    <div class="input-field col s12 m12 l6">
+                        <input name="finalGearOil" id="finalGearOil" type="text" class="validate" required>
+                        <label for="finalGearOil">finalGearOil <span class="icon-star">*</span></label>
+                    </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12 m12 l6">
+                      <input name="lastNumberCar" id="lastNumberCar" type="text" class="validate" required>
+                      <label for="lastNumberCar">Last Number Car <span class="icon-star">*</span></label>
+                  </div>
+                </div>
+                <div class="row">
+                  	<div class="input-field col s12 m12 l6">
+						<input name="rowOfWheel" id="rowOfWheel" type="number" min="2" max="30" class="validate" v-model="rowsOfWheel" required>
+						<label for="rowOfWheel">Row Of Wheel <span class="icon-star">*</span></label>
+                    </div>
+                </div>
+				<div class="row">
+					<div class="input-field col s6 m6 l4" v-for="row in rowsOfWheel">
+						<input name="numberWheelPerRow[]" type="number" class="validate" value="2" required>
+						<label for="numberWheelPerRow">Wheel/Row {{ row }} <span class="icon-star">*</span></label>
+                    </div>
+				</div>
             </div>
             <div class="modal-footer">
                 <button type="submit" class="modal-action waves-effect waves-green btn-flat">Add</button>
@@ -85,16 +90,12 @@
         data() {
             return {
                 csrfToken: window.Laravel.csrfToken,
-                isShowUserPass: false,
-                selected: '',
-                options: [
-                    { text: 'Choose your option', value: '', disabled: true },
-                    { text: 'Owner', value: 'owner' },
-                    { text: 'Admin', value: 'admin' },
-                    { text: 'Truck Driver', value: 'truckDriver' }
-                ],
                 photoPreview: '/images/truck_icon.png',
+				rowsOfWheel: 2,
             }
+        },
+		updated: function() {
+            Materialize.updateTextFields()
         },
         methods: {
             onImageChange(e) {
@@ -111,14 +112,6 @@
                     this.photoPreview = e.target.result;
                 };
                 reader.readAsDataURL(file);
-            },
-            onRoleChange() {
-                if (this.selected == 'truckDriver') {
-                    this.isShowUserPass = false
-
-                } else {
-                    this.isShowUserPass = true
-                }
             },
         }
     }

@@ -21,7 +21,7 @@ class Truck extends Model
         'lubricator',
         'gear_box_oil',
         'final_gear_oil',
-        'number_of_wheel',
+        'number_wheel_per_row',
         'row_of_wheel',
         'last_number_car',
     ];

@@ -6,6 +6,7 @@ use App\Truck;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\MessageBag;
+use Carbon\Carbon;
 
 class TruckController extends Controller
 {
@@ -45,23 +46,24 @@ class TruckController extends Controller
         //     'phone' => 'numeric',
         // ]);
 
-        // $params = [
-        //     'firstname' => $request->firstname,
-        //     'lastname'  => $request->lastname,
-        //     'identification_number' => $request->identificationNumber,
-        //     'driver_license' => $request->driverLicense,
-        //     'email'     => $request->email,
-        //     'phone'       => $request->phone,
-        //     'photo'     => $request->photo,
-        //     'address'   => $request->address,
-        //     'role'      => $request->role,
-        //     'username'  => $request->has('password') ? $request->username : null,
-        //     'password'  => $request->has('password') ? $request->password : null,
-        // ];
-
-        // $this->truck->create($params);
+        $params = [
+            'license_plate'	=> $request->licensePlate,
+			'owner'	=> $request->owner,
+			'photo'	=> $request->photo,
+			'register_date'	=> date('Y-m-d', strtotime($request->registerDate)),
+			'annual_tax_date'	=> date('Y-m-d', strtotime($request->annualTaxDate)),
+			'gasoline'	=> $request->gasoline,
+			'lubricator'	=> $request->lubricator,
+			'gear_box_oil'	=> $request->gearBoxOil,
+			'final_gear_oil'	=> $request->finalGearOil,
+			'last_number_car'	=> $request->lastNumberCar,
+			'row_of_wheel'	=> $request->rowOfWheel,
+			'number_wheel_per_row'	=> json_encode($request->numberWheelPerRow),
+        ];
+		// dd($params);
+        $this->truck->create($params);
         
-        // return view('backoffice.main');
+        return view('backoffice.main');
     }
 
     /**
