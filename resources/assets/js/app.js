@@ -23,7 +23,8 @@ Vue.component('ModalAddUser', require('./components/backoffice/ModalAddUser.vue'
 Vue.component('ModalAddTruck', require('./components/backoffice/ModalAddTruck.vue'));
 Vue.component('ModalEditUser', require('./components/backoffice/ModalEditUser.vue'));
 Vue.component('ModalEditTruck', require('./components/backoffice/ModalEditTruck.vue'));
-Vue.component('ModalDelete', require('./components/backoffice/ModalDelete.vue'));
+Vue.component('ModalDeleteUser', require('./components/backoffice/ModalDeleteUser.vue'));
+Vue.component('ModalDeleteTruck', require('./components/backoffice/ModalDeleteTruck.vue'));
 
 const app = new Vue({
     el: '#app'

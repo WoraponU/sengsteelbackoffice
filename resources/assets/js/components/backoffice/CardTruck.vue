@@ -33,7 +33,7 @@
             </div>
         </div>
         <ModalEditTruck v-if="showModalEdit" :id="id"></ModalEditTruck>        
-        <ModalDelete v-if="showModalDelete" :id="id" :firstname="firstname" :lastname="lastname"></ModalEdit>        
+        <ModalDeleteTruck v-if="showModalDelete" :id="id" :licensePlate="licensePlate" ></ModalDeleteTruck>        
     </div>
 </template>
 

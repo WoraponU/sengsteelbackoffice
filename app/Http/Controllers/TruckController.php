@@ -42,7 +42,7 @@ class TruckController extends Controller
     public function store(Request $request)
     {
         $validator = $this->validate($request, [
-            'licensePlate' => 'unique:truck,licensePlate',
+            'licensePlate' => 'unique:trucks,license_plate',
             'lastNumberCar' => 'numeric',
         ]);
 
@@ -133,13 +133,13 @@ class TruckController extends Controller
      */
     public function destroy($id)
     {
-        // $truck = $this->truck->find($id);
+        $truck = $this->truck->find($id);
         
-        // if(is_null($truck)) {
-        //     return redirect('backoffice')->withErrors('Not Found User');
-        // }
+        if(is_null($truck)) {
+            return redirect('backoffice')->withErrors('Not Found User');
+        }
 
-        // $truck->delete();
-        // return redirect('backoffice');        
+        $truck->delete();
+        return redirect('backoffice');        
     }
 }

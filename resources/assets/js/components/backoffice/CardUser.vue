@@ -31,7 +31,7 @@
             </div>
         </div>
         <ModalEditUser v-if="showModalEdit" :id="id"></ModalEditUser>        
-        <ModalDelete v-if="showModalDelete" :id="id" :firstname="firstname" :lastname="lastname"></ModalEdit>        
+        <ModalDeleteUser v-if="showModalDelete" :id="id" :firstname="firstname" :lastname="lastname"></ModalDeleteUser>        
     </div>
 </template>
 
