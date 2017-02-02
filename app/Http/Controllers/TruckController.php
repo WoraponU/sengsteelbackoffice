@@ -60,7 +60,6 @@ class TruckController extends Controller
 			'row_of_wheel'	=> $request->rowOfWheel,
 			'number_wheel_per_row'	=> json_encode($request->numberWheelPerRow),
         ];
-		// dd($params);
         $this->truck->create($params);
         
         return view('backoffice.main');
@@ -85,7 +84,7 @@ class TruckController extends Controller
      */
     public function edit($id)
     {
-        // return response()->json($this->truck->find($id));
+        return response()->json($this->truck->find($id));
     }
 
     /**
@@ -101,31 +100,29 @@ class TruckController extends Controller
         //     'identificationNumber' => 'numeric',
         //     'phone' => 'numeric',
         // ]);
+        $params = [
+            'license_plate'	=> $request->licensePlate,
+			'owner'	=> $request->owner,
+			'photo'	=> $request->photo,
+			'register_date'	=> date('Y-m-d', strtotime($request->registerDate)),
+			'annual_tax_date'	=> date('Y-m-d', strtotime($request->annualTaxDate)),
+			'gasoline'	=> $request->gasoline,
+			'lubricator'	=> $request->lubricator,
+			'gear_box_oil'	=> $request->gearBoxOil,
+			'final_gear_oil'	=> $request->finalGearOil,
+			'last_number_car'	=> $request->lastNumberCar,
+			'row_of_wheel'	=> $request->rowOfWheel,
+			'number_wheel_per_row'	=> json_encode($request->numberWheelPerRow),
+        ];
 
-        // $params = [
-        //     'firstname' => $request->firstname,
-        //     'lastname'  => $request->lastname,
-        //     'identification_number' => $request->identificationNumber,
-        //     'driver_license' => $request->driverLicense,
-        //     'email'     => $request->email,
-        //     'phone'       => $request->phone,
-        //     'photo'     => $request->photo,
-        //     'address'   => $request->address,
-        //     'role'      => $request->role,
-        //     'username'  => $request->has('password') ? $request->username : null,
-        //     'password'  => $request->has('password') ? $request->password : null,
-        // ];
+        $truck = $this->truck->find($id);
 
-        // $truck = $this->truck->find($id);
+        if(is_null($truck)) {
+            return redirect('backoffice')->withErrors('Not Found User');
+        }
 
-        // if(is_null($truck)) {
-        //     return redirect('backoffice')->withErrors('Not Found User');
-        // }
-
-        // $truck->update($params);
-        // return redirect('backoffice');
-        
-        // return view('backoffice.main');
+        $truck->update($params);
+        return redirect('backoffice');
     }
 
     /**

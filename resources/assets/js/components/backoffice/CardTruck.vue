@@ -6,7 +6,7 @@
             </div>
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">{{ licensePlate }}<i class="material-icons right">more_vert</i></span>
-                <p>{{ role }}</p>
+                <p>{{ owner }}</p>
             </div>
             <div class="card-reveal left-align">
                 <span class="card-title grey-text text-darken-4">{{ licensePlate }}<i class="material-icons right">close</i></span>

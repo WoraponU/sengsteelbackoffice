@@ -1,7 +1,8 @@
 <template>
     <div id="modalEdit" class="modal modal-fixed-footer left-align">
-        <form action="/backoffice/truck" method="POST">
+        <form :action="action" method="POST">
             <input type="hidden" name="_token" v-model="csrfToken">
+            <input type="hidden" name="_method" value="PUT">
             <div class="modal-content">
                 <h4>Truck Infomation</h4>
                 <div class="divider"></div>
@@ -19,53 +20,54 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m12 l6">
-                        <input name="licensePlate" id="licensePlate" type="text" class="validate" required>
+                        <input name="licensePlate" id="licensePlate" type="text" class="validate" :value="truck.license_plate" required>
                         <label for="licensePlate">License Plate <span class="icon-star">*</span></label>
                     </div>
                     <div class="input-field col s12 m12 l6">
-                        <input name="owner" id="owner" type="text" class="validate">
+                        <input name="owner" id="owner" type="text" class="validate" :value="truck.owner">
                         <label for="owner">Owner <span class="icon-star">*</span></label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m12 l6">
-                        <input name="registerDate" id="registerDate" type="date" class="datepicker" required>
+                        <input name="registerDate" id="registerDate" type="date" class="datepicker" :value="truck.register_date" required>
                         <label for="registerDate">Register Date <span class="icon-star">*</span></label>
                     </div>
                     <div class="input-field col s12 m12 l6">
-                        <input name="annualTaxDate" id="annualTaxDate" type="date" class="datepicker" required>
+                        <input name="annualTaxDate" id="annualTaxDate" type="date" class="datepicker" :value="truck.annual_tax_date" required>
                         <label for="annualTaxDate">Annual Tax Date <span class="icon-star">*</span></label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m12 l6">
-                        <input name="gasoline" id="gasoline" type="text" class="validate" required>
+                        <input name="gasoline" id="gasoline" type="text" class="validate" :value="truck.gasoline" required>
                         <label for="gasoline">Gasoline <span class="icon-star">*</span></label>
                     </div>
                     <div class="input-field col s12 m12 l6">
-                        <input name="lubricator" id="lubricator" type="text" class="validate" required>
+                        <input name="lubricator" id="lubricator" type="text" class="validate" :value="truck.lubricator" required>
                         <label for="lubricator">Lubricator <span class="icon-star">*</span></label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m12 l6">
-                        <input name="gearBoxOil" id="gearBoxOil" type="text" class="validate" required>
+                        <input name="gearBoxOil" id="gearBoxOil" type="text" class="validate" :value="truck.gear_box_oil" required>
                         <label for="gearBoxOil">gearBoxOil <span class="icon-star">*</span></label>
                     </div>
                     <div class="input-field col s12 m12 l6">
-                        <input name="finalGearOil" id="finalGearOil" type="text" class="validate" required>
+                        <input name="finalGearOil" id="finalGearOil" type="text" class="validate" :value="truck.final_gear_oil" required>
                         <label for="finalGearOil">finalGearOil <span class="icon-star">*</span></label>
                     </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12 m12 l6">
-                      <input name="lastNumberCar" id="lastNumberCar" type="text" class="validate" required>
+                      <input name="lastNumberCar" id="lastNumberCar" type="text" class="validate" :value="truck.last_number_car" required>
                       <label for="lastNumberCar">Last Number Car <span class="icon-star">*</span></label>
                   </div>
                 </div>
                 <div class="row">
                   	<div class="input-field col s6 m6 l6">
-						<input name="rowOfWheel" id="rowOfWheel" type="number" min="2" max="30" class="validate" v-model="rowsOfWheel" required>
+						<input name="rowOfWheel" id="rowOfWheel" type="number" min="2" max="30" class="validate" 
+                            v-model="rowsOfWheel" required>
 						<label for="rowOfWheel">Row Of Wheel <span class="icon-star">*</span></label>
                     </div>
 					<div class="col s6 m6 l6">
@@ -73,9 +75,9 @@
 					</div>
                 </div>
 				<div class="row">
-					<div class="input-field col s6 m6 l4" v-for="row in rowsOfWheel">
-						<input name="numberWheelPerRow[]" type="number" class="validate" value="2" required>
-						<label for="numberWheelPerRow">Wheel/Row {{ row }} <span class="icon-star">*</span></label>
+					<div class="input-field col s6 m6 l4" v-for="(number, index) in numberWheelPerRow">
+						<input name="numberWheelPerRow[]" type="number" class="validate" :value="number" required>
+						<label for="numberWheelPerRow">Wheel/Row {{ index }} <span class="icon-star">*</span></label>
                     </div>
 				</div>
             </div>
@@ -93,15 +95,59 @@
         props: {
             id: { require: true },
         },
+        // computed: {
+        //     index: function () {
+        //         return this.index+1
+        //     }
+        // },
         data() {
             return {
+                action: '/backoffice/truck/' + this.id,
                 csrfToken: window.Laravel.csrfToken,
                 photoPreview: '/images/truck_icon.png',
-				rowsOfWheel: 2,
+                truck: [],
+				rowsOfWheel: '',
+				numberWheelPerRow: '',
+            }
+        },
+        watch: {
+            rowsOfWheel: function(rowsOfWheelChange) {
+                let rowOfWheel = this.numberWheelPerRow.length
+                let rowOfWheelData = this.numberWheelPerRow
+                if (rowsOfWheelChange > rowOfWheel) {
+                    let numberOfPush = rowsOfWheelChange - rowOfWheel
+                    for (let i = 0; i < numberOfPush; i++) {
+                        rowOfWheelData.push('2')
+                    }
+                } else if (rowsOfWheelChange < rowOfWheel) {
+                    let numberOfPush = rowOfWheel - rowsOfWheelChange
+                    for (let i = 0; i < numberOfPush; i++) {
+                        this.numberWheelPerRow.pop()
+                    }
+                }
             }
         },
 		updated: function() {
             Materialize.updateTextFields()
+        },
+        mounted() {
+            Materialize.updateTextFields();
+            $('.datepicker').pickadate({
+                selectMonths: true,
+                selectYears: 15
+            });
+        },
+        beforeMount() {
+            axios.get('/backoffice/truck/' + this.id + '/edit')
+            .then((response) => {
+                this.truck = response.data
+                this.photoPreview = this.truck.photo
+                this.rowsOfWheel = this.truck.row_of_wheel
+                this.numberWheelPerRow = JSON.parse(this.truck.number_wheel_per_row)
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         },
         methods: {
             onImageChange(e) {
@@ -119,6 +165,20 @@
                 };
                 reader.readAsDataURL(file);
             },
+            // onRowOfWheelChange() {
+                    // console.log('rowOfWheelChange');
+                
+                // let rowOfWheelData = this.numberWheelPerRow
+                // let rowOfWheel = this.numberWheelPerRow.length
+                // let rowOfWheelChange = this.rowsOfWheel
+                //     console.log('rowOfWheelChange');
+                // if (rowOfWheelChange > rowOfWheel) {
+                //     this.numberWheelPerRow = this.numberWheelPerRow.push('2')
+                //     console.log(this.numberWheelPerRow);
+                // } else if (rowOfWheelChange < rowOfWheel) {
+                //     alert('less');                    
+                // }
+            // }
         }
     }
 </script>
