@@ -60,6 +60,7 @@ class TruckController extends Controller
 			'row_of_wheel'	=> $request->rowOfWheel,
 			'number_wheel_per_row'	=> json_encode($request->numberWheelPerRow),
         ];
+
         $this->truck->create($params);
         
         return view('backoffice.main');
@@ -96,10 +97,9 @@ class TruckController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $validator = $this->validate($request, [
-        //     'identificationNumber' => 'numeric',
-        //     'phone' => 'numeric',
-        // ]);
+        $validator = $this->validate($request, [
+            'lastNumberCar' => 'numeric',
+        ]);
         $params = [
             'license_plate'	=> $request->licensePlate,
 			'owner'	=> $request->owner,
