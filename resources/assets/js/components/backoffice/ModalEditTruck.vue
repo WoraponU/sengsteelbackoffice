@@ -1,5 +1,5 @@
 <template>
-    <div id="modalAddTruck" class="modal modal-fixed-footer">
+    <div id="modalEdit" class="modal modal-fixed-footer left-align">
         <form action="/backoffice/truck" method="POST">
             <input type="hidden" name="_token" v-model="csrfToken">
             <div class="modal-content">
@@ -90,6 +90,9 @@
 <script>
     import axios from 'axios';
     export default {
+        props: {
+            id: { require: true },
+        },
         data() {
             return {
                 csrfToken: window.Laravel.csrfToken,

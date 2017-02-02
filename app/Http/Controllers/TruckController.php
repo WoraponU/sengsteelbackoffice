@@ -41,10 +41,10 @@ class TruckController extends Controller
      */
     public function store(Request $request)
     {
-        // $validator = $this->validate($request, [
-        //     'identificationNumber' => 'unique:users,identification_number|numeric',
-        //     'phone' => 'numeric',
-        // ]);
+        $validator = $this->validate($request, [
+            'licensePlate' => 'unique:truck,licensePlate',
+            'lastNumberCar' => 'numeric',
+        ]);
 
         $params = [
             'license_plate'	=> $request->licensePlate,

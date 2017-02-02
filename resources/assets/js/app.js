@@ -22,6 +22,7 @@ Vue.component('CardTruck', require('./components/backoffice/CardTruck.vue'));
 Vue.component('ModalAddUser', require('./components/backoffice/ModalAddUser.vue'));
 Vue.component('ModalAddTruck', require('./components/backoffice/ModalAddTruck.vue'));
 Vue.component('ModalEditUser', require('./components/backoffice/ModalEditUser.vue'));
+Vue.component('ModalEditTruck', require('./components/backoffice/ModalEditTruck.vue'));
 Vue.component('ModalDelete', require('./components/backoffice/ModalDelete.vue'));
 
 const app = new Vue({
