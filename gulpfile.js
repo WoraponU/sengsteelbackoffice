@@ -22,9 +22,7 @@ elixir(mix => {
             'app.js',
         ], 'public/js/app.js')
         .scripts([
-            'plugins/materialize.js',
-        ], 'public/js/materialize.js')
-        .scripts([
             'components/backoffice/main.js',
-        ], 'public/js/main.js');
+            'plugins/materialize.js',
+        ], 'public/js/all.js');
 });
