@@ -29,7 +29,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m12 l6">
-                        <input name="identificationNumber" id="identificationNumber" type="text" class="validate" required>
+                        <input name="identificationNumber" id="identificationNumber" type="text" class="validate" @blur="onIdNumberKeyUp" required>
                         <label for="identificationNumber">Identification Number <span class="icon-star">*</span></label>
                     </div>
                     <div class="input-field col s12 m12 l6">
@@ -100,6 +100,14 @@
             }
         },
         methods: {
+            onIdNumberKeyUp(event) {
+                alert();
+                let isNumber = /^\d+$/.test(event.target.value);
+
+                if (!isNumber) {
+                    alert('Identification Number must be number!');                
+                }
+            },
             onImageChange(e) {
                 var files = e.target.files || e.dataTransfer.files;
                 if (!files.length)
