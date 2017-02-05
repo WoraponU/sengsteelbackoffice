@@ -100,14 +100,14 @@
             }
         },
         methods: {
-            onIdNumberKeyUp(event) {
-                alert();
-                let isNumber = /^\d+$/.test(event.target.value);
+            // onIdNumberKeyUp(event) {
+            //     let lengthNumber = event.target.value.length;
+            //     let isNumber = /^\d+$/.test(event.target.value);
 
-                if (!isNumber) {
-                    alert('Identification Number must be number!');                
-                }
-            },
+            //     if (!isNumber || lengthNumber != 13) {
+                    
+            //     }
+            // },
             onImageChange(e) {
                 var files = e.target.files || e.dataTransfer.files;
                 if (!files.length)
