@@ -8577,13 +8577,17 @@ body .nav-wrapper.second-nav {
   background-color: white;
 }
 
-body .nav-wrapper.second-nav li {
-  width: 50%;
-}
-
 body .nav-wrapper.second-nav li a {
   color: grey;
   text-align: center;
+}
+
+body .nav-wrapper.second-nav li.backoffice-tab {
+  width: 50%;
+}
+
+body .nav-wrapper.second-nav li.frontoffice-tab {
+  width: 25%;
 }
 
 body .card .card-image {

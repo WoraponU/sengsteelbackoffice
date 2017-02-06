@@ -17,14 +17,6 @@ Vue.component('Index', require('./components/frontoffice/Index.vue'));
 Vue.component('NavBar', require('./components/frontoffice/NavBar.vue'));
 Vue.component('Tabs', require('./components/frontoffice/Tabs.vue'));
 Vue.component('Tab', require('./components/frontoffice/Tab.vue'));
-Vue.component('CardUser', require('./components/frontoffice/CardUser.vue'));
-Vue.component('CardTruck', require('./components/frontoffice/CardTruck.vue'));
-Vue.component('ModalAddUser', require('./components/frontoffice/ModalAddUser.vue'));
-Vue.component('ModalAddTruck', require('./components/frontoffice/ModalAddTruck.vue'));
-Vue.component('ModalEditUser', require('./components/frontoffice/ModalEditUser.vue'));
-Vue.component('ModalEditTruck', require('./components/frontoffice/ModalEditTruck.vue'));
-Vue.component('ModalDeleteUser', require('./components/frontoffice/ModalDeleteUser.vue'));
-Vue.component('ModalDeleteTruck', require('./components/frontoffice/ModalDeleteTruck.vue'));
 
 const app = new Vue({
     el: '#app'

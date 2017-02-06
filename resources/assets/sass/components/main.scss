@@ -18,10 +18,15 @@ body {
         &.second-nav {
             background-color: white;
             li {
-                width: 50%;
                 a {
                     color: $font-color;
                     text-align: center;
+                }
+                &.backoffice-tab {
+                    width: 50%;  
+                }
+                &.frontoffice-tab {
+                    width: 25%;
                 }
             }
         }

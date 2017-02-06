@@ -2,7 +2,7 @@
   <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
-                <a href="/backoffice" class="brand-logo">Seng Backoffice</a>
+                <a href="/" class="brand-logo">Seng Backoffice</a>
                 <ul class="right">
                     <li class="logout cyan darken-2">
                         <a class="waves-effect waves-block waves-light">
