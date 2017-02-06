@@ -7784,4 +7784,4 @@ Picker.extend( 'pickadate', DatePicker )
       }
     }; // Plugin end
 }( jQuery ));
-//# sourceMappingURL=all.js.map
+//# sourceMappingURL=all-frontoffice.js.map

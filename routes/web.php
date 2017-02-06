@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::group(['prefix' => 'backoffice'], function () {
     Route::get('', function () {
         return view('backoffice.main');
@@ -22,4 +18,10 @@ Route::group(['prefix' => 'backoffice'], function () {
 
     Route::resource('user', 'UserController');
     Route::resource('truck', 'TruckController');
+});
+
+Route::group(['prefix' => ''], function () {
+    Route::get('', function () {
+        return view('frontoffice.main');    
+    });
 });

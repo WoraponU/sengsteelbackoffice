@@ -10,8 +10,8 @@
 
     <title>Seng Backoffice</title>
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
-
+    @yield('css')
+    
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -28,7 +28,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
-    <script src="/js/all.js"></script>
+    @yield('js')
 </body>
 </html>

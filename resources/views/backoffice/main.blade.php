@@ -3,3 +3,12 @@
 @section('content')
     <Index></Index>
 @endsection
+
+@section('js')
+    <script src="/js/app-backoffice.js"></script>
+    <script src="/js/all-backoffice.js"></script>
+@endsection
+
+@section('css')
+    <link href="/css/app-backoffice.css" rel="stylesheet">
+@endsection
