@@ -29,7 +29,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m12 l6">
-                        <input name="identificationNumber" id="identificationNumber" type="text" class="validate" @blur="onIdNumberKeyUp" required>
+                        <input name="identificationNumber" id="identificationNumber" type="text" class="validate" required>
                         <label for="identificationNumber">Identification Number <span class="icon-star">*</span></label>
                     </div>
                     <div class="input-field col s12 m12 l6">
