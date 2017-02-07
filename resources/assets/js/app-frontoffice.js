@@ -17,6 +17,7 @@ Vue.component('Index', require('./components/frontoffice/Index.vue'));
 Vue.component('NavBar', require('./components/frontoffice/NavBar.vue'));
 Vue.component('Tabs', require('./components/frontoffice/Tabs.vue'));
 Vue.component('Tab', require('./components/frontoffice/Tab.vue'));
+Vue.component('FuelTab', require('./components/frontoffice/FuelTab.vue'));
 
 const app = new Vue({
     el: '#app'

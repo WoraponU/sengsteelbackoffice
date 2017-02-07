@@ -8564,6 +8564,12 @@ body {
   color: grey;
 }
 
+body .icon-star {
+  font-size: 12px;
+  color: red;
+  vertical-align: top;
+}
+
 body .nav-wrapper .brand-logo {
   padding: 10px;
 }
@@ -8606,12 +8612,6 @@ body .card .card-action {
   padding: 15px;
 }
 
-body .modal .icon-star {
-  font-size: 12px;
-  color: red;
-  vertical-align: top;
-}
-
 body .modal .role-label {
   font-size: 1rem;
 }
@@ -8625,7 +8625,7 @@ body .modal img.responsive-img:hover {
 }
 
 body .container {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 /*# sourceMappingURL=app-frontoffice.css.map */

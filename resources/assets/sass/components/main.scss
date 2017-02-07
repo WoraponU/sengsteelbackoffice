@@ -6,7 +6,11 @@ $font-color: grey;
 
 body {
     color: $font-color;
-    
+    .icon-star {
+        font-size: 12px;
+        color: red;
+        vertical-align: top;
+    }
     .nav-wrapper {
         .brand-logo {
             padding: 10px;
@@ -51,11 +55,6 @@ body {
     }
 
     .modal {
-        .icon-star {
-            font-size: 12px;
-            color: red;
-            vertical-align: top;
-        }
         .role-label {
             font-size: 1rem;
         }
@@ -71,6 +70,6 @@ body {
     }
     
     .container {
-        margin-top: 20px;
+        margin-top: 30px;
     }
 }
