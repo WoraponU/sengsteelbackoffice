@@ -70,21 +70,21 @@
                                 <option value="1">ตัวแม่</option>
                                 <option value="2">ตัวลูก</option>
                             </select>
-                            <label>ตัวแม่/ตัวลูก</label>
+                            <label>ตัวแม่/ตัวลูก <span class="icon-star">*</span></label>
                         </div> 
                         <div class="input-field col s12 m6 l4">
                             <input id="lastNumberCar" type="number" class="validate">
-                            <label for="lastNumberCar">ยางแถวที่</label>
+                            <label for="lastNumberCar">ยางแถวที่ <span class="icon-star">*</span></label>
                         </div> 
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m6 l4 offset-l2">
                             <input id="lastNumberCar" type="number" class="validate">
-                            <label for="lastNumberCar">หมายเลขยาง</label>
+                            <label for="lastNumberCar">หมายเลขยาง <span class="icon-star">*</span></label>
                         </div> 
                         <div class="input-field col s12 m6 l4">
                             <input id="lastNumberCar" type="number" class="validate">
-                            <label for="lastNumberCar">จำนวน</label>
+                            <label for="lastNumberCar">จำนวน <span class="icon-star">*</span></label>
                         </div>    
                     </div>
                 </div>
