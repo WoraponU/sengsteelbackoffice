@@ -6,11 +6,19 @@ $font-color: grey;
 
 body {
     color: $font-color;
+
+    .container {
+        margin-top: 30px;
+    }
+    .section-header {
+        font-size: 1.3rem;
+    }
     .icon-star {
         font-size: 12px;
         color: red;
         vertical-align: top;
     }
+    
     .nav-wrapper {
         .brand-logo {
             padding: 10px;
@@ -61,15 +69,15 @@ body {
         img {
             &.responsive-img {
                 max-width: 18%;
-
-                &:hover {
-                    cursor: pointer;
-                }
             }
         }
     }
-    
-    .container {
-        margin-top: 30px;
+
+    .tire-tab {
+        img {
+            &.responsive-img {
+                max-width: 18%;
+            }
+        }
     }
 }

@@ -11,14 +11,10 @@
                 <FuelTab></FuelTab>
             </tab>
             <tab name="เปลี่ยนยาง">
-                <div class="container center-align">
-                    การเปลี่ยนยาง
-                </div>
+                <TireTab></TireTab>
             </tab>
             <tab name="ซ่อมบำรุง">
-                <div class="container center-align">
-                    การซ่อมบำรุง
-                </div>
+                <MaintainTab></MaintainTab>
             </tab>
         </tabs>
     </div>

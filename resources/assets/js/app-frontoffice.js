@@ -18,6 +18,9 @@ Vue.component('NavBar', require('./components/frontoffice/NavBar.vue'));
 Vue.component('Tabs', require('./components/frontoffice/Tabs.vue'));
 Vue.component('Tab', require('./components/frontoffice/Tab.vue'));
 Vue.component('FuelTab', require('./components/frontoffice/FuelTab.vue'));
+Vue.component('TireTab', require('./components/frontoffice/TireTab.vue'));
+Vue.component('MaintainTab', require('./components/frontoffice/MaintainTab.vue'));
+Vue.component('TruckAndDriverMap', require('./components/frontoffice/TruckAndDriverMap.vue'));
 
 const app = new Vue({
     el: '#app'
