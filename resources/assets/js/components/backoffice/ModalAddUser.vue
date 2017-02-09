@@ -94,7 +94,7 @@
                     { text: 'Choose your option', value: '', disabled: true },
                     { text: 'Owner', value: 'owner' },
                     { text: 'Admin', value: 'admin' },
-                    { text: 'Truck Driver', value: 'truckDriver' }
+                    { text: 'Truck Driver', value: 'truck_driver' }
                 ],
                 photoPreview: '/images/user_icon.png',
             }

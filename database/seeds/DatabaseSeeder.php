@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
                 'email' => 'worapon@outlook.com',
                 'photo' => '/images/user_icon.png',
                 'address' => '85 moo.5',
-                'role' => 'truckDriver',
+                'role' => 'truck_driver',
                 'username' => '',
                 'password' => '',
             ],
