@@ -22,10 +22,10 @@ class CreateTrucksTable extends Migration
             $table->date('register_date');
             $table->date('annual_tax_date');
 
-            $table->string('gasoline')->comment('น้ำมัน');
-            $table->string('lubricator')->comment('น้ำมัน');
-            $table->string('gear_box_oil')->comment('น้ำมัน');
-            $table->string('final_gear_oil')->comment('น้ำมัน');
+            $table->string('gasoline')->comment('น้ำมันเครื่องยนต์');
+            $table->string('lubricator')->comment('น้ำมันห้องเครื่อง');
+            $table->string('gear_box_oil')->comment('น้ำมันห้องเกียร์');
+            $table->string('final_gear_oil')->comment('น้ำมันเฟืองท้าย');
 
             $table->integer('row_of_wheel');
             $table->string('number_wheel_per_row');

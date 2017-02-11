@@ -24,4 +24,7 @@ Route::group(['prefix' => ''], function () {
     Route::get('', function () {
         return view('frontoffice.main');    
     });
+
+    Route::resource('fuel', 'FuelController');    
+    Route::resource('tire', 'TireController');    
 });

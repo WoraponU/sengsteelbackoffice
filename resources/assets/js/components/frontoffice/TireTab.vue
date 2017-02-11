@@ -1,108 +1,122 @@
 <template>
   	<div class="container center-align">
-		<TruckAndDriverMap></TruckAndDriverMap>
+        <form action="/tire" method="POST">
+            <input type="hidden" name="_token" v-model="csrfToken">
 
-		<div class="container tire-tab">
-			<div class="row left-align card-panel">
-				<div class="row">
-					<div class="col offset-l1">
-						<h5>รายละเอียดการเปลี่ยนยาง</h5>						
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s12 m6 l4 offset-l2">
-						<input type="date" class="datepicker" id="dateTime" name="dateTime">
-						<label for="dateTime">วัน/เวลา <span class="icon-star">*</span></label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col s12 m6 l4 offset-l2">
-						<input id="tireEmployee" type="text" class="validate">
-						<label for="tireEmployee">ผู้เปลี่ยน <span class="icon-star">*</span></label>
-					</div>  
-				</div>
-
-                <div class="section">
+            <TruckAndDriverMap></TruckAndDriverMap>
+            <div class="container tire-tab">
+                <div class="row left-align card-panel">
                     <div class="row">
-                        <span class="section-header col s12 m12 l8 offset-l2">รายละเอียดยาง</span>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12 m6 l4 offset-l2">
-                            <input id="lastNumberCar" type="text" class="validate">
-                            <label for="lastNumberCar">ชนิดยาง <span class="icon-star">*</span></label>
-                        </div> 
-                        <div class="input-field col s12 m6 l4">
-                            <input id="lastNumberCar" type="text" class="validate">
-                            <label for="lastNumberCar">ยี่ห้อ <span class="icon-star">*</span></label>
+                        <div class="col offset-l1">
+                            <h5>รายละเอียดการเปลี่ยนยาง</h5>						
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m6 l4 offset-l2">
-                            <input id="lastNumberCar" type="number" class="validate">
-                            <label for="lastNumberCar">ราคา/เส้น <span class="icon-star">*</span></label>
-                        </div> 
+                            <input type="date" class="datepicker" id="dateTime" name="dateTime">
+                            <label for="dateTime">วัน/เวลา <span class="icon-star">*</span></label>
+                        </div>
                         <div class="input-field col s12 m6 l4">
-                            <input id="lastNumberCar" type="number" class="validate">
-                            <label for="lastNumberCar">ค่าแรง/เส้น <span class="icon-star">*</span></label>
-                        </div>    
+                            <input id="tireEmployee" name="tireEmployee" type="text" class="validate">
+                            <label for="tireEmployee">ผู้เปลี่ยน <span class="icon-star">*</span></label>
+                        </div>  
                     </div>
-                </div>
 
-                <div class="section">
-                    <div class="row">
-                        <span class="section-header col s12 m12 l8 offset-l2">ตำแหน่งยาง</span>
-                    </div>
-                    <div class="row">
+                    <div class="section">
                         <div class="row">
-                            <div class="col s12 m12 l12 center-align">
-                                <img class="responsive-img" :src="photoPreview" alt="photo">
+                            <span class="section-header col s12 m12 l8 offset-l2">รายละเอียดยาง</span>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m6 l4 offset-l2">
+                                <input id="typeOfTire" name="typeOfTire" type="text" class="validate">
+                                <label for="typeOfTire">ชนิดยาง <span class="icon-star">*</span></label>
+                            </div> 
+                            <div class="input-field col s12 m6 l4">
+                                <input id="brandOfTire" name="brandOfTire" type="text" class="validate">
+                                <label for="brandOfTire">ยี่ห้อ <span class="icon-star">*</span></label>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col offset-s1 offset-m1 offset-l1 s11 m11 l11 center-align">
-                                <input @change="onImageChange($event)" type="file" accept="image/*" readonly>
-                                <input name="photo" type="hidden" :value="photoPreview">
-                            </div>
+                            <div class="input-field col s12 m6 l4 offset-l2">
+                                <input id="pricePerUnit" name="pricePerUnit" min="1" v-model="pricePerUnit" type="number" class="validate">
+                                <label for="pricePerUnit">ราคา/เส้น <span class="icon-star">*</span></label>
+                            </div> 
+                            <div class="input-field col s12 m6 l4">
+                                <input id="wagePerUnit" name="wagePerUnit" v-model="wagePerUnit" min="1" type="number" class="validate">
+                                <label for="wagePerUnit">ค่าแรง/เส้น <span class="icon-star">*</span></label>
+                            </div>    
                         </div>
-                        <div class="input-field col s12 m6 l4 offset-l2">
-                            <select>
-                                <option value="" disabled selected>Choose your option</option>
-                                <option value="1">ตัวแม่</option>
-                                <option value="2">ตัวลูก</option>
-                            </select>
-                            <label>ตัวแม่/ตัวลูก <span class="icon-star">*</span></label>
-                        </div> 
-                        <div class="input-field col s12 m6 l4">
-                            <input id="lastNumberCar" type="number" class="validate">
-                            <label for="lastNumberCar">ยางแถวที่ <span class="icon-star">*</span></label>
-                        </div> 
                     </div>
+
+                    <div class="section">
+                        <div class="row">
+                            <span class="section-header col s12 m12 l8 offset-l2">ตำแหน่งยาง</span>
+                        </div>
+                        <div class="row">
+                            <div class="row">
+                                <div class="col s12 m12 l12 center-align">
+                                    <img class="responsive-img" :src="photoPreview" alt="photo">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col offset-s1 offset-m1 offset-l1 s11 m11 l11 center-align">
+                                    <input @change="onImageChange($event)" type="file" accept="image/*" readonly>
+                                    <input name="photo" type="hidden" :value="photoPreview">
+                                </div>
+                            </div>
+                            <div class="input-field col s12 m6 l4 offset-l2">
+                                <select name="sectionOfTire">
+                                    <option value="" disabled selected>ประเภทยาง</option>
+                                    <option value="parent">ตัวแม่</option>
+                                    <option value="child">ตัวลูก</option>
+                                </select>
+                                <label>ตัวแม่/ตัวลูก <span class="icon-star">*</span></label>
+                            </div> 
+                            <div class="input-field col s12 m6 l4">
+                                <input id="rowOfTire" name="rowOfTire" type="number" class="validate">
+                                <label for="rowOfTire">ยางแถวที่ <span class="icon-star">*</span></label>
+                            </div> 
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m6 l4 offset-l2">
+                                <input id="numberOfTire" name="numberOfTire" min="1" type="number" class="validate">
+                                <label for="numberOfTire">หมายเลขยาง <span class="icon-star">*</span></label>
+                            </div> 
+                            <div class="input-field col s12 m6 l4">
+                                <input id="quantity" name="quantity" min="1" v-model="quantity" type="number" class="validate">
+                                <label for="quantity">จำนวน <span class="icon-star">*</span></label>
+                            </div>    
+                        </div>
+                    </div>
+
                     <div class="row">
-                        <div class="input-field col s12 m6 l4 offset-l2">
-                            <input id="lastNumberCar" type="number" class="validate">
-                            <label for="lastNumberCar">หมายเลขยาง <span class="icon-star">*</span></label>
-                        </div> 
-                        <div class="input-field col s12 m6 l4">
-                            <input id="lastNumberCar" type="number" class="validate">
-                            <label for="lastNumberCar">จำนวน <span class="icon-star">*</span></label>
-                        </div>    
+                        <div class="input-field col s12 m12 l8 offset-l2">
+                            <textarea id="note" name="note" class="materialize-textarea"></textarea>
+                            <label for="note">บันทึกรายละเอียด</label>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="row">
+                            <div class="input-field col s12 m12 l8 offset-l2">
+                                <blockquote>
+                                    <p class="flow-text">ราคายางทั้งหมด: {{ totalTirePrice }} บาท</p>
+                                    <p class="flow-text">ค่าใช้จ่ายทั้งหมด: {{ totalAmoutCost  }} บาท</p>
+                                </blockquote>
+                                <input type="hidden" name="totalDistance" :value="totalTirePrice">
+                                <input type="hidden" name="gasPerDistance" :value="totalAmoutCost">
+                            </div>
+                        </div>						
+                    </div>
+                    
+                    <div class="input-field col s12 m12 l12 right-align">
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                            <i class="material-icons right">send</i>
+                        </button>
                     </div>
                 </div>
-
-                <div class="row">
-					<div class="input-field col s12 m12 l8 offset-l2">
-						<textarea id="note" class="materialize-textarea"></textarea>
-						<label for="note">บันทึกรายละเอียด</label>
-					</div>
-				</div>
-				
-				<div class="input-field col s12 m12 l12 right-align">
-					<button class="btn waves-effect waves-light" type="submit" name="action">Submit
-						<i class="material-icons right">send</i>
-					</button>
-				</div>
-			</div>
-		</div>                 
+            </div>  
+        </form>               
 	</div>
 </div>
 </template>
@@ -113,6 +127,9 @@
             return {
                 csrfToken: window.Laravel.csrfToken,
                 photoPreview: '/images/tire_icon.png',
+                quantity: 1,
+                pricePerUnit: 1,
+                wagePerUnit: 1,
             }
         },
         methods: {
@@ -131,6 +148,14 @@
                 };
                 reader.readAsDataURL(file);
             },
+        },
+        computed: {
+            totalTirePrice: function () {
+                return this.quantity * this.pricePerUnit;
+            },
+            totalAmoutCost: function () {
+                return ( this.quantity * this.pricePerUnit ) +  ( this.quantity * this.wagePerUnit );
+            }
         }
     }
 </script>
