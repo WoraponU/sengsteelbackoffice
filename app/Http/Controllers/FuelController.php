@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Fuel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\MessageBag;
 
 class FuelController extends Controller
 {
-    protected $user;
-    function __construct() {
+    protected $fuel;
+    function __construct(Fuel $fuel) {
+        $this->fuel = $fuel;
     }
     /**
      * Display a listing of the resource.
@@ -37,7 +39,23 @@ class FuelController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $params = [
+            'truck_driver'  => $request->truckDriver,
+            'license_plate' => $request->licensePlate,
+            'fuel_date'     => date('Y-m-d', strtotime($request->fuelDate)),
+            'gas_employee'  => $request->gasEmployee,
+            'gas_type'      => $request->gasType,
+            'last_number_car' => $request->lastNumberCar,
+            'present_number_car' => $request->presentNumberCar,
+            'liter'         => $request->liter,
+            'total_distance'=> $request->totalDistance,
+            'gas_per_distance' => $request->gasPerDistance,
+            'note'          => $request->note,
+        ];
+        
+        $this->fuel->create($params);
+        
+        return view('frontoffice.main');
     }
 
     /**

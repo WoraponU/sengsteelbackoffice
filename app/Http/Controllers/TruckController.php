@@ -6,7 +6,6 @@ use App\Truck;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\MessageBag;
-use Carbon\Carbon;
 
 class TruckController extends Controller
 {

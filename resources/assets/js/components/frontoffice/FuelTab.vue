@@ -13,8 +13,8 @@
 					</div>
 					<div class="row">
 						<div class="input-field col s12 m6 l4 offset-l2">
-							<input type="date" class="datepicker" id="dateTime" name="dateTime" required>
-							<label for="dateTime">วัน/เวลา <span class="icon-star">*</span></label>
+							<input type="date" class="datepicker" id="fuelDate" name="fuelDate" required>
+							<label for="fuelDate">วัน/เวลา <span class="icon-star">*</span></label>
 						</div>
 					</div>
 					<div class="row">
@@ -35,7 +35,7 @@
 					</div>
 					<div class="row">
 						<div class="input-field col s12 m6 l4 offset-l2">
-							<input id="lastNumberCar" name="lastNumberCar" type="number" v-model="lastNumberCar" class="validate">
+							<input id="lastNumberCar" name="lastNumberCar" type="number" v-model="lastNumberCar" class="validate" required>
 							<label for="lastNumberCar">หมายเลขกิโลเมตรครั้งก่อน</label>
 						</div>   
 						<div class="input-field col s12 m6 l4">
@@ -93,6 +93,9 @@
 				liter: 1,
             }
         },
+		mounted() {
+			console.log(this.$refs.licensePlate);
+		},
 		computed: {
 			totalDistance: function () {
 				return this.presentNumberCar - this.lastNumberCar;
