@@ -27,4 +27,5 @@ Route::group(['prefix' => ''], function () {
 
     Route::resource('fuel', 'FuelController');    
     Route::resource('tire', 'TireController');    
+    Route::resource('maintain', 'MaintainController');    
 });

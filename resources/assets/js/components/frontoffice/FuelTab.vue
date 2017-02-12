@@ -13,17 +13,17 @@
 					</div>
 					<div class="row">
 						<div class="input-field col s12 m6 l4 offset-l2">
-							<input type="date" class="datepicker" id="dateTime" name="dateTime">
+							<input type="date" class="datepicker" id="dateTime" name="dateTime" required>
 							<label for="dateTime">วัน/เวลา <span class="icon-star">*</span></label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s12 m6 l4 offset-l2">
-							<input id="gasEmployee" name="gasEmployee" type="text" class="validate">
+							<input id="gasEmployee" name="gasEmployee" type="text" class="validate" required>
 							<label for="gasEmployee">ผู้เติม <span class="icon-star">*</span></label>
 						</div>  
 						<div class="input-field col s12 m6 l4">
-							<select name="gasType">
+							<select name="gasType" required>
 								<option value="" disabled selected>โปรดระบุ</option>
 								<option value="gasoline">น้ำมันเครื่องยนต์</option>
 								<option value="lubricator">น้ำมันห้องเครื่อง</option>
@@ -39,13 +39,13 @@
 							<label for="lastNumberCar">หมายเลขกิโลเมตรครั้งก่อน</label>
 						</div>   
 						<div class="input-field col s12 m6 l4">
-							<input id="presentNumberCar" name="presentNumberCar" type="number" :min="lastNumberCar" v-model="presentNumberCar" class="validate">
+							<input id="presentNumberCar" name="presentNumberCar" type="number" :min="lastNumberCar" v-model="presentNumberCar" class="validate" required>
 							<label for="presentNumberCar">หมายเลขกิโลเมตรล่าสุด <span class="icon-star">*</span></label>
 						</div>  
 					</div>
 					<div class="row">
 						<div class="input-field col s12 m6 l4 offset-l2">
-							<input id="liter" name="liter" type="number" min="1" v-model="liter" class="validate">
+							<input id="liter" name="liter" type="number" min="1" v-model="liter" class="validate" required>
 							<label for="liter">จำนวนลิตร <span class="icon-star">*</span></label>
 						</div> 
 					</div>

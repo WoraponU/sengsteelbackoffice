@@ -156,6 +156,6 @@
             totalAmoutCost: function () {
                 return ( this.quantity * this.pricePerUnit ) +  ( this.quantity * this.wagePerUnit );
             }
-        }
+        },
     }
 </script>

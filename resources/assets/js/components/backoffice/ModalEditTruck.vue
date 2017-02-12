@@ -174,20 +174,6 @@
                 };
                 reader.readAsDataURL(file);
             },
-            // onRowOfWheelChange() {
-                    // console.log('rowOfWheelChange');
-                
-                // let rowOfWheelData = this.numberWheelPerRow
-                // let rowOfWheel = this.numberWheelPerRow.length
-                // let rowOfWheelChange = this.rowsOfWheel
-                //     console.log('rowOfWheelChange');
-                // if (rowOfWheelChange > rowOfWheel) {
-                //     this.numberWheelPerRow = this.numberWheelPerRow.push('2')
-                //     console.log(this.numberWheelPerRow);
-                // } else if (rowOfWheelChange < rowOfWheel) {
-                //     alert('less');                    
-                // }
-            // }
         }
     }
 </script>
