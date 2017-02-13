@@ -29,4 +29,9 @@ class Tire extends Model
         'gas_per_distance',
         'note',
     ];
+
+    public function user()
+    {
+        return $this->hasOne('App\User', 'id', 'truck_driver' );
+    }
 }

@@ -20,6 +20,16 @@ class TireController extends Controller
      */
     public function index()
     {
+        $tires = $this->tire->all();
+
+        foreach ($tires as $tire) {
+            $dataMerge[] = [
+                'user' => $tire->user,
+                'tire' => $tire,
+            ];
+        }
+
+        return response()->json($dataMerge);
     }
 
     /**
@@ -43,22 +53,21 @@ class TireController extends Controller
             'truck_driver'  => $request->truckDriver,
             'license_plate' => $request->licensePlate,
             'tire_date'     => date('Y-m-d', strtotime($request->tireDate)),
-            'tire_employee'  => $request->tireEmployee,
-            'type_of_tire'      => $request->typeOfTire,
+            'tire_employee' => $request->tireEmployee,
+            'type_of_tire'  => $request->typeOfTire,
             'brand_of_tire' => $request->brandOfTire,
-            'price_per_unit' => $request->pricePerUnit,
-            'wage_per_unit'         => $request->wagePerUnit,
+            'price_per_unit'=> $request->pricePerUnit,
+            'wage_per_unit' => $request->wagePerUnit,
             'photo_tire'    => $request->photoTire,
             'section_of_tire'=> $request->sectionOfTire,
-            'row_of_tire' => $request->rowOfTire,
-            'number_of_tire'          => $request->numberOfTire,
-            'quantity'          => $request->quantity,
-            'total_distance'          => $request->totalDistance,
-            'gas_per_distance'          => $request->gasPerDistance,
+            'row_of_tire'   => $request->rowOfTire,
+            'number_of_tire'=> $request->numberOfTire,
+            'quantity'      => $request->quantity,
+            'total_distance'=> $request->totalDistance,
+            'gas_per_distance'=> $request->gasPerDistance,
             'note'          => $request->note,
 
         ];
-        // dd($params);
         $this->tire->create($params);
         
         return view('frontoffice.main');
