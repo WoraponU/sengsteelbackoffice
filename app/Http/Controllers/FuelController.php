@@ -20,6 +20,16 @@ class FuelController extends Controller
      */
     public function index()
     {
+        $fuels = $this->fuel->all();
+
+        foreach ($fuels as $fuel) {
+            $dataMerge[] = [
+                'user' => $fuel->user,
+                'fuel' => $fuel,
+            ];
+        }
+
+        return response()->json($dataMerge);
     }
 
     /**

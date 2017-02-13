@@ -3,9 +3,7 @@
         <NavBar></NavBar>
         <tabs>
             <tab name="สรุปผล" :selected="true">
-                <div class="container center-align">
-                    สรุปผล
-                </div>
+                <DashboardTab></DashboardTab>
             </tab>
             <tab name="เติมน้ำมัน">
                 <FuelTab></FuelTab>

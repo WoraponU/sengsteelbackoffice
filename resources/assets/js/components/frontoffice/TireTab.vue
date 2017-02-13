@@ -13,8 +13,8 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m6 l4 offset-l2">
-                            <input type="date" class="datepicker" id="dateTime" name="dateTime">
-                            <label for="dateTime">วัน/เวลา <span class="icon-star">*</span></label>
+                            <input type="date" class="datepicker" id="tireDate" name="tireDate">
+                            <label for="tireDate">วัน/เวลา <span class="icon-star">*</span></label>
                         </div>
                         <div class="input-field col s12 m6 l4">
                             <input id="tireEmployee" name="tireEmployee" type="text" class="validate">
@@ -61,7 +61,7 @@
                             <div class="row">
                                 <div class="col offset-s1 offset-m1 offset-l1 s11 m11 l11 center-align">
                                     <input @change="onImageChange($event)" type="file" accept="image/*" readonly>
-                                    <input name="photo" type="hidden" :value="photoPreview">
+                                    <input name="photoTire" type="hidden" :value="photoPreview">
                                 </div>
                             </div>
                             <div class="input-field col s12 m6 l4 offset-l2">
