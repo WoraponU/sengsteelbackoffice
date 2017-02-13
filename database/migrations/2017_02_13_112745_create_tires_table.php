@@ -29,9 +29,9 @@ class CreateTiresTable extends Migration
             $table->integer('row_of_tire');
             $table->integer('number_of_tire');
             $table->string('quantity');
-            $table->integer('total_distance');
-            $table->integer('gas_per_distance');
-            $table->string('note');
+            $table->integer('total_tire_price');
+            $table->integer('total_amout_cost');
+            $table->string('note')->nullable();
 
             $table->timestamps();
         });

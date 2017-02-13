@@ -18,6 +18,7 @@ Vue.component('NavBar', require('./components/frontoffice/NavBar.vue'));
 Vue.component('Tabs', require('./components/frontoffice/Tabs.vue'));
 Vue.component('Tab', require('./components/frontoffice/Tab.vue'));
 Vue.component('CardFuel', require('./components/frontoffice/CardFuel.vue'));
+Vue.component('CardTire', require('./components/frontoffice/CardTire.vue'));
 Vue.component('DashboardTab', require('./components/frontoffice/DashboardTab.vue'));
 Vue.component('FuelTab', require('./components/frontoffice/FuelTab.vue'));
 Vue.component('TireTab', require('./components/frontoffice/TireTab.vue'));

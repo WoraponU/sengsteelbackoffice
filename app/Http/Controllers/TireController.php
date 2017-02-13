@@ -63,8 +63,8 @@ class TireController extends Controller
             'row_of_tire'   => $request->rowOfTire,
             'number_of_tire'=> $request->numberOfTire,
             'quantity'      => $request->quantity,
-            'total_distance'=> $request->totalDistance,
-            'gas_per_distance'=> $request->gasPerDistance,
+            'total_tire_price'=> $request->totalTirePrice,
+            'total_amout_cost'=> $request->totalAmoutCost,
             'note'          => $request->note,
 
         ];

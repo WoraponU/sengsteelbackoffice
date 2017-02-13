@@ -13,11 +13,11 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m6 l4 offset-l2">
-                            <input type="date" class="datepicker" id="tireDate" name="tireDate">
+                            <input type="date" class="datepicker" id="tireDate" name="tireDate" required>
                             <label for="tireDate">วัน/เวลา <span class="icon-star">*</span></label>
                         </div>
                         <div class="input-field col s12 m6 l4">
-                            <input id="tireEmployee" name="tireEmployee" type="text" class="validate">
+                            <input id="tireEmployee" name="tireEmployee" type="text" class="validate" required>
                             <label for="tireEmployee">ผู้เปลี่ยน <span class="icon-star">*</span></label>
                         </div>  
                     </div>
@@ -28,21 +28,21 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s12 m6 l4 offset-l2">
-                                <input id="typeOfTire" name="typeOfTire" type="text" class="validate">
+                                <input id="typeOfTire" name="typeOfTire" type="text" class="validate" required>
                                 <label for="typeOfTire">ชนิดยาง <span class="icon-star">*</span></label>
                             </div> 
                             <div class="input-field col s12 m6 l4">
-                                <input id="brandOfTire" name="brandOfTire" type="text" class="validate">
+                                <input id="brandOfTire" name="brandOfTire" type="text" class="validate" required>
                                 <label for="brandOfTire">ยี่ห้อ <span class="icon-star">*</span></label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12 m6 l4 offset-l2">
-                                <input id="pricePerUnit" name="pricePerUnit" min="1" v-model="pricePerUnit" type="number" class="validate">
+                                <input id="pricePerUnit" name="pricePerUnit" min="1" v-model="pricePerUnit" type="number" class="validate" required>
                                 <label for="pricePerUnit">ราคา/เส้น <span class="icon-star">*</span></label>
                             </div> 
                             <div class="input-field col s12 m6 l4">
-                                <input id="wagePerUnit" name="wagePerUnit" v-model="wagePerUnit" min="1" type="number" class="validate">
+                                <input id="wagePerUnit" name="wagePerUnit" v-model="wagePerUnit" min="1" type="number" class="validate" required>
                                 <label for="wagePerUnit">ค่าแรง/เส้น <span class="icon-star">*</span></label>
                             </div>    
                         </div>
@@ -65,7 +65,7 @@
                                 </div>
                             </div>
                             <div class="input-field col s12 m6 l4 offset-l2">
-                                <select name="sectionOfTire">
+                                <select name="sectionOfTire" required>
                                     <option value="" disabled selected>ประเภทยาง</option>
                                     <option value="parent">ตัวแม่</option>
                                     <option value="child">ตัวลูก</option>
@@ -73,17 +73,17 @@
                                 <label>ตัวแม่/ตัวลูก <span class="icon-star">*</span></label>
                             </div> 
                             <div class="input-field col s12 m6 l4">
-                                <input id="rowOfTire" name="rowOfTire" type="number" class="validate">
+                                <input id="rowOfTire" name="rowOfTire" type="number" class="validate" required>
                                 <label for="rowOfTire">ยางแถวที่ <span class="icon-star">*</span></label>
                             </div> 
                         </div>
                         <div class="row">
                             <div class="input-field col s12 m6 l4 offset-l2">
-                                <input id="numberOfTire" name="numberOfTire" min="1" type="number" class="validate">
+                                <input id="numberOfTire" name="numberOfTire" min="1" type="number" class="validate" required>
                                 <label for="numberOfTire">หมายเลขยาง <span class="icon-star">*</span></label>
                             </div> 
                             <div class="input-field col s12 m6 l4">
-                                <input id="quantity" name="quantity" min="1" v-model="quantity" type="number" class="validate">
+                                <input id="quantity" name="quantity" min="1" v-model="quantity" type="number" class="validate" required>
                                 <label for="quantity">จำนวน <span class="icon-star">*</span></label>
                             </div>    
                         </div>
@@ -103,8 +103,8 @@
                                     <p class="flow-text">ราคายางทั้งหมด: {{ totalTirePrice }} บาท</p>
                                     <p class="flow-text">ค่าใช้จ่ายทั้งหมด: {{ totalAmoutCost  }} บาท</p>
                                 </blockquote>
-                                <input type="hidden" name="totalDistance" :value="totalTirePrice">
-                                <input type="hidden" name="gasPerDistance" :value="totalAmoutCost">
+                                <input type="hidden" name="totalTirePrice" :value="totalTirePrice">
+                                <input type="hidden" name="totalAmoutCost" :value="totalAmoutCost">
                             </div>
                         </div>						
                     </div>

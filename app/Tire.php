@@ -25,8 +25,8 @@ class Tire extends Model
         'row_of_tire',
         'number_of_tire',
         'quantity',
-        'total_distance',
-        'gas_per_distance',
+        'total_tire_price',
+        'total_amout_cost',
         'note',
     ];
 

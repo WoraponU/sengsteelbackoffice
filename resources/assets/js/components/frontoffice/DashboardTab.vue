@@ -24,6 +24,35 @@
 				></CardFuel>
 			</div>            					
 		</div>
+
+		<div class="section">
+           	<div class="row">
+				<span class="section-header col s12 m12 l8 left-align">เปลี่ยนยาง</span>
+			</div> 
+			<div class="row">
+				<CardTire v-for="tire in tires"
+					:id="tire.tire.id"
+					:firstName="tire.user.firstname"
+					:lastName="tire.user.lastname"
+					:photo="tire.user.photo"
+					:licensePlate="tire.tire.license_plate"
+					:tireDate="tire.tire.tire_date"
+					:tireEmployee="tire.tire.tire_employee"
+					:typeOfTire="tire.tire.type_of_tire"
+					:brandOfTire="tire.tire.brand_of_tire"
+					:pricePerUnit="tire.tire.price_per_unit"
+					:wagePerUnit="tire.tire.wage_per_unit"
+					:photoTire="tire.tire.photo_tire"
+					:sectionOfTire="tire.tire.section_of_tire"
+					:rowOfTire="tire.tire.row_of_tire"
+					:numberOfTire="tire.tire.number_of_tire"
+					:quantity="tire.tire.quantity"
+					:totalTirePrice="tire.tire.total_tire_price"
+					:totalAmoutCost="tire.tire.total_amout_cost"
+					:note="tire.tire.note"
+				></CardTire>
+			</div>            					
+		</div>
 	</div>
 </div>
 </template>
@@ -35,6 +64,7 @@
 		data() {
             return {
 				fuels: [],
+				tires: [],
             }
         },
 		beforeMount() {
@@ -48,8 +78,7 @@
 
 			axios.get('/tire')
             .then((response) => {
-				// console.log(response.data);
-                this.fuels = response.data
+                this.tires = response.data
             })
             .catch(function (error) {
                 console.log(error);

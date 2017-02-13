@@ -93,9 +93,6 @@
 				liter: 1,
             }
         },
-		mounted() {
-			console.log(this.$refs.licensePlate);
-		},
 		computed: {
 			totalDistance: function () {
 				return this.presentNumberCar - this.lastNumberCar;
