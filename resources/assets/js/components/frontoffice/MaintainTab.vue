@@ -13,11 +13,11 @@
 					</div>
 					<div class="row">
 						<div class="input-field col s12 m6 l4 offset-l2">
-							<input type="date" class="datepicker" id="dateTime" name="dateTime">
-							<label for="dateTime">วัน/เวลา <span class="icon-star">*</span></label>
+							<input type="date" class="datepicker" id="maintainDate" name="maintainDate" required>
+							<label for="maintainDate">วัน/เวลา <span class="icon-star">*</span></label>
 						</div>
 						<div class="input-field col s12 m6 l4">
-							<input id="maintainEmployee" name="maintainEmployee" type="text" class="validate">
+							<input id="maintainEmployee" name="maintainEmployee" type="text" class="validate" required>
 							<label for="maintainEmployee">ผู้ซ่อม <span class="icon-star">*</span></label>
 						</div>  
 					</div>
@@ -32,15 +32,15 @@
 						</div>
 						<div class="row" v-for="list in maintainListsRow">
 							<div class="input-field col s6 m6 l4 offset-l2">
-								<input id="maintainLists" name="maintainLists[]" type="text" class="validate">
+								<input id="maintainLists" name="maintainLists[]" type="text" class="validate" required>
 								<label for="maintainLists">รายการ {{ list }} <span class="icon-star">*</span></label>
 							</div> 
 							<div class="input-field col s3 m3 l2">
-								<input id="wagePerList" name="wagePerList[]" ref="wages" @change="onWagePerListChange" type="number" class="validate">
+								<input id="wagePerList" name="wagePerList[]" ref="wages" @change="onWagePerListChange" type="number" class="validate" required>
 								<label for="wagePerList">ค่าแรง(บาท) <span class="icon-star">*</span></label>
 							</div>
 							<div class="input-field col s3 m3 l2">
-								<input id="sparePerList" name="sparePerList[]" ref="spares" @change="onSparePerListChange" type="number" class="validate">
+								<input id="sparePerList" name="sparePerList[]" ref="spares" @change="onSparePerListChange" type="number" class="validate" required>
 								<label for="sparePerList">ค่าอะไหล่(บาท) <span class="icon-star">*</span></label>
 							</div>
 						</div>
@@ -48,7 +48,7 @@
 
 					<div class="row">
 						<div class="input-field col s12 m12 l8 offset-l2">
-							<textarea id="note" class="materialize-textarea"></textarea>
+							<textarea id="note" name="note" class="materialize-textarea"></textarea>
 							<label for="note">บันทึกรายละเอียด</label>
 						</div>
 					</div>

@@ -36,8 +36,26 @@ class MaintainController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
         dd($request);
+        $params = [
+            'truck_driver'  => $request->truckDriver,
+            'license_plate' => $request->licensePlate,
+            'maintain_date'  => date('Y-m-d', strtotime($request->maintainDate)),
+            'maintain_employee'  => $request->maintainEmployee,
+            'maintain_lists' => json_encode($request->maintainLists),
+            'wage_per_list'   => json_encode($request->wagePerList),
+            'spare_per_list'  => json_encode($request->sparePerList),
+            'total_wage'     => $request->totalWage,
+            'total_spare'    => $request->totalSpare,
+            'amount_cost'    => $request->amountCost,
+            'note'          => $request->note,
+
+        ];
+
+        // $this->tire->create($params);
+        
+        return view('frontoffice.main');
     }
 
     /**
