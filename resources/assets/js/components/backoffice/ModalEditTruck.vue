@@ -85,7 +85,7 @@
                     <div class="row">
                         <div class="input-field col s6 m6 l4" v-for="(number, index) in numberWheelPerRow">
                             <input name="numberWheelPerRow[]" type="number" class="validate" :value="number" required>
-                            <label for="numberWheelPerRow">Wheel/Row {{ index }} <span class="icon-star">*</span></label>
+                            <label for="numberWheelPerRow">Wheel/Row {{ index+1 }} <span class="icon-star">*</span></label>
                         </div>
                     </div>
                 </div>

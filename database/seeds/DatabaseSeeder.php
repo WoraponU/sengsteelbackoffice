@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
 
         $dataTruck = [
             [
-                'license_plate' => '123',
+                'license_plate' => 123,
                 'owner' => 'worapon',
                 'photo' => '/images/truck_icon.png',
                 'register_date' => '2017-02-12',
@@ -46,7 +46,80 @@ class DatabaseSeeder extends Seeder
             
         ];
 
+        $dataFuel = [
+            [
+                'truck_driver'  => 1,
+                'license_plate' => 123,
+                'fuel_date' => '2017-02-12',
+                'gas_employee'  => 'test',
+                'gas_type'  => 'gasoline',
+                'last_number_car'   => 123,
+                'present_number_car'    => 1235,
+                'liter' => 3,
+                'total_distance'    => 4,
+                'gas_per_distance'  => 3,
+                'note'  => 'test',
+            ],  
+        ];
+
+        $dataFuel = [
+            [
+                'truck_driver'  => 1,
+                'license_plate' => 123,
+                'fuel_date' => '2017-02-12',
+                'gas_employee'  => 'test',
+                'gas_type'  => 'gasoline',
+                'last_number_car'   => 123,
+                'present_number_car'    => 1235,
+                'liter' => 3,
+                'total_distance'    => 4,
+                'gas_per_distance'  => 3,
+                'note'  => 'test',
+            ],  
+        ];
+
+        $dataTire = [
+            [
+                'truck_driver'  => 1,
+                'license_plate' => 123,
+                'tire_date' => '2017-02-12',
+                'tire_employee' => 'test',
+                'type_of_tire'  => 'test',
+                'brand_of_tire' => 'test',
+                'price_per_unit'    => 3,
+                'wage_per_unit' => 3,
+                'photo_tire'    => '/images/tire_icon.png',
+                'section_of_tire'   => 'parent',
+                'row_of_tire'   => 1,
+                'number_of_tire'    => 1,
+                'quantity'  => 1,
+                'total_tire_price'  => 1,
+                'total_amout_cost'  => 1,
+                'note'  => 'test',
+            ],  
+        ];
+
+        $dataMaintain = [
+            [
+                'truck_driver'  => 1,  
+                'license_plate' => 123, 
+                'maintain_date' => '2017-02-12',  
+                'maintain_employee' => 'test',  
+                'maintain_lists'    => '["a","b"]', 
+                'wage_per_list' => '["1","2"]',   
+                'spare_per_list'    => '["1","2"]',  
+                'total_wage'    => 1,     
+                'total_spare'   => 1,    
+                'amount_cost'   => 1,    
+                'note'  => 'test',      
+            ],  
+        ];
+
+
         DB::table('users')->insert($dataUser);
         DB::table('trucks')->insert($dataTruck);
+        DB::table('fuels')->insert($dataFuel);
+        DB::table('tires')->insert($dataTire);
+        DB::table('maintains')->insert($dataMaintain);
     }
 }

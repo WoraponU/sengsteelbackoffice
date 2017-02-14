@@ -53,6 +53,30 @@
 				></CardTire>
 			</div>            					
 		</div>
+
+		<div class="section">
+           	<div class="row">
+				<span class="section-header col s12 m12 l8 left-align">ซ่อมบำรุง</span>
+			</div> 
+			<div class="row">
+				<CardMaintain v-for="maintain in maintains"
+					:id="maintain.maintain.id"
+					:firstName="maintain.user.firstname"
+					:lastName="maintain.user.lastname"
+					:photo="maintain.user.photo"
+					:licensePlate="maintain.maintain.license_plate"
+					:maintainDate="maintain.maintain.maintain_date"
+					:maintainEmployee="maintain.maintain.maintain_employee"
+					:maintainLists="maintain.maintain.maintain_lists"
+					:wagePerList="maintain.maintain.wage_per_list"
+					:sparePerList="maintain.maintain.spare_per_list"
+					:totalWage="maintain.maintain.total_wage"
+					:totalSpare="maintain.maintain.total_spare"
+					:amountCost="maintain.maintain.amount_cost"
+					:note="maintain.maintain.note" 
+				></CardMaintain>
+			</div>            					
+		</div>
 	</div>
 </div>
 </template>
@@ -65,6 +89,7 @@
             return {
 				fuels: [],
 				tires: [],
+				maintains: [],
             }
         },
 		beforeMount() {
@@ -79,6 +104,15 @@
 			axios.get('/tire')
             .then((response) => {
                 this.tires = response.data
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+			axios.get('/maintain')
+            .then((response) => {
+                this.maintains = response.data
+				console.log(this.maintains);
             })
             .catch(function (error) {
                 console.log(error);

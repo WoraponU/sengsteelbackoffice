@@ -70,7 +70,7 @@
                 for (let i = 0; i < response.data.length; i++) { 
                     this.truckOptions.push({
                          text: response.data[i].license_plate, 
-                         value: response.data[i].id,
+                         value: response.data[i].license_plate,
                          photo: response.data[i].photo
                     });
                 }

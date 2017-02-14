@@ -7,6 +7,7 @@
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">{{ firstName }} {{ lastName }}<i class="material-icons right">more_vert</i></span>
                 <p>{{ licensePlate }}</p>
+                <p>{{ tireDate }}</p>
             </div>
             <div class="card-reveal left-align">
                 <span class="card-title grey-text text-darken-4">{{ firstName }} {{ lastName }}<i class="material-icons right">close</i></span>
@@ -16,15 +17,15 @@
                         <p>ผู้เปลี่ยน: {{ tireEmployee }}</p>
                         <p>ชนิดยาง: {{ typeOfTire }}</p>
                         <p>ยี่ห้อ: {{ brandOfTire }}</p>
-                        <p>ราคา/เส้น: {{ pricePerUnit }}</p>
-                        <p>ค่าแรง/เส้น: {{ wagePerUnit }}</p>
+                        <p>ราคา/เส้น: {{ pricePerUnit }} บาท</p>
+                        <p>ค่าแรง/เส้น: {{ wagePerUnit }} บาท</p>
                         <p>ตัวแม่ตัวลูก: {{ sectionOfTire }}</p>
                         <p>ยางแถวที่: {{ rowOfTire }}</p>
                         <p>หมายเลขยาง: {{ numberOfTire }}</p>
                         <p>จำนวน: {{ quantity }}</p>
-                        <p>ราคายางทั้งหมด: {{ totalTirePrice }}</p>
-                        <p>ค่าใช้จ่ายทั้งหมด: {{ totalAmoutCost }}</p>
-                        <p>ผู้เปลี่ยน: {{ note }}</p>
+                        <p>ราคายางทั้งหมด: {{ totalTirePrice }} บาท</p>
+                        <p>ค่าใช้จ่ายทั้งหมด: {{ totalAmoutCost }} บาท</p>
+                        <p>บันทึกรายละเอียด: {{ note }}</p>
                     </blockquote>
                 </div>
             </div>

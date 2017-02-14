@@ -20,6 +20,16 @@ class MaintainController extends Controller
      */
     public function index()
     {
+        $maintains = $this->maintain->all();
+
+        foreach ($maintains as $maintain) {
+            $dataMerge[] = [
+                'user' => $maintain->user,
+                'maintain' => $maintain,
+            ];
+        }
+
+        return response()->json($dataMerge);
     }
 
     /**

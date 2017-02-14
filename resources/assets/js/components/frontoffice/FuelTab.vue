@@ -104,5 +104,5 @@
 				return (this.presentNumberCar - this.lastNumberCar) / this.liter;
 			}
 		}
-    }
+	}
 </script>
