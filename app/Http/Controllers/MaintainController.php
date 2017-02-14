@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Maintain;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\MessageBag;
 
 class MaintainController extends Controller
 {
-    protected $user;
-    function __construct() {
+    protected $maintain;
+    function __construct(Maintain $maintain) {
+        $this->maintain = $maintain;
     }
     /**
      * Display a listing of the resource.
@@ -37,7 +39,6 @@ class MaintainController extends Controller
      */
     public function store(Request $request)
     {   
-        dd($request);
         $params = [
             'truck_driver'  => $request->truckDriver,
             'license_plate' => $request->licensePlate,
@@ -50,10 +51,9 @@ class MaintainController extends Controller
             'total_spare'    => $request->totalSpare,
             'amount_cost'    => $request->amountCost,
             'note'          => $request->note,
-
         ];
-
-        // $this->tire->create($params);
+        // dd($params);
+        $this->maintain->create($params);
         
         return view('frontoffice.main');
     }
