@@ -22,7 +22,41 @@
 					:totalDistance="fuel.fuel.total_distance"
 					:truckDriver="fuel.fuel.truck_driver"
 				></CardFuel>
-			</div>            					
+			</div>        
+
+			<div class="row">
+				<div class="col s12 m12 l12">
+					<table>
+						<thead>
+						<tr>
+							<th data-field="truckDriver">คนขับรถ</th>
+							<th data-field="fuelDate">วันที่</th>
+							<th data-field="gasEmployee">ผู้เติม</th>
+							<th data-field="gasType">ประเภทน้ำมัน</th>
+							<th data-field="lastNumberCar">หมายเลขกิโลเมตรครั้งก่อน</th>
+							<th data-field="presentNumberCar">หมายเลขกิโลเมตรล่าสุด</th>
+							<th data-field="liter">จำนวนลิตร</th>
+							<th data-field="totalDistance">ระยะทางที่วิ่ง</th>
+							<th data-field="gasPerDistance">อัตราการใช้น้ำมัน</th>
+						</tr>
+						</thead>
+
+						<tbody>
+						<tr v-for="fuel in fuels">
+							<td>{{ fuel.user.firstname }} {{ fuel.user.lastname }}</td>
+							<td>{{ fuel.fuel.fuel_date }}</td>
+							<td>{{ fuel.fuel.gas_employee }}</td>
+							<td>{{ fuel.fuel.gas_type }}</td>
+							<td>{{ fuel.fuel.last_number_car }}</td>
+							<td>{{ fuel.fuel.present_number_car }}</td>
+							<td>{{ fuel.fuel.liter }}</td>
+							<td>{{ fuel.fuel.total_distance }}</td>
+							<td>{{ fuel.fuel.gas_per_distance }}</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>    					
 		</div>
 
 		<div class="section">
@@ -112,7 +146,6 @@
 			axios.get('/maintain')
             .then((response) => {
                 this.maintains = response.data
-				console.log(this.maintains);
             })
             .catch(function (error) {
                 console.log(error);
