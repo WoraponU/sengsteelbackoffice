@@ -14,7 +14,7 @@
                     <div class="row">
                         <div class="input-field col s12 m6 l4 offset-l2">
                             <input type="date" class="datepicker" id="tireDate" name="tireDate" required>
-                            <label for="tireDate">วัน/เวลา <span class="icon-star">*</span></label>
+                            <label for="tireDate">วันที่ <span class="icon-star">*</span></label>
                         </div>
                         <div class="input-field col s12 m6 l4">
                             <input id="tireEmployee" name="tireEmployee" type="text" class="validate" required>

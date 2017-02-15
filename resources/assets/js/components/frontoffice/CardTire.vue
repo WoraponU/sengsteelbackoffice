@@ -13,7 +13,7 @@
                 <span class="card-title grey-text text-darken-4">{{ firstName }} {{ lastName }}<i class="material-icons right">close</i></span>
                 <div class="section">
                     <blockquote>
-                        <p>วัน/เวลา: {{ tireDate }}</p>
+                        <p>วันที่: {{ tireDate }}</p>
                         <p>ผู้เปลี่ยน: {{ tireEmployee }}</p>
                         <p>ชนิดยาง: {{ typeOfTire }}</p>
                         <p>ยี่ห้อ: {{ brandOfTire }}</p>

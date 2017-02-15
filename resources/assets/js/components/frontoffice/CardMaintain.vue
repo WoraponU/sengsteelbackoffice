@@ -13,7 +13,7 @@
                 <span class="card-title grey-text text-darken-4">{{ firstName }} {{ lastName }}<i class="material-icons right">close</i></span>
                 <div class="section">
                     <blockquote>
-                        <p>วัน/เวลา: {{ maintainDate }}</p>
+                        <p>วันที่: {{ maintainDate }}</p>
                         <p>ผู้ซ่อม: {{ maintainEmployee }}</p>
                         <table>
                             <thead>

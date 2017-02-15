@@ -14,7 +14,7 @@
 					<div class="row">
 						<div class="input-field col s12 m6 l4 offset-l2">
 							<input type="date" class="datepicker" id="fuelDate" name="fuelDate" required>
-							<label for="fuelDate">วัน/เวลา <span class="icon-star">*</span></label>
+							<label for="fuelDate">วันที่ <span class="icon-star">*</span></label>
 						</div>
 					</div>
 					<div class="row">

@@ -13,7 +13,7 @@
                 <span class="card-title grey-text text-darken-4">{{ firstName }} {{ lastName }}<i class="material-icons right">close</i></span>
                 <div class="section">
                     <blockquote>
-                        <p>วัน/เวลา: {{ fuelDate }}</p>
+                        <p>วันที่: {{ fuelDate }}</p>
                         <p>ผู้เติม: {{ gasEmployee }}</p>
                         <p>ประเภทน้ำมัน: {{ gasType }}</p>
                         <p>หมายเลขกิโลเมตรครั้งก่อน: {{ lastNumberCar }}</p>

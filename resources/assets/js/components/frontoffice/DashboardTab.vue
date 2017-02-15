@@ -2,7 +2,10 @@
   	<div class="container center-align">
 		<div class="section">
            	<div class="row">
-				<span class="section-header col s12 m12 l8 left-align">เติมน้ำมัน</span>
+				<span class="section-header col s11 m11 l11 left-align">เติมน้ำมัน</span>
+				<div class="col s1 m1 l1">
+					<a class="btn-floating btn-large waves-effect waves-light btn" href="#reportFuel"><i class="material-icons">insert_chart</i></a>
+				</div>
 			</div> 
 			<div class="row">
 				<CardFuel v-for="fuel in fuels"
@@ -24,44 +27,16 @@
 				></CardFuel>
 			</div>        
 
-			<div class="row">
-				<div class="col s12 m12 l12">
-					<table>
-						<thead>
-						<tr>
-							<th data-field="truckDriver">คนขับรถ</th>
-							<th data-field="fuelDate">วันที่</th>
-							<th data-field="gasEmployee">ผู้เติม</th>
-							<th data-field="gasType">ประเภทน้ำมัน</th>
-							<th data-field="lastNumberCar">หมายเลขกิโลเมตรครั้งก่อน</th>
-							<th data-field="presentNumberCar">หมายเลขกิโลเมตรล่าสุด</th>
-							<th data-field="liter">จำนวนลิตร</th>
-							<th data-field="totalDistance">ระยะทางที่วิ่ง</th>
-							<th data-field="gasPerDistance">อัตราการใช้น้ำมัน</th>
-						</tr>
-						</thead>
-
-						<tbody>
-						<tr v-for="fuel in fuels">
-							<td>{{ fuel.user.firstname }} {{ fuel.user.lastname }}</td>
-							<td>{{ fuel.fuel.fuel_date }}</td>
-							<td>{{ fuel.fuel.gas_employee }}</td>
-							<td>{{ fuel.fuel.gas_type }}</td>
-							<td>{{ fuel.fuel.last_number_car }}</td>
-							<td>{{ fuel.fuel.present_number_car }}</td>
-							<td>{{ fuel.fuel.liter }}</td>
-							<td>{{ fuel.fuel.total_distance }}</td>
-							<td>{{ fuel.fuel.gas_per_distance }}</td>
-						</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>    					
+			<ModalReportFuel :fuels="fuels"></ModalReportFuel>
+			   					
 		</div>
 
 		<div class="section">
            	<div class="row">
-				<span class="section-header col s12 m12 l8 left-align">เปลี่ยนยาง</span>
+				<span class="section-header col s11 m11 l11 left-align">เปลี่ยนยาง</span>
+				<div class="col s1 m1 l1">
+					<a class="btn-floating btn-large waves-effect waves-light btn" href="#reportTire"><i class="material-icons">insert_chart</i></a>
+				</div>
 			</div> 
 			<div class="row">
 				<CardTire v-for="tire in tires"
@@ -85,12 +60,19 @@
 					:totalAmoutCost="tire.tire.total_amout_cost"
 					:note="tire.tire.note"
 				></CardTire>
-			</div>            					
+			</div> 
+
+			<div class="row">
+				<ModalReportTire :tires="tires"></ModalReportTire>
+			</div>             					
 		</div>
 
 		<div class="section">
            	<div class="row">
-				<span class="section-header col s12 m12 l8 left-align">ซ่อมบำรุง</span>
+				<span class="section-header col s11 m11 l11 left-align">ซ่อมบำรุง</span>
+				<div class="col s1 m1 l1">
+					<a class="btn-floating btn-large waves-effect waves-light btn" href="#reportMaintain"><i class="material-icons">insert_chart</i></a>
+				</div>
 			</div> 
 			<div class="row">
 				<CardMaintain v-for="maintain in maintains"
@@ -109,7 +91,11 @@
 					:amountCost="maintain.maintain.amount_cost"
 					:note="maintain.maintain.note" 
 				></CardMaintain>
-			</div>            					
+			</div>   
+
+			<div class="row">
+				<ModalReportMaintain :maintains="maintains"></ModalReportMaintain>
+			</div>           					
 		</div>
 	</div>
 </div>
@@ -150,6 +136,9 @@
             .catch(function (error) {
                 console.log(error);
             });
+		},
+		mounted() {
+			$('.modal').modal();
 		}
     }
 </script>

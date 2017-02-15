@@ -8578,6 +8578,10 @@ body .icon-star {
   vertical-align: top;
 }
 
+body .modal.bottom-sheet {
+  max-height: 80%;
+}
+
 body .nav-wrapper .brand-logo {
   padding: 10px;
 }
