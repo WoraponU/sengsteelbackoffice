@@ -28,14 +28,13 @@
 			</div>        
 
 			<ModalReportFuel :fuels="fuels" v-if="showModalReportFuel"></ModalReportFuel>
-			   					
 		</div>
 
 		<div class="section">
            	<div class="row">
 				<span class="section-header col s11 m11 l11 left-align">เปลี่ยนยาง</span>
 				<div class="col s1 m1 l1">
-					<a class="btn-floating btn-large waves-effect waves-light btn" href="#reportTire"><i class="material-icons">insert_chart</i></a>
+					<a href="#reportTire" class="btn-floating btn-large waves-effect waves-light btn" ><i class="material-icons">insert_chart</i></a>
 				</div>
 			</div> 
 			<div class="row">
@@ -63,7 +62,7 @@
 			</div> 
 
 			<div class="row">
-				<ModalReportTire :tires="tires"></ModalReportTire>
+				<ModalReportTire :tires="tires" v-if="showModalReportTire"></ModalReportTire>
 			</div>             					
 		</div>
 
@@ -71,7 +70,7 @@
            	<div class="row">
 				<span class="section-header col s11 m11 l11 left-align">ซ่อมบำรุง</span>
 				<div class="col s1 m1 l1">
-					<a class="btn-floating btn-large waves-effect waves-light btn" href="#reportMaintain"><i class="material-icons">insert_chart</i></a>
+					<a href="#reportMaintain" class="btn-floating btn-large waves-effect waves-light btn"><i class="material-icons">insert_chart</i></a>
 				</div>
 			</div> 
 			<div class="row">
@@ -94,7 +93,7 @@
 			</div>   
 
 			<div class="row">
-				<ModalReportMaintain :maintains="maintains"></ModalReportMaintain>
+				<ModalReportMaintain :maintains="maintains" v-if="showModalReportMaintain"></ModalReportMaintain>
 			</div>           					
 		</div>
 	</div>
@@ -111,6 +110,8 @@
 				tires: [],
 				maintains: [],
 				showModalReportFuel: false,
+				showModalReportTire: false,
+				showModalReportMaintain: false,
             }
         },
 		beforeMount() {
@@ -126,6 +127,7 @@
 			axios.get('/tire')
             .then((response) => {
                 this.tires = response.data
+				this.showModalReportTire = true		
             })
             .catch(function (error) {
                 console.log(error);
@@ -134,6 +136,7 @@
 			axios.get('/maintain')
             .then((response) => {
                 this.maintains = response.data
+				this.showModalReportMaintain = true
             })
             .catch(function (error) {
                 console.log(error);
