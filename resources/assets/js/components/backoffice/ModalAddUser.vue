@@ -100,14 +100,6 @@
             }
         },
         methods: {
-            // onIdNumberKeyUp(event) {
-            //     let lengthNumber = event.target.value.length;
-            //     let isNumber = /^\d+$/.test(event.target.value);
-
-            //     if (!isNumber || lengthNumber != 13) {
-                    
-            //     }
-            // },
             onImageChange(e) {
                 var files = e.target.files || e.dataTransfer.files;
                 if (!files.length)

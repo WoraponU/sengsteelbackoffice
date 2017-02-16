@@ -4,7 +4,7 @@
            	<div class="row">
 				<span class="section-header col s11 m11 l11 left-align">เติมน้ำมัน</span>
 				<div class="col s1 m1 l1">
-					<a class="btn-floating btn-large waves-effect waves-light btn" href="#reportFuel"><i class="material-icons">insert_chart</i></a>
+					<a href="#reportFuel" class="btn-floating btn-large waves-effect waves-light btn"><i class="material-icons">insert_chart</i></a>
 				</div>
 			</div> 
 			<div class="row">
@@ -27,7 +27,7 @@
 				></CardFuel>
 			</div>        
 
-			<ModalReportFuel :fuels="fuels"></ModalReportFuel>
+			<ModalReportFuel :fuels="fuels" v-if="showModalReportFuel"></ModalReportFuel>
 			   					
 		</div>
 
@@ -110,12 +110,14 @@
 				fuels: [],
 				tires: [],
 				maintains: [],
+				showModalReportFuel: false,
             }
         },
 		beforeMount() {
 			axios.get('/fuel')
             .then((response) => {
                 this.fuels = response.data
+				this.showModalReportFuel = true
             })
             .catch(function (error) {
                 console.log(error);
@@ -137,8 +139,8 @@
                 console.log(error);
             });
 		},
-		mounted() {
-			$('.modal').modal();
+		updated: function() {
+			$('.modal').modal();				
 		}
     }
 </script>
