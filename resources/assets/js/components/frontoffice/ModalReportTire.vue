@@ -33,16 +33,23 @@
 				</div>
 		</div>
 		<div class="modal-footer">
-            <a class="modal-action modal-close waves-effect waves-green btn-flat">Print</a>
+            <a @click="onClickPrintReportTire" class="modal-action modal-close waves-effect waves-green btn-flat">Print</a>
 			<a class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
 		</div>
 	</div>
 </template>
 
 <script>
+	import 'print.js';
+
     export default {
         props: {
             tires: { require: true },
         },
+        methods: {
+            onClickPrintReportTire: function() {
+                printJS('reportTire', 'html');
+            }
+        }
     }
 </script>

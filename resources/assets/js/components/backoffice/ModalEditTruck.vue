@@ -104,11 +104,6 @@
         props: {
             id: { require: true },
         },
-        // computed: {
-        //     index: function () {
-        //         return this.index+1
-        //     }
-        // },
         data() {
             return {
                 action: '/backoffice/truck/' + this.id,
