@@ -70,7 +70,7 @@ class TireController extends Controller
         ];
         $this->tire->create($params);
         
-        return view('frontoffice.main');
+        return redirect('/');
     }
 
     /**

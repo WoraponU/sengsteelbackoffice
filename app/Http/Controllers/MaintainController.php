@@ -65,7 +65,7 @@ class MaintainController extends Controller
         // dd($params);
         $this->maintain->create($params);
         
-        return view('frontoffice.main');
+        return redirect('/');
     }
 
     /**

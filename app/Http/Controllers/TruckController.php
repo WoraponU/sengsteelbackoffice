@@ -61,8 +61,7 @@ class TruckController extends Controller
         ];
 
         $this->truck->create($params);
-        
-        return view('backoffice.main');
+        return redirect('backoffice');
     }
 
     /**

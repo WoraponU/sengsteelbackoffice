@@ -65,7 +65,7 @@ class FuelController extends Controller
         
         $this->fuel->create($params);
         
-        return view('frontoffice.main');
+        return redirect('/');
     }
 
     /**

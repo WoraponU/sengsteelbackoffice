@@ -61,7 +61,7 @@ class UserController extends Controller
 
         $this->user->create($params);
         
-        return view('backoffice.main');
+        return redirect('backoffice');
     }
 
     /**
