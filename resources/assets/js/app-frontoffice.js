@@ -17,6 +17,7 @@ Vue.component('Index', require('./components/frontoffice/Index.vue'));
 Vue.component('NavBar', require('./components/frontoffice/NavBar.vue'));
 Vue.component('Tabs', require('./components/frontoffice/Tabs.vue'));
 Vue.component('Tab', require('./components/frontoffice/Tab.vue'));
+Vue.component('DataNotFound', require('./components/frontoffice/DataNotFound.vue'));
 Vue.component('CardFuel', require('./components/frontoffice/CardFuel.vue'));
 Vue.component('CardTire', require('./components/frontoffice/CardTire.vue'));
 Vue.component('CardMaintain', require('./components/frontoffice/CardMaintain.vue'));

@@ -45,6 +45,7 @@
 					:totalDistance="fuel.fuel.total_distance"
 					:truckDriver="fuel.fuel.truck_driver"
 				></CardFuel>
+				<DataNotFound v-if="dataFuelNotFound"></DataNotFound>
 			</div>        
 
 			<ModalReportFuel :fuels="fuels" v-if="showModalReportFuel"></ModalReportFuel>
@@ -79,6 +80,7 @@
 					:totalAmoutCost="tire.tire.total_amout_cost"
 					:note="tire.tire.note"
 				></CardTire>
+				<DataNotFound v-if="dataTireNotFound"></DataNotFound>				
 			</div> 
 
 			<div class="row">
@@ -110,6 +112,7 @@
 					:amountCost="maintain.maintain.amount_cost"
 					:note="maintain.maintain.note" 
 				></CardMaintain>
+				<DataNotFound v-if="dataMaintainNotFound"></DataNotFound>				
 			</div>   
 
 			<div class="row">
@@ -132,6 +135,7 @@
 				showModalReportFuel: false,
 				showModalReportTire: false,
 				showModalReportMaintain: false,
+				dataFuelNotFound: false,
             }
         },
 		beforeMount() {
@@ -139,6 +143,9 @@
             .then((response) => {
                 this.fuels = response.data
 				this.showModalReportFuel = true
+				if (this.fuels.length == 0) {
+					this.dataFuelNotFound = true;
+				}
             })
             .catch(function (error) {
                 console.log(error);
@@ -147,7 +154,10 @@
 			axios.get('/tire')
             .then((response) => {
                 this.tires = response.data
-				this.showModalReportTire = true		
+				this.showModalReportTire = true	
+				if (this.tires.length == 0) {
+					this.dataTireNotFound = true;
+				}	
             })
             .catch(function (error) {
                 console.log(error);
@@ -157,6 +167,9 @@
             .then((response) => {
                 this.maintains = response.data
 				this.showModalReportMaintain = true
+				if (this.maintains.length == 0) {
+					this.dataMaintainNotFound = true;
+				}
             })
             .catch(function (error) {
                 console.log(error);
@@ -186,6 +199,9 @@
 				})
 				.then((response) => {
 					this.fuels = response.data
+					if (this.fuels.length == 0) {
+						this.dataFuelNotFound = true;
+					}
 				})
 				.catch(function (error) {
 					console.log(error);
@@ -199,6 +215,9 @@
 				})
 				.then((response) => {
 					this.tires = response.data
+					if (this.tires.length == 0) {
+						this.dataTireNotFound = true;
+					}
 				})
 				.catch(function (error) {
 					console.log(error);
@@ -212,6 +231,9 @@
 				})
 				.then((response) => {
 					this.maintains = response.data
+					if (this.maintains.length == 0) {
+						this.dataMaintainNotFound = true;
+					}
 				})
 				.catch(function (error) {
 					console.log(error);
