@@ -20,27 +20,26 @@ class MaintainController extends Controller
      */
     public function index(Request $request)
     {
-        if (($request->startDate == 'all' && $request->endDate == 'all') ||
-            (!$request->has('startDate') && !$request->has('endDate'))
-        ) {
-            $maintains = $this->maintain->all();
-        }elseif($request->startDate != 'all' && $request->endDate != 'all') {
-            $maintains = $this->maintain
-                        ->where('maintain_date', '>=', $request->startDate)
-                        ->where('maintain_date', '<=', $request->endDate)
-                        ->get();
-        } elseif ($request->startDate != 'all') {
-            $maintains = $this->maintain
-                        ->where('maintain_date', '>=', $request->startDate)
-                        ->get();
-        } elseif ($request->endDate != 'all') {
-            $maintains = $this->maintain
-                        ->where('maintain_date', '<=', $request->endDate)
-                        ->get();
+        $query = $this->maintain;
+        if ( $request->has('startDate') && $request->startDate != 'all' ) {
+            $query = $query->where('maintain_date', '>=', $request->startDate);
         }
-        
-        if ($maintains->isEmpty()) {
-            $dataMerge = [];
+        if ( $request->has('endDate') && $request->endDate != 'all' ) {
+            $query = $query->where('maintain_date', '<=', $request->endDate);            
+        }
+
+        $maintains = $query->get();
+        $dataMerge = [];
+
+        if( $request->has('truckDriver') && $request->truckDriver != 'all' ) {
+            foreach ($maintains as $maintain) {
+                if ($request->truckDriver == $maintain->user->id) {
+                    $dataMerge[] = [
+                        'user' => $maintain->user,
+                        'maintain' => $maintain,
+                    ];
+                }
+            }
         } else {
             foreach ($maintains as $maintain) {
                 $dataMerge[] = [

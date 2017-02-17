@@ -209,6 +209,8 @@
 		methods: {
 			onClickFilter: function() {
 				this.dataFuelNotFound = false;
+				this.dataTireNotFound = false;
+				this.dataMaintainNotFound = false;
 				
 				let startDate = 'all';
 				let endDate = 'all';
@@ -261,7 +263,8 @@
 				axios.get('/maintain', {
 					params: {
 						startDate: startDate,
-						endDate: endDate
+						endDate: endDate,
+						truckDriver: truckDriver						
 					}
 				})
 				.then((response) => {
