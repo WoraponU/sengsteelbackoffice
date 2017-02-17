@@ -2,6 +2,26 @@
   	<div class="container center-align">
 		<div class="section">
            	<div class="row">
+				<span class="section-header col s11 m11 l11 left-align">ตัวกรอง</span> 
+           	</div>
+			<div class="row left-align card-panel">
+				<div class="input-field col s12 m6 l4">
+					<input ref="startDate" type="date" class="datepicker" id="startDate" name="startDate" required>
+					<label for="startDate">วันที่</label>
+				</div>
+				<div class="input-field col s12 m6 l4">
+					<input ref="endDate" type="date" class="datepicker" id="endDate" name="endDate" required>
+					<label for="endDate">ถึงวันที่</label>
+				</div>
+				<div class="input-field col s12 m12 l12 right-align">
+					<button @click="onClickFilter" class="btn waves-effect waves-light" type="button" name="action">กรองข้อมูล
+						<i class="material-icons right">send</i>
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="section">
+           	<div class="row">
 				<span class="section-header col s11 m11 l11 left-align">เติมน้ำมัน</span>
 				<div class="col s1 m1 l1">
 					<a href="#reportFuel" class="btn-floating btn-large waves-effect waves-light btn"><i class="material-icons">insert_chart</i></a>
@@ -144,6 +164,14 @@
 		},
 		updated: function() {
 			$('.modal').modal();				
+		},
+		methods: {
+			onClickFilter: function() {
+				let convertStartDate = new Date(this.$refs.startDate.value);
+				let convertEndDate = new Date(this.$refs.endDate.value);
+				const startDate = convertStartDate.getFullYear() + '-' +( parseInt(convertStartDate.getMonth()) + 1 ) + '-' + convertStartDate.getDate();
+				const endDate = convertEndDate.getFullYear() + '-' +( parseInt(convertEndDate.getMonth()) + 1 ) + '-' + convertEndDate.getDate();
+			}
 		}
     }
 </script>
