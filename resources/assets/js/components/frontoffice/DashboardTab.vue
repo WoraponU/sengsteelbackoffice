@@ -13,6 +13,14 @@
 					<input ref="endDate" type="date" class="datepicker" id="endDate" name="endDate" required>
 					<label for="endDate">ถึงวันที่</label>
 				</div>
+				<div class="input-field col s12 m6 l4">
+					<select ref="truckDriver" name="truckDriver" v-model="userSelected" required>
+                        <option v-for="option in userOptions" :value="option.value" :disabled="option.disabled">
+                            {{ option.text }}
+                        </option>
+                    </select>
+					<label>ชื่อคนขับรถ</label>
+				</div>
 				<div class="input-field col s12 m12 l12 right-align">
 					<button @click="onClickFilter" class="btn waves-effect waves-light" type="button" name="action">กรองข้อมูล
 						<i class="material-icons right">send</i>
@@ -132,10 +140,19 @@
 				fuels: [],
 				tires: [],
 				maintains: [],
+
 				showModalReportFuel: false,
 				showModalReportTire: false,
 				showModalReportMaintain: false,
+				
 				dataFuelNotFound: false,
+				dataTireNotFound: false,
+				dataMaintainNotFound: false,
+
+				userOptions: [
+                    { text: 'โปรดระบุ', value: '', disabled: true },
+                ],
+				userSelected: '',
             }
         },
 		beforeMount() {
@@ -150,7 +167,7 @@
             .catch(function (error) {
                 console.log(error);
             });
-
+			////////////////////
 			axios.get('/tire')
             .then((response) => {
                 this.tires = response.data
@@ -162,7 +179,7 @@
             .catch(function (error) {
                 console.log(error);
             });
-
+			//////////////////////
 			axios.get('/maintain')
             .then((response) => {
                 this.maintains = response.data
@@ -174,9 +191,24 @@
             .catch(function (error) {
                 console.log(error);
             });
+			////////////////////
+			axios.get('/backoffice/user')
+            .then((response) => {
+                for (let i = 0; i < response.data.length; i++) { 
+                    this.userOptions.push({
+                         text: response.data[i].firstname, 
+                         value: response.data[i].id,
+                         photo: response.data[i].photo
+                    });
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
 		},
 		updated: function() {
-			$('.modal').modal();				
+			$('select').material_select();				
+			$('.modal').modal();
 		},
 		methods: {
 			onClickFilter: function() {

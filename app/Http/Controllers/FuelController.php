@@ -20,24 +20,18 @@ class FuelController extends Controller
      */
     public function index(Request $request)
     {
-        if (($request->startDate == 'all' && $request->endDate == 'all') ||
-            (!$request->has('startDate') && !$request->has('endDate'))
-        ) {
-            $fuels = $this->fuel->all();
-        }elseif($request->startDate != 'all' && $request->endDate != 'all') {
-            $fuels = $this->fuel
-                        ->where('fuel_date', '>=', $request->startDate)
-                        ->where('fuel_date', '<=', $request->endDate)
-                        ->get();
-        } elseif ($request->startDate != 'all') {
-            $fuels = $this->fuel
-                        ->where('fuel_date', '>=', $request->startDate)
-                        ->get();
-        } elseif ($request->endDate != 'all') {
-            $fuels = $this->fuel
-                        ->where('fuel_date', '<=', $request->endDate)
-                        ->get();
+        $query = $this->fuel;
+        if ( $request->has('startDate') && $request->startDate != 'all' ) {
+            $query = $query->where('fuel_date', '>=', $request->startDate);
         }
+        if ( $request->has('endDate') && $request->endDate != 'all' ) {
+            $query = $query->where('fuel_date', '<=', $request->endDate);            
+        }
+        if ( $request->has('endDate') && $request->endDate != 'all' ) {
+            $query = $query->where('fuel_date', '<=', $request->endDate);            
+        }
+
+        $fuels = $query->get();
         
         if ($fuels->isEmpty()) {
             $dataMerge = [];
