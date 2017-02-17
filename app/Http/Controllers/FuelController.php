@@ -18,15 +18,44 @@ class FuelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $fuels = $this->fuel->all();
+        if (($request->startDate == 'all' && $request->endDate == 'all') 
+            || (!$request->has('startDate') && !$request->has('startDate'))
+        ){
+            $fuels = $this->fuel->all();   
+        return response()->json('1');
+                     
+        } elseif ($request->startDate != 'all' && $request->endDate != 'all') {
+            $fuels = $this->fuel
+                        ->where('fuel_date', '>=', $request->startDate)
+                        ->where('fuel_date', '<=', $request->endDate)
+                        ->get();
+        return response()->json('2');
+                        
+        } elseif ($request->startDate != 'all') {
+            $fuels = $this->fuel
+                        ->where('fuel_date', '>=', $request->startDate)
+                        ->get();
+        return response()->json('3');
+                        
+        } elseif ($request->endDate != 'all') {
+            $fuels = $this->fuel
+                        ->where('fuel_date', '<=', $request->endDate)
+                        ->get();
+        return response()->json('4');
+                        
+        }
 
-        foreach ($fuels as $fuel) {
-            $dataMerge[] = [
-                'user' => $fuel->user,
-                'fuel' => $fuel,
-            ];
+        if ($fuels->isEmpty()) {
+            $dataMerge = [];
+        } else {
+            foreach ($fuels as $fuel) {
+                $dataMerge[] = [
+                    'user' => $fuel->user,
+                    'fuel' => $fuel,
+                ];
+            }
         }
 
         return response()->json($dataMerge);

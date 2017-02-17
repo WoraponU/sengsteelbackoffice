@@ -18,8 +18,9 @@ class TireController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        return $request->startDate;
         $tires = $this->tire->all();
 
         foreach ($tires as $tire) {

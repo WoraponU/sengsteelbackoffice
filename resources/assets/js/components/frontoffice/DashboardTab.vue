@@ -167,10 +167,40 @@
 		},
 		methods: {
 			onClickFilter: function() {
-				let convertStartDate = new Date(this.$refs.startDate.value);
-				let convertEndDate = new Date(this.$refs.endDate.value);
-				const startDate = convertStartDate.getFullYear() + '-' +( parseInt(convertStartDate.getMonth()) + 1 ) + '-' + convertStartDate.getDate();
-				const endDate = convertEndDate.getFullYear() + '-' +( parseInt(convertEndDate.getMonth()) + 1 ) + '-' + convertEndDate.getDate();
+				let startDate = 'all';
+				let endDate = 'all';
+				if (this.$refs.startDate.value != '') {
+					const convertStartDate = new Date(this.$refs.startDate.value);
+					startDate = convertStartDate.getFullYear() + '-' +( parseInt(convertStartDate.getMonth()) + 1 ) + '-' + convertStartDate.getDate();
+				}
+				if (this.$refs.endDate.value != '') {
+					const convertEndDate = new Date(this.$refs.endDate.value);
+					endDate = convertEndDate.getFullYear() + '-' +( parseInt(convertEndDate.getMonth()) + 1 ) + '-' + convertEndDate.getDate();			
+				}
+
+				axios.get('/fuel', {
+					startDate: startDate,
+					endDate: endDate
+				})
+				.then((response) => {
+					// this.fuels = response.data
+					// console.log(response.data);
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
+				///////////////////
+				axios.get('/tire', {
+					startDate: startDate,
+					endDate: endDate
+				})
+				.then((response) => {
+					// this.fuels = response.data
+					console.log(response.data);
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
 			}
 		}
     }
