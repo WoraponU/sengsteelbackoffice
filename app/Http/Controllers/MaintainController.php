@@ -18,15 +18,36 @@ class MaintainController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $maintains = $this->maintain->all();
-
-        foreach ($maintains as $maintain) {
-            $dataMerge[] = [
-                'user' => $maintain->user,
-                'maintain' => $maintain,
-            ];
+        if (($request->startDate == 'all' && $request->endDate == 'all') ||
+            (!$request->has('startDate') && !$request->has('endDate'))
+        ) {
+            $maintains = $this->maintain->all();
+        }elseif($request->startDate != 'all' && $request->endDate != 'all') {
+            $maintains = $this->maintain
+                        ->where('maintain_date', '>=', $request->startDate)
+                        ->where('maintain_date', '<=', $request->endDate)
+                        ->get();
+        } elseif ($request->startDate != 'all') {
+            $maintains = $this->maintain
+                        ->where('maintain_date', '>=', $request->startDate)
+                        ->get();
+        } elseif ($request->endDate != 'all') {
+            $maintains = $this->maintain
+                        ->where('maintain_date', '<=', $request->endDate)
+                        ->get();
+        }
+        
+        if ($maintains->isEmpty()) {
+            $dataMerge = [];
+        } else {
+            foreach ($maintains as $maintain) {
+                $dataMerge[] = [
+                    'user' => $maintain->user,
+                    'maintain' => $maintain,
+                ];
+            }
         }
 
         return response()->json($dataMerge);

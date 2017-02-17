@@ -204,6 +204,18 @@
 					console.log(error);
 				});
 				/////////////////////
+				axios.get('/maintain', {
+					params: {
+						startDate: startDate,
+						endDate: endDate
+					}
+				})
+				.then((response) => {
+					this.maintains = response.data
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
 			}
 		}
     }
