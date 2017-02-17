@@ -64,7 +64,7 @@
             .catch(function (error) {
                 console.log(error);
             });
-
+            ////////////////////
             axios.get('/backoffice/truck')
             .then((response) => {
                 for (let i = 0; i < response.data.length; i++) { 

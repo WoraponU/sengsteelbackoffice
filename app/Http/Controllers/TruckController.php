@@ -72,7 +72,7 @@ class TruckController extends Controller
      */
     public function show($id)
     {
-        //
+        return response()->json($this->truck->find($id));
     }
 
     /**
@@ -139,5 +139,9 @@ class TruckController extends Controller
 
         $truck->delete();
         return redirect('backoffice');        
+    }
+
+    public function getLastNumberCar() {
+        return 'a';
     }
 }

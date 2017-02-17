@@ -20,7 +20,6 @@ class TireController extends Controller
      */
     public function index(Request $request)
     {
-        return $request->startDate;
         $tires = $this->tire->all();
 
         foreach ($tires as $tire) {

@@ -24,27 +24,19 @@ class FuelController extends Controller
             || (!$request->has('startDate') && !$request->has('startDate'))
         ){
             $fuels = $this->fuel->all();   
-        return response()->json('1');
-                     
         } elseif ($request->startDate != 'all' && $request->endDate != 'all') {
             $fuels = $this->fuel
                         ->where('fuel_date', '>=', $request->startDate)
                         ->where('fuel_date', '<=', $request->endDate)
                         ->get();
-        return response()->json('2');
-                        
         } elseif ($request->startDate != 'all') {
             $fuels = $this->fuel
                         ->where('fuel_date', '>=', $request->startDate)
                         ->get();
-        return response()->json('3');
-                        
         } elseif ($request->endDate != 'all') {
             $fuels = $this->fuel
                         ->where('fuel_date', '<=', $request->endDate)
                         ->get();
-        return response()->json('4');
-                        
         }
 
         if ($fuels->isEmpty()) {
