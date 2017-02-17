@@ -179,28 +179,30 @@
 				}
 
 				axios.get('/fuel', {
-					startDate: startDate,
-					endDate: endDate
+					params: {
+						startDate: startDate,
+						endDate: endDate
+					}
 				})
 				.then((response) => {
-					// this.fuels = response.data
-					// console.log(response.data);
+					console.log(response.data);
+					this.fuels = response.data
 				})
 				.catch(function (error) {
 					console.log(error);
 				});
 				///////////////////
-				axios.get('/tire', {
-					startDate: startDate,
-					endDate: endDate
-				})
-				.then((response) => {
-					// this.fuels = response.data
-					console.log(response.data);
-				})
-				.catch(function (error) {
-					console.log(error);
-				});
+				// axios.get('/tire', {
+				// 	startDate: startDate,
+				// 	endDate: endDate
+				// })
+				// .then((response) => {
+				// 	// this.fuels = response.data
+				// 	// console.log(response.data);
+				// })
+				// .catch(function (error) {
+				// 	console.log(error);
+				// });
 			}
 		}
     }

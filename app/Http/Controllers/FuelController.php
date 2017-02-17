@@ -20,11 +20,11 @@ class FuelController extends Controller
      */
     public function index(Request $request)
     {
-        if (($request->startDate == 'all' && $request->endDate == 'all') 
-            || (!$request->has('startDate') && !$request->has('startDate'))
-        ){
-            $fuels = $this->fuel->all();   
-        } elseif ($request->startDate != 'all' && $request->endDate != 'all') {
+        if (($request->startDate == 'all' && $request->endDate == 'all') ||
+            (!$request->has('startDate') && !$request->has('endDate'))
+        ) {
+            $fuels = $this->fuel->all();
+        }elseif($request->startDate != 'all' && $request->endDate != 'all') {
             $fuels = $this->fuel
                         ->where('fuel_date', '>=', $request->startDate)
                         ->where('fuel_date', '<=', $request->endDate)
@@ -38,7 +38,7 @@ class FuelController extends Controller
                         ->where('fuel_date', '<=', $request->endDate)
                         ->get();
         }
-
+        // dd($fuels);
         if ($fuels->isEmpty()) {
             $dataMerge = [];
         } else {
