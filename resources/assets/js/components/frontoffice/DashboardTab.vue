@@ -232,8 +232,6 @@
 					}
 				})
 				.then((response) => {
-					// console.log(response.data);
-					
 					this.fuels = response.data
 					if (this.fuels.length == 0) {
 						this.dataFuelNotFound = true;
@@ -246,7 +244,8 @@
 				axios.get('/tire', {
 					params: {
 						startDate: startDate,
-						endDate: endDate
+						endDate: endDate,
+						truckDriver: truckDriver
 					}
 				})
 				.then((response) => {

@@ -20,27 +20,26 @@ class TireController extends Controller
      */
     public function index(Request $request)
     {
-        if (($request->startDate == 'all' && $request->endDate == 'all') ||
-            (!$request->has('startDate') && !$request->has('endDate'))
-        ) {
-            $tires = $this->tire->all();
-        }elseif($request->startDate != 'all' && $request->endDate != 'all') {
-            $tires = $this->tire
-                        ->where('tire_date', '>=', $request->startDate)
-                        ->where('tire_date', '<=', $request->endDate)
-                        ->get();
-        } elseif ($request->startDate != 'all') {
-            $tires = $this->tire
-                        ->where('tire_date', '>=', $request->startDate)
-                        ->get();
-        } elseif ($request->endDate != 'all') {
-            $tires = $this->tire
-                        ->where('tire_date', '<=', $request->endDate)
-                        ->get();
+        $query = $this->tire;
+        if ( $request->has('startDate') && $request->startDate != 'all' ) {
+            $query = $query->where('tire_date', '>=', $request->startDate);
         }
-        
-        if ($tires->isEmpty()) {
-            $dataMerge = [];
+        if ( $request->has('endDate') && $request->endDate != 'all' ) {
+            $query = $query->where('tire_date', '<=', $request->endDate);            
+        }
+
+        $tires = $query->get();
+        $dataMerge = [];
+
+        if( $request->has('truckDriver') && $request->truckDriver != 'all' ) {
+            foreach ($tires as $tire) {
+                if ($request->truckDriver == $tire->user->id) {
+                    $dataMerge[] = [
+                        'user' => $tire->user,
+                        'tire' => $tire,
+                    ];
+                }
+            }
         } else {
             foreach ($tires as $tire) {
                 $dataMerge[] = [
@@ -49,7 +48,6 @@ class TireController extends Controller
                 ];
             }
         }
-
         return response()->json($dataMerge);
     }
 

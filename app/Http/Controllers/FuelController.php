@@ -48,7 +48,7 @@ class FuelController extends Controller
                 ];
             }
         }
-        // dd($dataMerge);
+
         return response()->json($dataMerge);
     }
 
