@@ -38,7 +38,7 @@ class FuelController extends Controller
                         ->where('fuel_date', '<=', $request->endDate)
                         ->get();
         }
-        // dd($fuels);
+        
         if ($fuels->isEmpty()) {
             $dataMerge = [];
         } else {

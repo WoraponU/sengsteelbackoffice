@@ -20,13 +20,34 @@ class TireController extends Controller
      */
     public function index(Request $request)
     {
-        $tires = $this->tire->all();
-
-        foreach ($tires as $tire) {
-            $dataMerge[] = [
-                'user' => $tire->user,
-                'tire' => $tire,
-            ];
+        if (($request->startDate == 'all' && $request->endDate == 'all') ||
+            (!$request->has('startDate') && !$request->has('endDate'))
+        ) {
+            $tires = $this->tire->all();
+        }elseif($request->startDate != 'all' && $request->endDate != 'all') {
+            $tires = $this->tire
+                        ->where('tire_date', '>=', $request->startDate)
+                        ->where('tire_date', '<=', $request->endDate)
+                        ->get();
+        } elseif ($request->startDate != 'all') {
+            $tires = $this->tire
+                        ->where('tire_date', '>=', $request->startDate)
+                        ->get();
+        } elseif ($request->endDate != 'all') {
+            $tires = $this->tire
+                        ->where('tire_date', '<=', $request->endDate)
+                        ->get();
+        }
+        
+        if ($tires->isEmpty()) {
+            $dataMerge = [];
+        } else {
+            foreach ($tires as $tire) {
+                $dataMerge[] = [
+                    'user' => $tire->user,
+                    'tire' => $tire,
+                ];
+            }
         }
 
         return response()->json($dataMerge);
