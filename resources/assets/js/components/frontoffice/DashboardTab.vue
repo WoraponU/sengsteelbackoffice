@@ -13,13 +13,13 @@
 					<input ref="endDate" type="date" class="datepicker" id="endDate" name="endDate" required>
 					<label for="endDate">ถึงวันที่</label>
 				</div>
-				<div class="input-field col s12 m6 l4">
-					<select ref="truckDriver" name="truckDriver" v-model="userSelected" required>
-                        <option v-for="option in userOptions" :value="option.value" :disabled="option.disabled">
+				<div class="col s12 m6 l4">
+					<label>ชื่อคนขับรถ</label>					
+					<select ref="truckDriver" class="browser-default" name="truckDriver" v-model="userSelected" required>
+                        <option v-for="option in userOptions" :value="option.value">
                             {{ option.text }}
                         </option>
                     </select>
-					<label>ชื่อคนขับรถ</label>
 				</div>
 				<div class="input-field col s12 m12 l12 right-align">
 					<button @click="onClickFilter" class="btn waves-effect waves-light" type="button" name="action">กรองข้อมูล
@@ -150,9 +150,9 @@
 				dataMaintainNotFound: false,
 
 				userOptions: [
-                    { text: 'โปรดระบุ', value: '', disabled: true },
+                    { text: 'ทุกคน', value: 'all' },
                 ],
-				userSelected: '',
+				userSelected: 'all',
             }
         },
 		beforeMount() {
@@ -206,14 +206,13 @@
                 console.log(error);
             });
 		},
-		updated: function() {
-			$('select').material_select();				
-			$('.modal').modal();
-		},
 		methods: {
 			onClickFilter: function() {
+				this.dataFuelNotFound = false;
+				
 				let startDate = 'all';
 				let endDate = 'all';
+
 				if (this.$refs.startDate.value != '') {
 					const convertStartDate = new Date(this.$refs.startDate.value);
 					startDate = convertStartDate.getFullYear() + '-' +( parseInt(convertStartDate.getMonth()) + 1 ) + '-' + convertStartDate.getDate();
@@ -223,13 +222,18 @@
 					endDate = convertEndDate.getFullYear() + '-' +( parseInt(convertEndDate.getMonth()) + 1 ) + '-' + convertEndDate.getDate();			
 				}
 
+				const truckDriver = this.userSelected
+				console.log(truckDriver);
 				axios.get('/fuel', {
 					params: {
 						startDate: startDate,
-						endDate: endDate
+						endDate: endDate,
+						truckDriver: truckDriver
 					}
 				})
 				.then((response) => {
+					// console.log(response.data);
+					
 					this.fuels = response.data
 					if (this.fuels.length == 0) {
 						this.dataFuelNotFound = true;
@@ -271,6 +275,9 @@
 					console.log(error);
 				});
 			}
-		}
+		},
+		updated: function() {
+			$('.modal').modal();
+		},
     }
 </script>

@@ -27,14 +27,19 @@ class FuelController extends Controller
         if ( $request->has('endDate') && $request->endDate != 'all' ) {
             $query = $query->where('fuel_date', '<=', $request->endDate);            
         }
-        if ( $request->has('endDate') && $request->endDate != 'all' ) {
-            $query = $query->where('fuel_date', '<=', $request->endDate);            
-        }
 
         $fuels = $query->get();
-        
-        if ($fuels->isEmpty()) {
-            $dataMerge = [];
+        $dataMerge = [];
+
+        if( $request->has('truckDriver') && $request->truckDriver != 'all' ) {
+            foreach ($fuels as $fuel) {
+                if ($request->truckDriver == $fuel->user->id) {
+                    $dataMerge[] = [
+                        'user' => $fuel->user,
+                        'fuel' => $fuel,
+                    ];
+                }
+            }
         } else {
             foreach ($fuels as $fuel) {
                 $dataMerge[] = [
@@ -43,7 +48,7 @@ class FuelController extends Controller
                 ];
             }
         }
-
+        // dd($dataMerge);
         return response()->json($dataMerge);
     }
 
