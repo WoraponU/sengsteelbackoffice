@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="card-action right-align">
-                <a @click="" class="btn-floating waves-effect waves-light">
+                <a @click="showModalEditTire = true" href="#modalEditTire" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">mode_edit</i>
                 </a>
                 <a @click="" class="btn-floating waves-effect waves-light">
@@ -38,18 +38,44 @@
                 </a>
             </div>
         </div>
-        <!--<ModalEditUser v-if="showModalEdit" :id="id"></ModalEditUser>        
-        <ModalDeleteUser v-if="showModalDelete" :id="id" :firstname="firstname" :lastname="lastname"></ModalDeleteUser>        -->
+        <ModalEditTire v-if="showModalEditTire"
+            :id="id",
+            :firstName="firstName",
+            :lastName="lastName",
+            :userPhoto="userPhoto",
+            :truckPhoto="truckPhoto",
+            :licensePlate="licensePlate",
+            :tireDate="tireDate",
+            :tireEmployee="tireEmployee",
+            :typeOfTire="typeOfTire",
+            :brandOfTire="brandOfTire",
+            :pricePerUnit="pricePerUnit",
+            :wagePerUnit="wagePerUnit",
+            :photoTire="photoTire",
+            :sectionOfTire="sectionOfTire",
+            :rowOfTire="rowOfTire",
+            :numberOfTire="numberOfTire",
+            :quantity="quantity",
+            :totalTirePrice="totalTirePrice",
+            :totalAmoutCost="totalAmoutCost",
+            :note="note",
+        ></ModalEditTire>
     </div>
 </template>
 
 <script>
     export default {
+        data() {
+            return {
+                showModalEditTire: false
+            }
+        },
         props: {
             id: { require: true },
             firstName: { require: true },
             lastName: { require: true },
-            photo: { require: true },
+            userPhoto: { require: true },
+            truckPhoto: { require: true },
             licensePlate: { require: true },
             tireDate: { require: true },
             tireEmployee: { require: true },
@@ -66,5 +92,12 @@
             totalAmoutCost: { require: true },
             note: { require: true },
         },
+        updated() {
+            $('.modal').modal({
+                complete: function() { 
+                    this.showModalEditTire = false
+                }
+            });
+        }
     }
 </script>

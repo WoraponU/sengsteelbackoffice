@@ -30,6 +30,8 @@ Vue.component('ModalReportFuel', require('./components/frontoffice/ModalReportFu
 Vue.component('ModalReportTire', require('./components/frontoffice/ModalReportTire.vue'));
 Vue.component('ModalReportMaintain', require('./components/frontoffice/ModalReportMaintain.vue'));
 Vue.component('ModalEditFuel', require('./components/frontoffice/ModalEditFuel.vue'));
+Vue.component('ModalEditTire', require('./components/frontoffice/ModalEditTire.vue'));
+// Vue.component('ModalEditMaintain', require('./components/frontoffice/ModalEditMaintain.vue'));
 
 const app = new Vue({
     el: '#app'

@@ -37,6 +37,7 @@ class TireController extends Controller
                     $dataMerge[] = [
                         'user' => $tire->user,
                         'tire' => $tire,
+                        'truck' => $tire->truck,
                     ];
                 }
             }
@@ -45,6 +46,7 @@ class TireController extends Controller
                 $dataMerge[] = [
                     'user' => $tire->user,
                     'tire' => $tire,
+                    'truck' => $tire->truck,
                 ];
             }
         }
