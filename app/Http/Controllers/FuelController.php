@@ -36,6 +36,7 @@ class FuelController extends Controller
                 if ($request->truckDriver == $fuel->user->id) {
                     $dataMerge[] = [
                         'user' => $fuel->user,
+                        'truck' => $fuel->truck,
                         'fuel' => $fuel,
                     ];
                 }
@@ -44,6 +45,7 @@ class FuelController extends Controller
             foreach ($fuels as $fuel) {
                 $dataMerge[] = [
                     'user' => $fuel->user,
+                    'truck' => $fuel->truck,
                     'fuel' => $fuel,
                 ];
             }

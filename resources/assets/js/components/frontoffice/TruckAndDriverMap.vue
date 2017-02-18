@@ -37,17 +37,39 @@
     export default {
         data() {
             return {
-                userSelected: '',
+                userSelected: this.truckDriver,
                 userOptions: [
                     { text: 'Choose your option', value: '', disabled: true },
                 ],
-                userPhoto: '/images/user_icon.png',
+                userPhoto: this.truckDriverPhoto,
 
-                truckSelected: '',  
+                truckSelected: this.licensePlate,  
                 truckOptions: [
                     { text: 'Choose your option', value: '', disabled: true },
                 ],
-                truckPhoto: '/images/truck_icon.png',
+                truckPhoto: this.truckImage,
+            }
+        },
+        props: {
+            truckDriver: {
+                default: function () {
+                    return ''
+                }
+            },
+            truckDriverPhoto: {
+                default: function () {
+                    return '/images/user_icon.png'
+                }
+            },
+            licensePlate: {
+                default: function () {
+                    return ''
+                }
+            },
+            truckImage: {
+                default: function () {
+                    return '/images/truck_icon.png'
+                }
             }
         },
         beforeMount() {

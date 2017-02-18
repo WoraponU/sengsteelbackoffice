@@ -8595,6 +8595,10 @@ body #modalEditFuel#modalEditFuel {
   height: 100%;
 }
 
+body #modalEditFuel .responsive-img {
+  max-width: 85%;
+}
+
 body .nav-wrapper .brand-logo {
   padding: 10px;
 }

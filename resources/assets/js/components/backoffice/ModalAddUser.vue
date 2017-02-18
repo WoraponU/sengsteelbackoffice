@@ -116,7 +116,7 @@
                 reader.readAsDataURL(file);
             },
             onRoleChange() {
-                if (this.selected == 'truckDriver') {
+                if (this.selected == 'truck_driver') {
                     this.isShowUserPass = false
 
                 } else {

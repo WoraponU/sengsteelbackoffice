@@ -2,7 +2,7 @@
     <div class="col s12 m6 l4">
         <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" :src="photo">
+                <img class="activator" :src="userPhoto">
             </div>
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">{{ firstName }} {{ lastName }}<i class="material-icons right">more_vert</i></span>
@@ -38,7 +38,8 @@
             :id="id"
             :firstName="firstName"
             :lastName="lastName"
-            :photo="photo"
+            :userPhoto="userPhoto"
+            :truckPhoto="truckPhoto"
             :licensePlate="licensePlate"
             :truckDriver="truckDriver"
             :fuelDate="fuelDate"
@@ -66,8 +67,9 @@
             id: { require: true },
             firstName: { require: true },
             lastName: { require: true },
-            photo: { require: true },
+            userPhoto: { require: true },
             licensePlate: { require: true },
+            truckPhoto: { require: true },
             truckDriver: { require: true },
             fuelDate: { require: true },
             gasEmployee: { require: true },

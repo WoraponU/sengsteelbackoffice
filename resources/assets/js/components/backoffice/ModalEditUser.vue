@@ -112,7 +112,7 @@
                 this.photoPreview = this.user.photo
                 this.selected = this.user.role
 
-                if (this.selected != 'truckDriver') {
+                if (this.selected != 'truck_driver') {
                     this.isShowUserPass = true
                 }
             })
@@ -140,7 +140,7 @@
                 reader.readAsDataURL(file);
             },
             onRoleChange() {
-                if (this.selected == 'truckDriver') {
+                if (this.selected == 'truck_driver') {
                     this.isShowUserPass = false
 
                 } else {

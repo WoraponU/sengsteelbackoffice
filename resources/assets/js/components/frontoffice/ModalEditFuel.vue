@@ -5,7 +5,12 @@
                 <form action="/fuel" method="POST">
                     <input type="hidden" name="_token" v-model="csrfToken">
 
-                    <TruckAndDriverMap></TruckAndDriverMap>
+                    <TruckAndDriverMap 
+                        :truckDriver="thisTruckDriver"
+                        :truckDriverPhoto="thisUserPhoto"
+                        :licensePlate="thisLicensePlate"
+                        :truckImage="thisTruckPhoto"
+                    ></TruckAndDriverMap>
                     <div class="container">
                         <div class="row left-align card-panel">
                             <div class="row">
@@ -15,17 +20,17 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12 m6 l4 offset-l2">
-                                    <input type="date" class="datepicker" id="fuelDate" name="fuelDate" required>
+                                    <input type="date" class="datepicker" id="fuelDate" name="fuelDate" v-model="thisFuelDate" required>
                                     <label for="fuelDate">วันที่ <span class="icon-star">*</span></label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12 m6 l4 offset-l2">
-                                    <input id="gasEmployee" name="gasEmployee" type="text" class="validate" required>
+                                    <input id="gasEmployee" name="gasEmployee" type="text" class="validate" v-model="thisGasEmployee" required>
                                     <label for="gasEmployee">ผู้เติม <span class="icon-star">*</span></label>
                                 </div>  
                                 <div class="input-field col s12 m6 l4">
-                                    <select name="gasType" required>
+                                    <select name="gasType" required :value="gasType">
                                         <option value="" disabled selected>โปรดระบุ</option>
                                         <option value="gasoline">น้ำมันเครื่องยนต์</option>
                                         <option value="lubricator">น้ำมันห้องเครื่อง</option>
@@ -37,23 +42,23 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12 m6 l4 offset-l2">
-                                    <input id="lastNumberCar" name="lastNumberCar" type="number" v-model="lastNumberCar" class="validate" required>
+                                    <input id="lastNumberCar" name="lastNumberCar" type="number" v-model="thisLastNumberCar" class="validate" required>
                                     <label for="lastNumberCar">หมายเลขกิโลเมตรครั้งก่อน</label>
                                 </div>   
                                 <div class="input-field col s12 m6 l4">
-                                    <input id="presentNumberCar" name="presentNumberCar" type="number" :min="lastNumberCar" v-model="presentNumberCar" class="validate" required>
+                                    <input id="presentNumberCar" name="presentNumberCar" type="number" :min="thisLastNumberCar" v-model="thisPresentNumberCar" class="validate" required>
                                     <label for="presentNumberCar">หมายเลขกิโลเมตรล่าสุด <span class="icon-star">*</span></label>
                                 </div>  
                             </div>
                             <div class="row">
                                 <div class="input-field col s12 m6 l4 offset-l2">
-                                    <input id="liter" name="liter" type="number" min="1" v-model="liter" class="validate" required>
+                                    <input id="liter" name="liter" type="number" min="1" v-model="thisLiter" class="validate" required>
                                     <label for="liter">จำนวนลิตร <span class="icon-star">*</span></label>
                                 </div> 
                             </div>
                             <div class="row">
                                 <div class="input-field col s12 m12 l8 offset-l2">
-                                    <textarea id="note" name="note" class="materialize-textarea"></textarea>
+                                    <textarea id="note" name="note" v-model="thisNote" class="materialize-textarea"></textarea>
                                     <label for="note">บันทึกรายละเอียด</label>
                                 </div>
                             </div>
@@ -62,12 +67,12 @@
                                 <div class="row">
                                     <div class="input-field col s12 m12 l8 offset-l2">
                                         <blockquote>
-                                            <p class="flow-text">ระยะทางที่วิ่ง: {{ totalDistance }} กิโลเมตร</p>
-                                            <p class="flow-text">น้ำมันที่ใช้: {{ totalGas }} ลิตร</p>
-                                            <p class="flow-text">อัตราการใช้น้ำมัน: {{ gasPerDistance }} กิโลเมตร/ลิตร</p>
+                                            <p class="flow-text">ระยะทางที่วิ่ง: {{ thisTotalDistanceCompute }} กิโลเมตร</p>
+                                            <p class="flow-text">น้ำมันที่ใช้: {{ thisTotalGasCompute }} ลิตร</p>
+                                            <p class="flow-text">อัตราการใช้น้ำมัน: {{ thisGasPerDistanceCompute }} กิโลเมตร/ลิตร</p>
                                         </blockquote>
-                                        <input type="hidden" name="totalDistance" :value="totalDistance">
-                                        <input type="hidden" name="gasPerDistance" :value="gasPerDistance">
+                                        <input type="hidden" name="thisTotalDistance" :value="thisTotalDistance">
+                                        <input type="hidden" name="thisGasPerDistance" :value="thisGasPerDistance">
                                     </div>
                                 </div>						
                             </div>			
@@ -93,17 +98,30 @@
 		data() {
 			return {
                 csrfToken: window.Laravel.csrfToken,
-
-				lastNumberCar: 100,
-				presentNumberCar: 100,
-				liter: 1,
+                thisId: this.id,
+                thisFirstName: this.firstName,
+                thisLastName: this.lastName,
+                thisUserPhoto: this.userPhoto,
+                thisTruckPhoto: this.truckPhoto,
+                thisLicensePlate: this.licensePlate,
+                thisTruckDriver: this.truckDriver,
+                thisFuelDate: this.fuelDate,
+                thisGasEmployee: this.gasEmployee,
+                thisGasType: this.gasType,
+                thisLastNumberCar: this.lastNumberCar,
+                thisPresentNumberCar: this.presentNumberCar,
+                thisLiter: this.liter,
+                thisNote: this.note,
+                thisGasPerDistance: this.gasPerDistance,
+                thisTotalDistance: this.totalDistance,
             }
 		},
         props: {
             id: { require: true },
             firstName: { require: true },
             lastName: { require: true },
-            photo: { require: true },
+            userPhoto: { require: true },
+            truckPhoto: { require: true },
             licensePlate: { require: true },
             truckDriver: { require: true },
             fuelDate: { require: true },
@@ -118,19 +136,19 @@
         },
 		mounted() {
             $('.datepicker').pickadate({
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: 15 // Creates a dropdown of 15 years to control year
+                selectMonths: true,
+                selectYears: 15
             });
         },
 		computed: {
-			totalDistance: function () {
-				return this.presentNumberCar - this.lastNumberCar;
+			thisTotalDistanceCompute: function () {
+				return this.thisPresentNumberCar - this.thisLastNumberCar;
 			},
-			totalGas: function () {
-				return this.liter;
+			thisTotalGasCompute: function () {
+				return this.thisLiter;
 			},
-			gasPerDistance: function () {
-				return (this.presentNumberCar - this.lastNumberCar) / this.liter;
+			thisGasPerDistanceCompute: function () {
+				return (this.thisPresentNumberCar - this.thisLastNumberCar) / this.thisLiter;
 			}
 		}
     }
