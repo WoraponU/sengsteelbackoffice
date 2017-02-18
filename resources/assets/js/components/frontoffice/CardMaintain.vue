@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="card-action right-align">
-                <a @click="" class="btn-floating waves-effect waves-light">
+                <a href="#modalEditMaintain" @click="showModalEditMaintain = true" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">mode_edit</i>
                 </a>
                 <a @click="" class="btn-floating waves-effect waves-light">
@@ -48,8 +48,8 @@
                 </a>
             </div>
         </div>
-        <!--<ModalEditUser v-if="showModalEdit" :id="id"></ModalEditUser>        
-        <ModalDeleteUser v-if="showModalDelete" :id="id" :firstname="firstname" :lastname="lastname"></ModalDeleteUser>        -->
+        <ModalEditMaintain v-if="showModalEditMaintain"></ModalEditMaintain>
+        <!--<ModalDeleteUser v-if="showModalDelete" :id="id" :firstname="firstname" :lastname="lastname"></ModalDeleteUser>        -->
     </div>
 </template>
 
@@ -73,7 +73,8 @@
         },
         data() {
             return {
-				maintainDatas: [],
+				maintainDatas: [],  
+                showModalEditMaintain: false,           
             }
         },
         beforeMount() {
@@ -90,6 +91,13 @@
                 })
             }
             this.maintainDatas = dataPush;
+        },
+        updated() {
+            $('.modal').modal({
+                complete: function() {
+                    this.showModalEditMaintain = false
+                }
+            });
         }
     }
 </script>

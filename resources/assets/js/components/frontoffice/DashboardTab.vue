@@ -123,6 +123,7 @@
 					:lastName="tire.user.lastname"
 					:userPhoto="tire.user.photo"
 					:truckPhoto="tire.truck.photo"
+					:truckDriver="tire.tire.truck_driver"
 					:licensePlate="tire.tire.license_plate"
 					:tireDate="tire.tire.tire_date"
 					:tireEmployee="tire.tire.tire_employee"
