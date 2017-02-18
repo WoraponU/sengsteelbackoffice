@@ -120,6 +120,28 @@ class FuelController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $params = [
+            'truck_driver'  => $request->truckDriver,
+            'license_plate' => $request->licensePlate,
+            'fuel_date'     => date('Y-m-d', strtotime($request->fuelDate)),
+            'gas_employee'  => $request->gasEmployee,
+            'gas_type'      => $request->gasType,
+            'last_number_car' => $request->lastNumberCar,
+            'present_number_car' => $request->presentNumberCar,
+            'liter'         => $request->liter,
+            'total_distance'=> $request->totalDistance,
+            'gas_per_distance' => $request->gasPerDistance,
+            'note'          => $request->note,
+        ];
+
+        $fuel = $this->fuel->find($id);
+        if(is_null($fuel)) {
+            return redirect('/')->withErrors('ไม่พบข้อมูลการเติมน้ำมัน');
+        }
+
+        $fuel->update($params);
+        
+        return redirect('/');
     }
 
     /**

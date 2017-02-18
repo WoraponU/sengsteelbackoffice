@@ -1,9 +1,10 @@
 <template>
     <div id="modalEditFuel" class="modal modal-fixed-footer left-align">
-        <div class="modal-content">
-            <div class="container center-align">
-                <form action="/fuel" method="POST">
+        <form :action="action" method="POST">         
+            <div class="modal-content">
+                <div class="container center-align">
                     <input type="hidden" name="_token" v-model="csrfToken">
+                    <input type="hidden" name="_method" value="PUT">
 
                     <TruckAndDriverMap 
                         :truckDriver="thisTruckDriver"
@@ -71,25 +72,20 @@
                                             <p class="flow-text">น้ำมันที่ใช้: {{ thisTotalGasCompute }} ลิตร</p>
                                             <p class="flow-text">อัตราการใช้น้ำมัน: {{ thisGasPerDistanceCompute }} กิโลเมตร/ลิตร</p>
                                         </blockquote>
-                                        <input type="hidden" name="thisTotalDistance" :value="thisTotalDistance">
-                                        <input type="hidden" name="thisGasPerDistance" :value="thisGasPerDistance">
+                                        <input type="hidden" name="totalDistance" :value="thisTotalDistanceCompute">
+                                        <input type="hidden" name="gasPerDistance" :value="thisGasPerDistanceCompute">
                                     </div>
                                 </div>						
                             </div>			
-
-                            <div class="input-field col s12 m12 l12 right-align">
-                                <button class="btn waves-effect waves-light" type="submit">Submit
-                                    <i class="material-icons right">send</i>
-                                </button>
-                            </div>
                         </div>
                     </div>  
-                </form>               
+                </div>
             </div>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
-        </div>
+            <div class="modal-footer">
+                <button type="submit" class="modal-action waves-effect waves-green btn-flat ">แก้ไข</button>
+                <button class="modal-action modal-close waves-effect waves-green btn-flat ">ปิด</button>
+            </div>
+        </form>               
     </div>
 </template>
 
@@ -97,6 +93,7 @@
     export default {
 		data() {
 			return {
+                action: '/fuel/' + this.id,
                 csrfToken: window.Laravel.csrfToken,
                 thisId: this.id,
                 thisFirstName: this.firstName,
