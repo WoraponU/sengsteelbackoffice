@@ -29,21 +29,19 @@
                                 <div class="row">
                                     <div class="col s8 m8 l8 offset-l2">
                                         <span class="section-header">รายการที่ซ่อม</span>
-                                        <a class="btn-floating btn waves-effect waves-light right" @click="maintainListsRow++"><i class="material-icons">add</i></a>
-                                        <a class="btn-floating btn waves-effect waves-light right" @click="maintainListsRow--"><i class="material-icons">remove</i></a>
                                     </div>
                                 </div>
-                                <div class="row" v-for="list in maintainListsRow">
+                                <div class="row" v-for="(list, index) in thisDataMaintainLists">
                                     <div class="input-field col s6 m6 l4 offset-l2">
-                                        <input id="maintainLists" name="maintainLists[]" type="text" class="validate" required>
-                                        <label for="maintainLists">รายการ {{ list }} <span class="icon-star">*</span></label>
+                                        <input id="maintainLists" name="maintainLists[]" type="text" class="validate" v-model="list.maintainList" required>
+                                        <label for="maintainLists">รายการ {{ index + 1 }} <span class="icon-star">*</span></label>
                                     </div> 
                                     <div class="input-field col s3 m3 l2">
-                                        <input id="wagePerList" name="wagePerList[]" ref="wages" @change="onWagePerListChange" type="number" class="validate" required>
+                                        <input id="wagePerList" name="wagePerList[]" ref="wages" @change="onWagePerListChange" v-model="list.wageList" type="number" class="validate" required>
                                         <label for="wagePerList">ค่าแรง(บาท) <span class="icon-star">*</span></label>
                                     </div>
                                     <div class="input-field col s3 m3 l2">
-                                        <input id="sparePerList" name="sparePerList[]" ref="spares" @change="onSparePerListChange" type="number" class="validate" required>
+                                        <input id="sparePerList" name="sparePerList[]" ref="spares" @change="onSparePerListChange" v-model="list.spareList" type="number" class="validate" required>
                                         <label for="sparePerList">ค่าอะไหล่(บาท) <span class="icon-star">*</span></label>
                                     </div>
                                 </div>
@@ -60,13 +58,13 @@
                                 <div class="row">
                                     <div class="input-field col s12 m12 l8 offset-l2">
                                         <blockquote>
-                                            <p class="flow-text">ค่าแรงทั้งหมด: {{ totalWage }} บาท</p>
-                                            <p class="flow-text">ค่าอะไหล่ทั้งหมด: {{ totalSpare  }} บาท</p>
-                                            <p class="flow-text">ค่าใช้จ่ายทั้งหมด: {{ amountCost }} บาท</p>
+                                            <p class="flow-text">ค่าแรงทั้งหมด: {{ thisTotalWage }} บาท</p>
+                                            <p class="flow-text">ค่าอะไหล่ทั้งหมด: {{ thisTotalSpare  }} บาท</p>
+                                            <p class="flow-text">ค่าใช้จ่ายทั้งหมด: {{ thisAmountCost }} บาท</p>
                                         </blockquote>
-                                        <input type="hidden" name="totalWage" :value="totalWage">
-                                        <input type="hidden" name="totalSpare" :value="totalSpare">
-                                        <input type="hidden" name="amountCost" :value="amountCost">
+                                        <input type="hidden" name="totalWage" :value="thisTotalWage">
+                                        <input type="hidden" name="totalSpare" :value="thisTotalSpare">
+                                        <input type="hidden" name="amountCost" :value="thisAmountCost">
                                     </div>
                                 </div>						
                             </div>
@@ -76,7 +74,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
         </div>
     </div>
 </template>
@@ -86,6 +84,7 @@
         data() {
             return {
                 csrfToken: window.Laravel.csrfToken,
+
                 thisId: this.id,
                 thisFirstName: this.firstName,
                 thisLastName: this.lastName,
@@ -100,8 +99,10 @@
                 thisTotalSpare: this.totalSpare,
                 thisAmountCost: this.amountCost,
                 thisNote: this.note,
-                truckDriver: this.truckDriver,
-                truckPhoto: this.truckPhoto,
+                thisTruckDriver: this.truckDriver,
+                thisTruckPhoto: this.truckPhoto,
+
+                thisDataMaintainLists: [],
             }
         },
         props: {
@@ -122,33 +123,61 @@
             truckDriver: { require: true },
             truckPhoto: { require: true },
         },
-		watch: {
-			maintainListsRow: function () {
-				if ( this.maintainListsRow <= 0 ) {
-					this.maintainListsRow = 1;
-				}
-			}
-        },
+		// watch: {
+		// 	maintainListsRow: function () {
+		// 		if ( this.maintainListsRow <= 0 ) {
+		// 			this.maintainListsRow = 1;
+		// 		}
+		// 	}
+        // },
 		methods: {
-			onWagePerListChange: function () {
-				let totalWage = 0;
-				this.$refs.wages.forEach(function(wage) {
-					totalWage = totalWage + parseInt(wage.value);
-                });
-				this.totalWage = totalWage;
-			},
-			onSparePerListChange: function () {
-				let totalSpare = 0;
-				this.$refs.spares.forEach(function(spare) {
-					totalSpare = totalSpare + parseInt(spare.value);
-                });
-				this.totalSpare = totalSpare;
-			},
+			// onWagePerListChange: function () {
+			// 	let totalWage = 0;
+			// 	this.$refs.wages.forEach(function(wage) {
+			// 		totalWage = totalWage + parseInt(wage.value);
+            //     });
+			// 	this.totalWage = totalWage;
+			// },
+			// onSparePerListChange: function () {
+			// 	let totalSpare = 0;
+			// 	this.$refs.spares.forEach(function(spare) {
+			// 		totalSpare = totalSpare + parseInt(spare.value);
+            //     });
+			// 	this.totalSpare = totalSpare;
+			// },
+            onAddListClick: function () {
+                alert();
+                // this.thisDataMaintainLists.push({
+                //     maintainList: '',
+                //     wageList: '',
+                //     spareList: '',
+                // });
+            }
 		},
+        mounted() {
+            $('.datepicker').pickadate({
+                selectMonths: true,
+                selectYears: 15
+            });
+
+            const maintainLists = JSON.parse(this.thisMaintainLists)              
+            const wageLists = JSON.parse(this.thisWagePerList)              
+            const spareLists = JSON.parse(this.thisSparePerList)   
+            let dataMaintainLists = [];           
+            
+            for (let i = 0; i < maintainLists.length; i++) {
+                dataMaintainLists.push({
+                    maintainList: maintainLists[i],
+                    wageList: wageLists[i],
+                    spareList: spareLists[i],
+                });               
+            }
+            this.thisDataMaintainLists = dataMaintainLists;
+        },
 		computed: {
-			amountCost: function () {
-                return this.totalWage * this.totalSpare;
-            },
+			// amountCost: function () {
+            //     return this.totalWage * this.totalSpare;
+            // },
         },
     }
 </script>
