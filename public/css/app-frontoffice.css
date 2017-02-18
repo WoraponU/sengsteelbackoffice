@@ -8582,6 +8582,19 @@ body .modal.bottom-sheet {
   max-height: 80%;
 }
 
+body #modalEditFuel.modal {
+  width: 90%;
+  max-height: 88%;
+}
+
+body #modalEditFuel.modal .container {
+  width: 95%;
+}
+
+body #modalEditFuel#modalEditFuel {
+  height: 100%;
+}
+
 body .nav-wrapper .brand-logo {
   padding: 10px;
 }

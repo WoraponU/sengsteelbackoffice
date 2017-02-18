@@ -22,6 +22,19 @@ body {
         max-height: 80%;
     }
     
+    #modalEditFuel {
+        &.modal {
+            width: 90%;
+            max-height: 88%;
+
+            .container {
+                width: 95%;
+            }
+        }
+        &#modalEditFuel {
+            height: 100%;
+        }
+    }
     .nav-wrapper {
         .brand-logo {
             padding: 10px;

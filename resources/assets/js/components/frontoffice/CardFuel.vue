@@ -34,7 +34,23 @@
                 </a>
             </div>
         </div>
-        <ModalEditFuel v-if="showModalEditFuel"></ModalEditFuel>        
+        <ModalEditFuel v-if="showModalEditFuel" 
+            :id="id"
+            :firstName="firstName"
+            :lastName="lastName"
+            :photo="photo"
+            :licensePlate="licensePlate"
+            :truckDriver="truckDriver"
+            :fuelDate="fuelDate"
+            :gasEmployee="gasEmployee"
+            :gasType="gasType"
+            :lastNumberCar="lastNumberCar"
+            :presentNumberCar="presentNumberCar"
+            :liter="liter"
+            :note="note"
+            :gasPerDistance="gasPerDistance"
+            :totalDistance="totalDistance"
+        ></ModalEditFuel>        
         <!--<ModalDeleteUser v-if="showModalDelete" :id="id" :firstname="firstname" :lastname="lastname"></ModalDeleteUser>-->
     </div>
 </template>
@@ -62,8 +78,6 @@
             note: { require: true },
             gasPerDistance: { require: true },
             totalDistance: { require: true },
-        },
-        methods: {
         },
         updated() {
             $('.modal').modal({
