@@ -6,6 +6,7 @@ use App\Truck;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\MessageBag;
+use Carbon\Carbon;
 
 class TruckController extends Controller
 {
@@ -143,5 +144,24 @@ class TruckController extends Controller
 
     public function getLastNumberCar() {
         return 'a';
+    }
+
+    public function getTruckWillExpire() {
+        $trucks = $this->truck->all();
+        $dataExpire = [];
+
+        $count = 0;
+        foreach ($trucks as $truck) {
+            $annualTaxDate = Carbon::parse($truck->annual_tax_date)->addYear();
+            $annualTaxDateSub30 = $annualTaxDate->copy()->subDays(30);
+            if ($annualTaxDate->isPast()) {
+                $dataExpire[$count]['expired'] = $truck;
+            } 
+            if ($annualTaxDateSub30->isPast()) {
+                $dataExpire[$count]['willExpire'] = $truck;                
+            }
+            $count++;
+        }
+        return response()->json($dataExpire);
     }
 }

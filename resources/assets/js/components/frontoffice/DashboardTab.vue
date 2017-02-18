@@ -1,6 +1,39 @@
 <template>
   	<div class="container center-align">
 		<div class="section">
+			<div class="row">
+				<span class="section-header col s11 m11 l11 left-align">แจ้งเตือนต่อภาษี</span> 
+           	</div>
+			<div class="row">
+				<div class="col s12 m12 l12 left-align">
+					<ul class="collapsible" data-collapsible="accordion">
+						<li>
+							<div class="collapsible-header">
+								<i class="material-icons">error</i>
+								หมดอายุแล้ว
+								<span class="new badge" :class="{ hide: newExpired == 0 }">{{ newExpired }}</span>
+							</div>
+							<div class="collapsible-body">
+								<span v-for="expired in expireds">{{ expired.licensePlate }} {{ expired.lastAnnualTaxDate }}</span>
+							</div>
+						</li>
+						<li>
+							<div class="collapsible-header">
+								<i class="material-icons">warning</i>
+								หมดอายุใน 30 วัน
+								<span class="new badge" :class="{ hide: newWillExpire == 0 }">{{ newWillExpire }}</span>								
+							</div>
+							<div class="collapsible-body">
+								<span>fdsa</span><br>
+								<span v-for="willExpire in willExpires">{{ willExpire.licensePlate }} {{ willExpire.lastAnnualTaxDate }}</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--//////////////////////////////////////////////////////////////////////////-->
+		<div class="section">
            	<div class="row">
 				<span class="section-header col s11 m11 l11 left-align">ตัวกรอง</span> 
            	</div>
@@ -28,6 +61,7 @@
 				</div>
 			</div>
 		</div>
+		<!--//////////////////////////////////////////////////////////////////////////-->		
 		<div class="section">
            	<div class="row">
 				<span class="section-header col s11 m11 l11 left-align">เติมน้ำมัน</span>
@@ -58,7 +92,7 @@
 
 			<ModalReportFuel :fuels="fuels" v-if="showModalReportFuel"></ModalReportFuel>
 		</div>
-
+		<!--//////////////////////////////////////////////////////////////////////////-->		
 		<div class="section">
            	<div class="row">
 				<span class="section-header col s11 m11 l11 left-align">เปลี่ยนยาง</span>
@@ -95,7 +129,7 @@
 				<ModalReportTire :tires="tires" v-if="showModalReportTire"></ModalReportTire>
 			</div>             					
 		</div>
-
+		<!--//////////////////////////////////////////////////////////////////////////-->		
 		<div class="section">
            	<div class="row">
 				<span class="section-header col s11 m11 l11 left-align">ซ่อมบำรุง</span>
@@ -148,6 +182,9 @@
 				dataFuelNotFound: false,
 				dataTireNotFound: false,
 				dataMaintainNotFound: false,
+
+				expireds: [],
+				willExpires: [],
 
 				userOptions: [
                     { text: 'ทุกคน', value: 'all' },
@@ -205,6 +242,34 @@
             .catch(function (error) {
                 console.log(error);
             });
+			////////////////////
+			axios.get('/backoffice/truck-expire')
+            .then((response) => {
+				let willExpires = [];
+				let expireds = [];
+
+				if (response.data.length != 0) {
+					$.each(response.data, function(index, dataExpire) {
+						if ('willExpire' in dataExpire) {
+							willExpires.push({
+								licensePlate: dataExpire.willExpire.license_plate,
+								lastAnnualTaxDate: dataExpire.willExpire.annual_tax_date,
+							});	
+						} 
+						if ('expired' in dataExpire) {
+							expireds.push({
+								licensePlate: dataExpire.willExpire.license_plate,
+								lastAnnualTaxDate: dataExpire.willExpire.annual_tax_date,
+							});
+						}
+					}); 
+					this.expireds = expireds
+					this.willExpires = willExpires
+				}
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
 		},
 		methods: {
 			onClickFilter: function() {
@@ -225,7 +290,7 @@
 				}
 
 				const truckDriver = this.userSelected
-				console.log(truckDriver);
+
 				axios.get('/fuel', {
 					params: {
 						startDate: startDate,
@@ -278,8 +343,17 @@
 				});
 			}
 		},
+		computed: {
+			newExpired: function () {
+				return this.expireds.length
+			},
+			newWillExpire: function () {
+				return this.willExpires.length
+			}
+		},
 		updated: function() {
 			$('.modal').modal();
+			$('.collapsible').collapsible();
 		},
     }
 </script>

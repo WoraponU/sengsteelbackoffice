@@ -8582,6 +8582,10 @@ body .modal.bottom-sheet {
   max-height: 80%;
 }
 
+body .collapsible-body {
+  padding: 2rem;
+}
+
 body .nav-wrapper .brand-logo {
   padding: 10px;
 }

@@ -18,6 +18,7 @@ Route::group(['prefix' => 'backoffice'], function () {
 
     Route::resource('user', 'UserController');
     Route::resource('truck', 'TruckController');
+    Route::resource('truck-expire', 'TruckController@getTruckWillExpire');
 });
 
 Route::group(['prefix' => ''], function () {
