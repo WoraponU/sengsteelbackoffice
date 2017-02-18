@@ -8582,20 +8582,20 @@ body .modal.bottom-sheet {
   max-height: 80%;
 }
 
-body #modalEditFuel.modal {
+body #modalEditFuel.modal, body .modal#modalEditMaintain, body .modal#modalEditTire {
   width: 90%;
   max-height: 88%;
 }
 
-body #modalEditFuel.modal .container {
+body #modalEditFuel.modal .container, body .modal#modalEditMaintain .container, body .modal#modalEditTire .container {
   width: 95%;
 }
 
-body #modalEditFuel#modalEditFuel {
+body #modalEditFuel#modalEditFuel, body #modalEditMaintain, body #modalEditTire {
   height: 100%;
 }
 
-body #modalEditFuel .responsive-img {
+body #modalEditFuel .responsive-img, body #modalEditMaintain .responsive-img, body #modalEditTire .responsive-img {
   max-width: 85%;
 }
 

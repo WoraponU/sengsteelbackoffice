@@ -1,4 +1,4 @@
-<template></template>
+<template>
     <div id="modalEditFuel" class="modal modal-fixed-footer left-align">
         <form :action="action" method="POST">         
             <div class="modal-content">

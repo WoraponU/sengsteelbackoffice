@@ -38,6 +38,16 @@ body {
             max-width: 85%;
         }
     }
+
+    #modalEditMaintain {
+        @extend #modalEditFuel;
+    }
+
+    #modalEditTire {
+        @extend #modalEditFuel;
+    }
+
+
     .nav-wrapper {
         .brand-logo {
             padding: 10px;

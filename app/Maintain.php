@@ -29,4 +29,8 @@ class Maintain extends Model
     {
         return $this->hasOne('App\User', 'id', 'truck_driver' );
     }
+    public function truck()
+    {
+        return $this->hasOne('App\Truck', 'license_plate', 'license_plate' );
+    }
 }

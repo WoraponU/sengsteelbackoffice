@@ -36,6 +36,7 @@ class MaintainController extends Controller
                 if ($request->truckDriver == $maintain->user->id) {
                     $dataMerge[] = [
                         'user' => $maintain->user,
+                        'truck' => $maintain->truck,
                         'maintain' => $maintain,
                     ];
                 }
@@ -44,6 +45,7 @@ class MaintainController extends Controller
             foreach ($maintains as $maintain) {
                 $dataMerge[] = [
                     'user' => $maintain->user,
+                    'truck' => $maintain->truck,
                     'maintain' => $maintain,
                 ];
             }
