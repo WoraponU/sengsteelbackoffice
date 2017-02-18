@@ -29,6 +29,7 @@ Vue.component('TruckAndDriverMap', require('./components/frontoffice/TruckAndDri
 Vue.component('ModalReportFuel', require('./components/frontoffice/ModalReportFuel.vue'));
 Vue.component('ModalReportTire', require('./components/frontoffice/ModalReportTire.vue'));
 Vue.component('ModalReportMaintain', require('./components/frontoffice/ModalReportMaintain.vue'));
+Vue.component('ModalEditFuel', require('./components/frontoffice/ModalEditFuel.vue'));
 
 const app = new Vue({
     el: '#app'

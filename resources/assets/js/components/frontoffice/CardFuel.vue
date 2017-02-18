@@ -26,7 +26,7 @@
                 </div>
             </div>
             <div class="card-action right-align">
-                <a @click="" class="btn-floating waves-effect waves-light">
+                <a @click="showModalEditFuel = true" href="#modalEditFuel" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">mode_edit</i>
                 </a>
                 <a @click="" class="btn-floating waves-effect waves-light">
@@ -34,13 +34,18 @@
                 </a>
             </div>
         </div>
-        <!--<ModalEditUser v-if="showModalEdit" :id="id"></ModalEditUser>        
-        <ModalDeleteUser v-if="showModalDelete" :id="id" :firstname="firstname" :lastname="lastname"></ModalDeleteUser>        -->
+        <ModalEditFuel v-if="showModalEditFuel"></ModalEditFuel>        
+        <!--<ModalDeleteUser v-if="showModalDelete" :id="id" :firstname="firstname" :lastname="lastname"></ModalDeleteUser>-->
     </div>
 </template>
 
 <script>
     export default {
+        data() {
+            return {
+                showModalEditFuel: false
+            }
+        },
         props: {
             id: { require: true },
             firstName: { require: true },
@@ -58,5 +63,14 @@
             gasPerDistance: { require: true },
             totalDistance: { require: true },
         },
+        methods: {
+        },
+        updated() {
+            $('.modal').modal({
+                complete: function() { 
+                    this.showModalEditFuel = false
+                }
+            });
+        }
     }
 </script>
