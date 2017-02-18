@@ -29,19 +29,21 @@
                                 <div class="row">
                                     <div class="col s8 m8 l8 offset-l2">
                                         <span class="section-header">รายการที่ซ่อม</span>
+                                        <a class="btn-floating btn waves-effect waves-light right" @click="onAddListClick"><i class="material-icons">add</i></a>
+								        <a class="btn-floating btn waves-effect waves-light right" @click="onAddListClick"><i class="material-icons">remove</i></a>
                                     </div>
                                 </div>
                                 <div class="row" v-for="(list, index) in thisDataMaintainLists">
                                     <div class="input-field col s6 m6 l4 offset-l2">
-                                        <input id="maintainLists" name="maintainLists[]" type="text" class="validate" v-model="list.maintainList" required>
+                                        <input id="maintainLists" name="maintainLists[]" type="text" class="validate" :value="list.maintainList" required>
                                         <label for="maintainLists">รายการ {{ index + 1 }} <span class="icon-star">*</span></label>
                                     </div> 
                                     <div class="input-field col s3 m3 l2">
-                                        <input id="wagePerList" name="wagePerList[]" ref="wages" @change="onWagePerListChange" v-model="list.wageList" type="number" class="validate" required>
+                                        <input id="wagePerList" name="wagePerList[]" ref="wages" :value="list.wageList" type="number" class="validate" required>
                                         <label for="wagePerList">ค่าแรง(บาท) <span class="icon-star">*</span></label>
                                     </div>
                                     <div class="input-field col s3 m3 l2">
-                                        <input id="sparePerList" name="sparePerList[]" ref="spares" @change="onSparePerListChange" v-model="list.spareList" type="number" class="validate" required>
+                                        <input id="sparePerList" name="sparePerList[]" ref="spares" :value="list.spareList" type="number" class="validate" required>
                                         <label for="sparePerList">ค่าอะไหล่(บาท) <span class="icon-star">*</span></label>
                                     </div>
                                 </div>
@@ -53,7 +55,6 @@
                                     <label for="note">บันทึกรายละเอียด</label>
                                 </div>
                             </div>
-                            
                             <div class="section">
                                 <div class="row">
                                     <div class="input-field col s12 m12 l8 offset-l2">
@@ -146,7 +147,13 @@
 			// 	this.totalSpare = totalSpare;
 			// },
             onAddListClick: function () {
-                alert();
+                let a = this.thisDataMaintainLists;
+                a.push({
+                    maintainList: '',
+                    wageList: '',
+                    spareList: '',
+                });
+                this.thisDataMaintainLists = a
                 // this.thisDataMaintainLists.push({
                 //     maintainList: '',
                 //     wageList: '',
@@ -154,6 +161,9 @@
                 // });
             }
 		},
+        beforeMounte() {
+            alert();
+        },
         mounted() {
             $('.datepicker').pickadate({
                 selectMonths: true,
