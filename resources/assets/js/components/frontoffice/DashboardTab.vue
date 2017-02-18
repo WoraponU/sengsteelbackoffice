@@ -11,21 +11,36 @@
 							<div class="collapsible-header">
 								<i class="material-icons">error</i>
 								หมดอายุแล้ว
-								<span class="new badge" :class="{ hide: newExpired == 0 }">{{ newExpired }}</span>
+								<span class="badge" v-if="newExpired > 0">{{ newExpired }}</span>
 							</div>
 							<div class="collapsible-body">
-								<span v-for="expired in expireds">{{ expired.licensePlate }} {{ expired.lastAnnualTaxDate }}</span>
+								<div class="row" v-for="(expired, index) in expireds">
+									<div class="col s12 m6 l5 offset-l1">
+										<p>{{ index+1 }}. เลขทะเบียน: {{ expired.licensePlate }}</p>
+									</div>
+									<div class="col s12 m6 l6" >
+										<p>ต่อทะเบียนล่าสุดเมื่อ: {{ expired.lastAnnualTaxDate }}</p>
+									</div>
+								</div>
+								<DataNotFound v-if="newExpired == 0"></DataNotFound>				
 							</div>
 						</li>
 						<li>
 							<div class="collapsible-header">
 								<i class="material-icons">warning</i>
 								หมดอายุใน 30 วัน
-								<span class="new badge" :class="{ hide: newWillExpire == 0 }">{{ newWillExpire }}</span>								
+								<span class="badge" v-if="newWillExpire > 0">{{ newWillExpire }}</span>	
 							</div>
 							<div class="collapsible-body">
-								<span>fdsa</span><br>
-								<span v-for="willExpire in willExpires">{{ willExpire.licensePlate }} {{ willExpire.lastAnnualTaxDate }}</span>
+								<div class="row" v-for="(willExpire, index) in willExpires">
+									<div class="col s12 m6 l5 offset-l1">
+										<p>{{ index+1 }}. เลขทะเบียน: {{ willExpire.licensePlate }}</p>
+									</div>
+									<div class="col s12 m6 l6">
+										<p>ต่อทะเบียนล่าสุดเมื่อ: {{ willExpire.lastAnnualTaxDate }}</p>
+									</div>
+								</div>
+								<DataNotFound v-if="newWillExpire == 0"></DataNotFound>															
 							</div>
 						</li>
 					</ul>
