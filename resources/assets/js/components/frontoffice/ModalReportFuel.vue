@@ -53,7 +53,7 @@
 </template>
 
 <script>
-	import 'print.js';
+	// import 'print.js';
     export default {
 		data() {
 			return {

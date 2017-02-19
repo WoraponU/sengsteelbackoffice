@@ -12,7 +12,6 @@ require('./bootstrap');
  * the application, or feel free to tweak this setup for your needs.
  */
 
-// Vue.component('User', require('./components/backoffice/User.vue'));
 Vue.component('Index', require('./components/frontoffice/Index.vue'));
 Vue.component('NavBar', require('./components/frontoffice/NavBar.vue'));
 Vue.component('Tabs', require('./components/frontoffice/Tabs.vue'));

@@ -20,11 +20,9 @@ elixir(mix => {
     ], 'public/css/app-backoffice.css')
        .webpack([           
             'app-backoffice.js',
-        ], 'public/js/app-backoffice.js')
-        .scripts([
             'plugins/materialize.js',
             'components/backoffice/main.js',
-        ], 'public/js/all-backoffice.js')
+        ], 'public/js/app-backoffice.js')
 
         .sass([
             'app.scss',
@@ -32,10 +30,8 @@ elixir(mix => {
         ], 'public/css/app-frontoffice.css')
         .webpack([           
             'app-frontoffice.js',
-        ], 'public/js/app-frontoffice.js')
-        .scripts([
             'plugins/materialize.js',
+            'plugins/print.min.js',
             'components/frontoffice/main.js',
-        ], 'public/js/all-frontoffice.js')
-
+        ], 'public/js/app-frontoffice.js')
 });
