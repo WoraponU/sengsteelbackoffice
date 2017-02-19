@@ -19,7 +19,9 @@
                         <p>น้ำมันห้องเครื่อง: {{ lubricator }}</p>
                         <p>น้ำมันห้องเกียร์: {{ gearBoxOil }}</p>
                         <p>น้ำมันเฟืองท้าย: {{ finalGearOil }}</p>
+                        <p v-for="(numberWheel, index) in thisNumberWheelPerRow">จำนวนล้อแถวที่ {{ index + 1 }}: {{ numberWheel }}</p>
                     </blockquote>
+                    
                 </div>
             </div>
             <div class="card-action right-align">
@@ -57,7 +59,13 @@
             return {
                 showModalEdit: false,
                 showModalDelete: false,
+                thisNumberWheelPerRow: '',
             }
+        },
+        beforeMount() {
+            const numberWheelPerRow = JSON.parse(this.numberWheelPerRow);
+            this.thisNumberWheelPerRow = numberWheelPerRow
+            console.log(numberWheelPerRow);
         },
         updated: function() {
             $('.modal').modal({
