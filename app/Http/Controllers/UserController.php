@@ -117,7 +117,7 @@ class UserController extends Controller
         $user = $this->user->find($id);
 
         if(is_null($user)) {
-            return redirect('backoffice')->withErrors('Not Found User');
+            return redirect('backoffice')->withErrors('ไม่พบข้อมูลพนักงาน');
         }
 
         $user->update($params);
@@ -135,7 +135,7 @@ class UserController extends Controller
         $user = $this->user->find($id);
         
         if(is_null($user)) {
-            return redirect('backoffice')->withErrors('Not Found User');
+            return redirect('backoffice')->withErrors('ไม่พบข้อมูลพนักงาน');
         }
 
         $user->delete();

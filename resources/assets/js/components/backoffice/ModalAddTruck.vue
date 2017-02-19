@@ -3,7 +3,7 @@
         <form action="/backoffice/truck" method="POST">
             <input type="hidden" name="_token" v-model="csrfToken">
             <div class="modal-content">
-                <h4>Truck Information</h4>
+                <h4>ข้อมูลรถบรรทุก</h4>
                 <div class="divider"></div>
 
                 <div class="row mt25">
@@ -19,65 +19,65 @@
                 </div>
 
                 <div class="section">
-                    <h5>Information</h5>
+                    <h5>ข้อมูลทั่วไป</h5>
                     <div class="row">
                         <div class="input-field col s12 m12 l6">
                             <input name="licensePlate" id="licensePlate" type="text" class="validate" required>
-                            <label for="licensePlate">License Plate <span class="icon-star">*</span></label>
+                            <label for="licensePlate">เลขทะเบียน <span class="icon-star">*</span></label>
                         </div>
                         <div class="input-field col s12 m12 l6">
                             <input name="owner" id="owner" type="text" class="validate">
-                            <label for="owner">Owner <span class="icon-star">*</span></label>
+                            <label for="owner">เจ้าของ <span class="icon-star">*</span></label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m12 l6">
                             <input name="registerDate" id="registerDate" type="date" class="datepicker" required>
-                            <label for="registerDate">Register Date <span class="icon-star">*</span></label>
+                            <label for="registerDate">วันที่จดทะเบียน <span class="icon-star">*</span></label>
                         </div>
                         <div class="input-field col s12 m12 l6">
                             <input name="annualTaxDate" id="annualTaxDate" type="date" class="datepicker" required>
-                            <label for="annualTaxDate">Annual Tax Date <span class="icon-star">*</span></label>
+                            <label for="annualTaxDate">วันที่ต่อทะเบียน <span class="icon-star">*</span></label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m12 l6">
                             <input name="lastNumberCar" id="lastNumberCar" type="text" class="validate" required>
-                            <label for="lastNumberCar">Last Number Car <span class="icon-star">*</span></label>
+                            <label for="lastNumberCar">หมายเลข กม.ล่าสุด <span class="icon-star">*</span></label>
                         </div>
                     </div>
                 </div>
                
                 <div class="section">  
-                    <h5>Fuel</h5>                                  
+                    <h5>ข้อมูลเชื้อเพลิง</h5>                                  
                     <div class="row">
                         <div class="input-field col s12 m12 l6">
                             <input name="gasoline" id="gasoline" type="text" class="validate" required>
-                            <label for="gasoline">Gasoline <span class="icon-star">*</span></label>
+                            <label for="gasoline">น้ำมันเครื่องยนต์ <span class="icon-star">*</span></label>
                         </div>
                         <div class="input-field col s12 m12 l6">
                             <input name="lubricator" id="lubricator" type="text" class="validate" required>
-                            <label for="lubricator">Lubricator <span class="icon-star">*</span></label>
+                            <label for="lubricator">น้ำมันห้องเครื่อง <span class="icon-star">*</span></label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m12 l6">
                             <input name="gearBoxOil" id="gearBoxOil" type="text" class="validate" required>
-                            <label for="gearBoxOil">Gear Box Oil <span class="icon-star">*</span></label>
+                            <label for="gearBoxOil">น้ำมันห้องเกียร์ <span class="icon-star">*</span></label>
                         </div>
                         <div class="input-field col s12 m12 l6">
                             <input name="finalGearOil" id="finalGearOil" type="text" class="validate" required>
-                            <label for="finalGearOil">Final Gear Oil <span class="icon-star">*</span></label>
+                            <label for="finalGearOil">น้ำมันเฟืองท้าย <span class="icon-star">*</span></label>
                         </div>
                     </div>
                 </div>
 
                 <div class="section">
-                    <h5>Wheel</h5>                                  
+                    <h5>ข้อมูลล้อรถ</h5>                                  
                     <div class="row">
                         <div class="input-field col s6 m6 l6">
                             <input name="rowOfWheel" id="rowOfWheel" type="number" min="2" max="30" class="validate" v-model="rowsOfWheel" required>
-                            <label for="rowOfWheel">Row Of Wheel <span class="icon-star">*</span></label>
+                            <label for="rowOfWheel">จำนวนแถวของล้อ <span class="icon-star">*</span></label>
                         </div>
                         <div class="col s6 m6 l6">
 
@@ -86,14 +86,14 @@
                     <div class="row">
                         <div class="input-field col s6 m6 l4" v-for="row in rowsOfWheel">
                             <input name="numberWheelPerRow[]" type="number" class="validate" value="2" required>
-                            <label for="numberWheelPerRow">Wheel/Row {{ row }} <span class="icon-star">*</span></label>
+                            <label for="numberWheelPerRow">จำนวนล้อ/แถว {{ row }} <span class="icon-star">*</span></label>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="modal-action waves-effect waves-green btn-flat">Add</button>
-                <button type="button" class="modal-close modal-action waves-effect waves-green btn-flat">Cancel</button>
+                <button type="submit" class="modal-action waves-effect waves-green btn-flat">เพิ่ม</button>
+                <button type="button" class="modal-close modal-action waves-effect waves-green btn-flat">ปิด</button>
             </div>
         </form>
     </div>

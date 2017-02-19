@@ -117,7 +117,7 @@ class TruckController extends Controller
         $truck = $this->truck->find($id);
 
         if(is_null($truck)) {
-            return redirect('backoffice')->withErrors('Not Found User');
+            return redirect('backoffice')->withErrors('ไม่พบข้อมูลรถบรรทุก');
         }
 
         $truck->update($params);
@@ -135,15 +135,11 @@ class TruckController extends Controller
         $truck = $this->truck->find($id);
         
         if(is_null($truck)) {
-            return redirect('backoffice')->withErrors('Not Found User');
+            return redirect('backoffice')->withErrors('ไม่พบข้อมูลรถบรรทุก');
         }
 
         $truck->delete();
         return redirect('backoffice');        
-    }
-
-    public function getLastNumberCar() {
-        return 'a';
     }
 
     public function getTruckWillExpire() {

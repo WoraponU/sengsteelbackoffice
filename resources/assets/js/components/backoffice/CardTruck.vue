@@ -12,14 +12,13 @@
                 <span class="card-title grey-text text-darken-4">{{ licensePlate }}<i class="material-icons right">close</i></span>
                 <div class="section">
                     <blockquote>
-                        <p>Owner: {{ owner }}</p>
-                        <p>Register Date: {{ registerDate }}</p>
-                        <p>Annual Tax Date: {{ annualTaxDate }}</p>
-                        <p>Gasoline: {{ gasoline }}</p>
-                        <p>Lubricator: {{ lubricator }}</p>
-                        <p>Gear Box Oil: {{ gearBoxOil }}</p>
-                        <p>Final Gear Oil: {{ finalGearOil }}</p>
-                        <p>Last Number Car: {{ lastNumberCar }}</p>
+                        <p>เจ้าของ: {{ owner }}</p>
+                        <p>วันที่จดทะเบียน: {{ registerDate }}</p>
+                        <p>วันที่ต่อทะเบียน: {{ annualTaxDate }}</p>
+                        <p>น้ำมันเครื่องยนต์: {{ gasoline }}</p>
+                        <p>น้ำมันห้องเครื่อง: {{ lubricator }}</p>
+                        <p>น้ำมันห้องเกียร์: {{ gearBoxOil }}</p>
+                        <p>น้ำมันเฟืองท้าย: {{ finalGearOil }}</p>
                     </blockquote>
                 </div>
             </div>
