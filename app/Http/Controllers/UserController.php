@@ -23,6 +23,11 @@ class UserController extends Controller
         return response()->json($this->user->all());
     }
 
+    public function getTruckDriver()
+    {
+        $truckDriver = $this->user->where('role', 'truck_driver')->get();
+        return response()->json($truckDriver);
+    }
     /**
      * Show the form for creating a new resource.
      *

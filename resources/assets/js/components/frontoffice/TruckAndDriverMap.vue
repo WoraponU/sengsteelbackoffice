@@ -73,7 +73,7 @@
             }
         },
         beforeMount() {
-            axios.get('/backoffice/user')
+            axios.get('backoffice/truckdriver')
             .then((response) => {
                 for (let i = 0; i < response.data.length; i++) { 
                     this.userOptions.push({
