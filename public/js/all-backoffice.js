@@ -1,11 +1,3 @@
-$( document ).ready(function() {
-    $('.modal').modal();
-    $('select').material_select();
-    $('.datepicker').pickadate({
-        selectMonths: true,
-        selectYears: 15
-    });
-});
 /*!
  * Materialize v0.97.8 (http://materializecss.com)
  * Copyright 2014-2015 Materialize
@@ -7784,4 +7776,19 @@ Picker.extend( 'pickadate', DatePicker )
       }
     }; // Plugin end
 }( jQuery ));
+$( document ).ready(function() {
+    $('.modal').modal();
+    $('select').material_select();
+    $('.datepicker').pickadate({
+        selectMonths: true,
+        selectYears: 15
+    });
+
+    if ($('#errorMessage').length) {
+        let errorMessage = $('#errorMessage').val();
+        let toastContent = $('<span>ผิดพลาด: ' + errorMessage + '</span>');
+
+        Materialize.toast(toastContent, 5000, 'red');
+    }
+});
 //# sourceMappingURL=all-backoffice.js.map

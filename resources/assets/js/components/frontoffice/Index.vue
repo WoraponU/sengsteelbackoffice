@@ -20,13 +20,5 @@
 
 <script>
     export default {
-        mounted() {
-            if ($('#errorMessage').length) {
-                let errorMessage = $('#errorMessage').val();
-                let toastContent = $('<span>Fail: ' + errorMessage + '</span>');
-
-                Materialize.toast(toastContent, 5000, 'red');
-            }
-        }
     }
 </script>

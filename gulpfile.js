@@ -22,8 +22,8 @@ elixir(mix => {
             'app-backoffice.js',
         ], 'public/js/app-backoffice.js')
         .scripts([
-            'components/backoffice/main.js',
             'plugins/materialize.js',
+            'components/backoffice/main.js',
         ], 'public/js/all-backoffice.js')
 
         .sass([
@@ -34,8 +34,8 @@ elixir(mix => {
             'app-frontoffice.js',
         ], 'public/js/app-frontoffice.js')
         .scripts([
-            'components/frontoffice/main.js',
             'plugins/materialize.js',
+            'components/frontoffice/main.js',
         ], 'public/js/all-frontoffice.js')
 
 });

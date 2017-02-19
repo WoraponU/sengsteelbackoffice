@@ -11,5 +11,4 @@
 
 @section('css')
     <link href="/css/app-frontoffice.css" rel="stylesheet">
-    {{-- <link rel="stylesheet" href="https://printjs-4de6.kxcdn.com/print.min.css"> --}}
 @endsection
