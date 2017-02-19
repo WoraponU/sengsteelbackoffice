@@ -30,20 +30,20 @@
                                     <div class="col s8 m8 l8 offset-l2">
                                         <span class="section-header">รายการที่ซ่อม</span>
                                         <a class="btn-floating btn waves-effect waves-light right" @click="onAddListClick"><i class="material-icons">add</i></a>
-								        <a class="btn-floating btn waves-effect waves-light right" @click="onAddListClick"><i class="material-icons">remove</i></a>
+								        <a class="btn-floating btn waves-effect waves-light right" @click="onSubListClick"><i class="material-icons">remove</i></a>
                                     </div>
                                 </div>
                                 <div class="row" v-for="(list, index) in thisDataMaintainLists">
                                     <div class="input-field col s6 m6 l4 offset-l2">
-                                        <input id="maintainLists" name="maintainLists[]" type="text" class="validate" :value="list.maintainList" required>
+                                        <input id="maintainLists" name="maintainLists[]" type="text" class="validate" v-model="list.maintainList" required>
                                         <label for="maintainLists">รายการ {{ index + 1 }} <span class="icon-star">*</span></label>
                                     </div> 
                                     <div class="input-field col s3 m3 l2">
-                                        <input id="wagePerList" name="wagePerList[]" ref="wages" :value="list.wageList" type="number" class="validate" required>
+                                        <input id="wagePerList" name="wagePerList[]" ref="wages" v-model="list.wageList" @change="onWagePerListChange" type="number" class="validate" required>
                                         <label for="wagePerList">ค่าแรง(บาท) <span class="icon-star">*</span></label>
                                     </div>
                                     <div class="input-field col s3 m3 l2">
-                                        <input id="sparePerList" name="sparePerList[]" ref="spares" :value="list.spareList" type="number" class="validate" required>
+                                        <input id="sparePerList" name="sparePerList[]" ref="spares" v-model="list.spareList" @change="onSparePerListChange" type="number" class="validate" required>
                                         <label for="sparePerList">ค่าอะไหล่(บาท) <span class="icon-star">*</span></label>
                                     </div>
                                 </div>
@@ -98,7 +98,6 @@
                 thisSparePerList: this.sparePerList,
                 thisTotalWage: this.totalWage,
                 thisTotalSpare: this.totalSpare,
-                thisAmountCost: this.amountCost,
                 thisNote: this.note,
                 thisTruckDriver: this.truckDriver,
                 thisTruckPhoto: this.truckPhoto,
@@ -124,46 +123,41 @@
             truckDriver: { require: true },
             truckPhoto: { require: true },
         },
-		// watch: {
-		// 	maintainListsRow: function () {
-		// 		if ( this.maintainListsRow <= 0 ) {
-		// 			this.maintainListsRow = 1;
-		// 		}
-		// 	}
-        // },
 		methods: {
-			// onWagePerListChange: function () {
-			// 	let totalWage = 0;
-			// 	this.$refs.wages.forEach(function(wage) {
-			// 		totalWage = totalWage + parseInt(wage.value);
-            //     });
-			// 	this.totalWage = totalWage;
-			// },
-			// onSparePerListChange: function () {
-			// 	let totalSpare = 0;
-			// 	this.$refs.spares.forEach(function(spare) {
-			// 		totalSpare = totalSpare + parseInt(spare.value);
-            //     });
-			// 	this.totalSpare = totalSpare;
-			// },
+			onWagePerListChange: function () {
+				let totalWage = 0;
+				this.$refs.wages.forEach(function(wage) {
+					totalWage = totalWage + parseInt(wage.value);
+                });
+				this.thisTotalWage = totalWage;
+			},
+			onSparePerListChange: function () {
+				let totalSpare = 0;
+				this.$refs.spares.forEach(function(spare) {
+					totalSpare = totalSpare + parseInt(spare.value);
+                });
+				this.thisTotalSpare = totalSpare;
+			},
+
             onAddListClick: function () {
-                let a = this.thisDataMaintainLists;
-                a.push({
+                let dataMaintainLists = this.thisDataMaintainLists;
+                dataMaintainLists.push({
                     maintainList: '',
                     wageList: '',
                     spareList: '',
                 });
-                this.thisDataMaintainLists = a
-                // this.thisDataMaintainLists.push({
-                //     maintainList: '',
-                //     wageList: '',
-                //     spareList: '',
-                // });
+                this.thisDataMaintainLists = dataMaintainLists
+            },
+            onSubListClick: function () {
+                let dataMaintainLists = this.thisDataMaintainLists;
+
+                if (dataMaintainLists.length >= 2) {
+                    dataMaintainLists.pop();
+                    this.thisDataMaintainLists = dataMaintainLists
+                }
+                
             }
 		},
-        beforeMounte() {
-            alert();
-        },
         mounted() {
             $('.datepicker').pickadate({
                 selectMonths: true,
@@ -185,9 +179,9 @@
             this.thisDataMaintainLists = dataMaintainLists;
         },
 		computed: {
-			// amountCost: function () {
-            //     return this.totalWage * this.totalSpare;
-            // },
+			thisAmountCost: function () {
+                return this.thisTotalWage + this.thisTotalSpare;
+            },
         },
     }
 </script>

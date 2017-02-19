@@ -116,7 +116,7 @@
 		},
 		computed: {
 			amountCost: function () {
-                return this.totalWage * this.totalSpare;
+                return this.totalWage + this.totalSpare;
             },
         },
     }
