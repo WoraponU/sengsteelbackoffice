@@ -8599,6 +8599,10 @@ body #modalEditFuel .responsive-img, body #modalEditMaintain .responsive-img, bo
   max-width: 85%;
 }
 
+body #modalEditTire .tire-photo.responsive-img {
+  max-width: 18%;
+}
+
 body .nav-wrapper .brand-logo {
   padding: 10px;
 }

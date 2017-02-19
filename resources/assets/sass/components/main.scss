@@ -45,6 +45,11 @@ body {
 
     #modalEditTire {
         @extend #modalEditFuel;
+        .tire-photo {
+            &.responsive-img {
+                max-width: 18%;
+            }
+        }
     }
 
 

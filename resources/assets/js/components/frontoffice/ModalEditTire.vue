@@ -63,7 +63,7 @@
                                 <div class="row">
                                     <div class="row">
                                         <div class="col s12 m12 l12 center-align">
-                                            <img class="responsive-img" :src="thisPhotoTire" alt="photo">
+                                            <img class="responsive-img tire-photo" :src="thisPhotoTire" alt="photo">
                                         </div>
                                     </div>
                                     <div class="row">
@@ -186,6 +186,23 @@
                 selectMonths: true,
                 selectYears: 15
             });
-        }
+        },
+        methods: {
+            onImageChange(e) {
+                var files = e.target.files || e.dataTransfer.files;
+                if (!files.length)
+                    return;
+                this.createImage(files[0]);
+            },
+            createImage(file) {
+                var image = new Image();
+                var reader = new FileReader();
+
+                reader.onload = (e) => {
+                    this.thisPhotoTire = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            },
+        },
     }
 </script>
