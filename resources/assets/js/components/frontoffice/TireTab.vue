@@ -66,8 +66,8 @@
                             </div>
                             <div class="input-field col s12 m6 l4 offset-l2">
                                 <select name="sectionOfTire" required>
-                                    <option value="" disabled selected>ประเภทยาง</option>
-                                    <option value="parent">ตัวแม่</option>
+                                    <option value="" disabled>ประเภทยาง</option>
+                                    <option value="parent" selected>ตัวแม่</option>
                                     <option value="child">ตัวลูก</option>
                                 </select>
                                 <label>ตัวแม่/ตัวลูก <span class="icon-star">*</span></label>

@@ -24,8 +24,8 @@
 						</div>  
 						<div class="input-field col s12 m6 l4">
 							<select name="gasType" required>
-								<option value="" disabled selected>โปรดระบุ</option>
-								<option value="gasoline">น้ำมันเครื่องยนต์</option>
+								<option value="" disabled>โปรดระบุ</option>
+								<option value="gasoline" selected>น้ำมันเครื่องยนต์</option>
 								<option value="lubricator">น้ำมันห้องเครื่อง</option>
 								<option value="gear_box_oil">น้ำมันห้องเกียร์</option>
 								<option value="final_gear_oil">น้ำมันเฟืองท้าย</option>
