@@ -5,7 +5,6 @@
             <input type="hidden" name="_method" value="PUT">
 
             <div class="modal-content">
-                <h4>Modal Header</h4>
                 <div class="container center-align">
                     <TruckAndDriverMap 
                         :truckDriver="thisTruckDriver"
@@ -17,7 +16,7 @@
                         <div class="row left-align card-panel">
                             <div class="row">
                                 <div class="col offset-l1">
-                                    <h5>รายละเอียดการซ่อมบำรุง</h5>						
+                                    <h5>แก้ไขรายละเอียดการซ่อมบำรุง</h5>						
                                 </div>
                             </div>
                             <div class="row">

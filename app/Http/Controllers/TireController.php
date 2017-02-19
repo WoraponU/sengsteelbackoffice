@@ -124,6 +124,34 @@ class TireController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $params = [
+            'truck_driver'  => $request->truckDriver,
+            'license_plate' => $request->licensePlate,
+            'tire_date'     => date('Y-m-d', strtotime($request->tireDate)),
+            'tire_employee' => $request->tireEmployee,
+            'type_of_tire'  => $request->typeOfTire,
+            'brand_of_tire' => $request->brandOfTire,
+            'price_per_unit'=> $request->pricePerUnit,
+            'wage_per_unit' => $request->wagePerUnit,
+            'photo_tire'    => $request->photoTire,
+            'section_of_tire'=> $request->sectionOfTire,
+            'row_of_tire'   => $request->rowOfTire,
+            'number_of_tire'=> $request->numberOfTire,
+            'quantity'      => $request->quantity,
+            'total_tire_price'=> $request->totalTirePrice,
+            'total_amout_cost'=> $request->totalAmoutCost,
+            'note'          => $request->note,
+
+        ];
+
+        $tire = $this->tire->find($id);
+        if(is_null($tire)) {
+            return redirect('/')->withErrors('ไม่พบข้อมูลการเปลี่ยนยาง');
+        }
+
+        $tire->update($params);
+        
+        return redirect('/');
     }
 
     /**
