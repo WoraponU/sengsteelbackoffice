@@ -152,5 +152,13 @@ class FuelController extends Controller
      */
     public function destroy($id)
     {   
+        $fuel = $this->fuel->find($id);
+        
+        if(is_null($fuel)) {
+            return redirect('/')->withErrors('ไม่พบข้อมูลการเติมน้ำมัน');
+        }
+
+        $fuel->delete();
+        return redirect('/');     
     }
 }

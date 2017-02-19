@@ -29,7 +29,7 @@
                 <a @click="showModalEditFuel = true" href="#modalEditFuel" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">mode_edit</i>
                 </a>
-                <a @click="" class="btn-floating waves-effect waves-light">
+                <a @click="showModalDeleteFuel = true" href="#modalDeleteFuel" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">delete</i>
                 </a>
             </div>
@@ -51,8 +51,14 @@
             :note="note"
             :gasPerDistance="gasPerDistance"
             :totalDistance="totalDistance"
-        ></ModalEditFuel>        
-        <!--<ModalDeleteUser v-if="showModalDelete" :id="id" :firstname="firstname" :lastname="lastname"></ModalDeleteUser>-->
+        ></ModalEditFuel>     
+        <ModalDeleteFuel v-if="showModalDeleteFuel"
+            :id="id" 
+            :firstName="firstName" 
+            :lastName="lastName" 
+            :licensePlate="licensePlate" 
+            :fuelDate="fuelDate" 
+        ></ModalDeleteFuel>
     </div>
 </template>
 
@@ -60,7 +66,8 @@
     export default {
         data() {
             return {
-                showModalEditFuel: false
+                showModalEditFuel: false,
+                showModalDeleteFuel: false
             }
         },
         props: {
@@ -85,8 +92,9 @@
             $('.modal').modal({
                 complete: function() { 
                     this.showModalEditFuel = false
+                    this.showModalDeleteFuel = false
                 }
             });
-        }
+        },
     }
 </script>
