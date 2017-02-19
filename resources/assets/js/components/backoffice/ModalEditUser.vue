@@ -30,11 +30,11 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m12 l6">
-                        <input name="identificationNumber" id="identificationNumber" type="text" class="validate" :value="user.identification_number" required>
+                        <input name="identificationNumber" id="identificationNumber" type="text" class="validate" v-model="identificationNumber" required>
                         <label for="identificationNumber">เลขประจำตัวประชาชน <span class="icon-star">*</span></label>
                     </div>
                     <div class="input-field col s12 m12 l6">
-                        <input name="driverLicense" id="driverLicense" type="text" class="validate" :value="user.driver_license" required>
+                        <input name="driverLicense" id="driverLicense" type="text" class="validate" v-model="driverLicense" required>
                         <label for="driverLicense">เลขใบขับขี่ <span class="icon-star">*</span></label>
                     </div>
                 </div>
@@ -103,15 +103,21 @@
                 ],
                 photoPreview: '/images/user_icon.png',
                 user: [],
+                identificationNumber: '',
+                driverLicense: '',
             }
         },
         beforeMount() {
             axios.get('/backoffice/user/' + this.id + '/edit')
             .then((response) => {
                 this.user = response.data
+                this.identificationNumber = this.user.identification_number
+                this.identificationNumber = this.user.identification_number
+                this.driverLicense = this.user.driver_license
+
                 this.photoPreview = this.user.photo
                 this.selected = this.user.role
-
+                
                 if (this.selected != 'truck_driver') {
                     this.isShowUserPass = true
                 }
@@ -119,6 +125,22 @@
             .catch(function (error) {
                 console.log(error);
             });
+        },
+        watch: {
+            identificationNumber: function () {
+                let identificationNumberString = this.identificationNumber.toString()
+                if (identificationNumberString.toString().length > 12) {
+                    identificationNumberString = identificationNumberString.substring(0, 13)
+                }
+                this.identificationNumber = identificationNumberString
+            },
+            driverLicense: function () {
+                let driverLicenseString = this.driverLicense.toString()
+                if (driverLicenseString.toString().length > 7) {
+                   driverLicenseString = driverLicenseString.substring(0, 8)
+                }
+                this.driverLicense = driverLicenseString
+            }
         },
         updated: function() {
             Materialize.updateTextFields()

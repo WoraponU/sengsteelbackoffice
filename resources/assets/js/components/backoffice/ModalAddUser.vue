@@ -29,11 +29,11 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m12 l6">
-                        <input name="identificationNumber" id="identificationNumber" type="text" class="validate" required>
+                        <input name="identificationNumber" id="identificationNumber" v-model="identificationNumber" type="number" class="validate" required>
                         <label for="identificationNumber">เลขประจำตัวประชาชน <span class="icon-star">*</span></label>
                     </div>
                     <div class="input-field col s12 m12 l6">
-                        <input name="driverLicense" id="driverLicense" type="text" class="validate" required>
+                        <input name="driverLicense" id="driverLicense" v-model="driverLicense" type="number" class="validate" required>
                         <label for="driverLicense">เลขใบขับขี่ <span class="icon-star">*</span></label>
                     </div>
                 </div>
@@ -97,6 +97,24 @@
                     { text: 'พนักงานขับรถ', value: 'truck_driver' }
                 ],
                 photoPreview: '/images/user_icon.png',
+                identificationNumber: '',
+                driverLicense: '',
+            }
+        },
+        watch: {
+            identificationNumber: function () {
+                let identificationNumberString = this.identificationNumber.toString()
+                if (identificationNumberString.toString().length > 12) {
+                    identificationNumberString = identificationNumberString.substring(0, 13)
+                }
+                this.identificationNumber = identificationNumberString
+            },
+            driverLicense: function () {
+                let driverLicenseString = this.driverLicense.toString()
+                if (driverLicenseString.toString().length > 7) {
+                   driverLicenseString = driverLicenseString.substring(0, 8)
+                }
+                this.driverLicense = driverLicenseString
             }
         },
         methods: {
