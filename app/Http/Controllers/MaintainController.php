@@ -152,5 +152,13 @@ class MaintainController extends Controller
      */
     public function destroy($id)
     {   
+        $maintain = $this->maintain->find($id);
+        
+        if(is_null($maintain)) {
+            return redirect('/')->withErrors('ไม่พบข้อมูลการซ่อมบำรุง');
+        }
+
+        $maintain->delete();
+        return redirect('/');
     }
 }
