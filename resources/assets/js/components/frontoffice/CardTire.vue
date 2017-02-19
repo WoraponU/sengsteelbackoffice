@@ -39,7 +39,27 @@
             </div>
         </div>
         <ModalEditTire v-if="showModalEditTire"
-            
+            :id="id"
+            :firstName="firstName"
+            :lastName="lastName"
+            :userPhoto="userPhoto"
+            :truckDriver="truckDriver"
+            :truckPhoto="truckPhoto"
+            :licensePlate="licensePlate"
+            :tireDate="tireDate"
+            :tireEmployee="tireEmployee"
+            :typeOfTire="typeOfTire"
+            :brandOfTire="brandOfTire"
+            :pricePerUnit="pricePerUnit"
+            :wagePerUnit="wagePerUnit"
+            :photoTire="photoTire"
+            :sectionOfTire="sectionOfTire"
+            :rowOfTire="rowOfTire"
+            :numberOfTire="numberOfTire"
+            :quantity="quantity"
+            :totalTirePrice="totalTirePrice"
+            :totalAmoutCost="totalAmoutCost"
+            :note="note"
         ></ModalEditTire>
     </div>
 </template>
