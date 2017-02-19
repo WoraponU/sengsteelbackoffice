@@ -71,7 +71,7 @@
 					</div>			
 
 					<div class="input-field col s12 m12 l12 right-align">
-						<button class="btn waves-effect waves-light" type="submit">Submit
+						<button class="btn waves-effect waves-light" type="submit">เพิ่ม
 							<i class="material-icons right">send</i>
 						</button>
 					</div>

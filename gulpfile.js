@@ -34,4 +34,13 @@ elixir(mix => {
             'plugins/print.min.js',
             'components/frontoffice/main.js',
         ], 'public/js/app-frontoffice.js')
+
+        .sass([
+            'app.scss',
+            // 'components/main.scss'
+        ], 'public/css/app-login.css')
+        .webpack([           
+            'app-login.js',
+            'plugins/materialize.js',
+        ], 'public/js/app-login.js')
 });
