@@ -73,13 +73,13 @@
                                 <label>ตัวแม่/ตัวลูก <span class="icon-star">*</span></label>
                             </div> 
                             <div class="input-field col s12 m6 l4">
-                                <input id="rowOfTire" name="rowOfTire" type="number" class="validate" required>
+                                <input id="rowOfTire" name="rowOfTire" type="text" class="validate" required>
                                 <label for="rowOfTire">ยางแถวที่ <span class="icon-star">*</span></label>
                             </div> 
                         </div>
                         <div class="row">
                             <div class="input-field col s12 m6 l4 offset-l2">
-                                <input id="numberOfTire" name="numberOfTire" min="1" type="number" class="validate" required>
+                                <input id="numberOfTire" name="numberOfTire" type="text" class="validate" required>
                                 <label for="numberOfTire">หมายเลขยาง <span class="icon-star">*</span></label>
                             </div> 
                             <div class="input-field col s12 m6 l4">

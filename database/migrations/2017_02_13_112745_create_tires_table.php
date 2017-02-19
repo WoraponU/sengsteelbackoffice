@@ -26,8 +26,8 @@ class CreateTiresTable extends Migration
             $table->integer('wage_per_unit');
             $table->longText('photo_tire');
             $table->string('section_of_tire');
-            $table->integer('row_of_tire');
-            $table->integer('number_of_tire');
+            $table->string('row_of_tire');
+            $table->string('number_of_tire');
             $table->string('quantity');
             $table->integer('total_tire_price');
             $table->integer('total_amout_cost');
