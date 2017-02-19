@@ -65,7 +65,6 @@
         beforeMount() {
             const numberWheelPerRow = JSON.parse(this.numberWheelPerRow);
             this.thisNumberWheelPerRow = numberWheelPerRow
-            console.log(numberWheelPerRow);
         },
         updated: function() {
             $('.modal').modal({

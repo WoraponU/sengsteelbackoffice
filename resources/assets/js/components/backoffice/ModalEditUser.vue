@@ -40,7 +40,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m12 l6">
-                        <input name="phone" id="phone" type="text" class="validate" :value="user.phone" required>
+                        <input name="phone" id="phone" type="text" class="validate" v-model="phone" required>
                         <label for="phone">เบอร์ <span class="icon-star">*</span></label>
                     </div>
                     <div class="input-field col s12 m12 l6">
@@ -105,6 +105,7 @@
                 user: [],
                 identificationNumber: '',
                 driverLicense: '',
+                phone: '',
             }
         },
         beforeMount() {
@@ -114,6 +115,7 @@
                 this.identificationNumber = this.user.identification_number
                 this.identificationNumber = this.user.identification_number
                 this.driverLicense = this.user.driver_license
+                this.phone = '0' + this.user.phone;
 
                 this.photoPreview = this.user.photo
                 this.selected = this.user.role
