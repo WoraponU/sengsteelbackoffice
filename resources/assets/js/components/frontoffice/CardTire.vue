@@ -19,7 +19,7 @@
                         <p>ยี่ห้อ: {{ brandOfTire }}</p>
                         <p>ราคา/เส้น: {{ pricePerUnit }} บาท</p>
                         <p>ค่าแรง/เส้น: {{ wagePerUnit }} บาท</p>
-                        <p>ตัวแม่ตัวลูก: {{ sectionOfTire }}</p>
+                        <p>ตัวแม่ตัวลูก: {{ showSectionOfTire }}</p>
                         <p>ยางแถวที่: {{ rowOfTire }}</p>
                         <p>หมายเลขยาง: {{ numberOfTire }}</p>
                         <p>จำนวน: {{ quantity }}</p>
@@ -110,6 +110,15 @@
                     this.showModalDeleteTire = false
                 }
             });
-        }
+        },
+        computed: {
+            showSectionOfTire: function () {
+                if (this.sectionOfTire == 'parent') {
+                    return 'ตัวแม่';
+                } else {
+                    return 'ตัวลูก';
+                }
+            }
+        },
     }
 </script>

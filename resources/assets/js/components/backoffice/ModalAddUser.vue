@@ -92,8 +92,8 @@
                 selected: '',
                 options: [
                     { text: 'โปรดระบุ', value: '', disabled: true },
-                    { text: 'เจ้าของ', value: 'owner' },
-                    { text: 'ผู้ดูแล', value: 'admin' },
+                    { text: 'ผู้ดูแลหลัก', value: 'main_admin' },
+                    { text: 'ผู้เพิ่มข้อมูล', value: 'admin' },
                     { text: 'พนักงานขับรถ', value: 'truck_driver' }
                 ],
                 photoPreview: '/images/user_icon.png',

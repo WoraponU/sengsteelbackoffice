@@ -12,7 +12,7 @@
                 <span class="card-title grey-text text-darken-4">{{ firstname }} {{ lastname }}<i class="material-icons right">close</i></span>
                 <div class="section">
                     <blockquote>
-                        <p>ตำแหน่ง: {{ role }}</p>
+                        <p>ตำแหน่ง: {{ showRole }}</p>
                         <p>เลขประจำตัวประชาชน: {{ identificationNumber }}</p>
                         <p>เลขใบขับขี่: {{ driverLicense }}</p>
                         <p>เบอร์ 0{{ phone }}</p>
@@ -53,6 +53,17 @@
             return {
                 showModalEdit: false,
                 showModalDelete: false,
+            }
+        },
+        computed: {
+            showRole: function () {
+                if (this.role == 'main_admin') {
+                    return 'ผู้ดูแลหลัก';
+                } else if (this.role == 'admin') { 
+                    return 'ผู้เพิ่มข้อมูล';
+                } else {
+                    return 'พนักงานขับรถ';
+                }
             }
         },
         updated: function() {
