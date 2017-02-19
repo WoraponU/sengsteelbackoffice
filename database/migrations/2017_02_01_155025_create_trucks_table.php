@@ -29,7 +29,6 @@ class CreateTrucksTable extends Migration
 
             $table->integer('row_of_wheel');
             $table->string('number_wheel_per_row');
-            $table->integer('last_number_car');
 
             $table->timestamps();
         });

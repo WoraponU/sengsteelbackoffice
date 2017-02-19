@@ -56,7 +56,6 @@ class TruckController extends Controller
 			'lubricator'	=> $request->lubricator,
 			'gear_box_oil'	=> $request->gearBoxOil,
 			'final_gear_oil'	=> $request->finalGearOil,
-			'last_number_car'	=> $request->lastNumberCar,
 			'row_of_wheel'	=> $request->rowOfWheel,
 			'number_wheel_per_row'	=> json_encode($request->numberWheelPerRow),
         ];
@@ -109,7 +108,6 @@ class TruckController extends Controller
 			'lubricator'	=> $request->lubricator,
 			'gear_box_oil'	=> $request->gearBoxOil,
 			'final_gear_oil'	=> $request->finalGearOil,
-			'last_number_car'	=> $request->lastNumberCar,
 			'row_of_wheel'	=> $request->rowOfWheel,
 			'number_wheel_per_row'	=> json_encode($request->numberWheelPerRow),
         ];

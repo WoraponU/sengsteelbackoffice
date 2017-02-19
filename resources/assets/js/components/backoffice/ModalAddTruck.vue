@@ -40,12 +40,6 @@
                             <label for="annualTaxDate">วันที่ต่อทะเบียน <span class="icon-star">*</span></label>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12 m12 l6">
-                            <input name="lastNumberCar" id="lastNumberCar" type="text" class="validate" required>
-                            <label for="lastNumberCar">หมายเลข กม.ล่าสุด <span class="icon-star">*</span></label>
-                        </div>
-                    </div>
                 </div>
                
                 <div class="section">  

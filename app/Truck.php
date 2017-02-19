@@ -23,6 +23,5 @@ class Truck extends Model
         'final_gear_oil',
         'number_wheel_per_row',
         'row_of_wheel',
-        'last_number_car',
     ];
 }

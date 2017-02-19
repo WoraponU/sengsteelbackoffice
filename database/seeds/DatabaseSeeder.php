@@ -41,7 +41,6 @@ class DatabaseSeeder extends Seeder
                 'final_gear_oil'    => 'final_gear_oil',
                 'number_wheel_per_row'  => '2',
                 'row_of_wheel'  => '2',
-                'last_number_car'   => '1000',
             ],
             
         ];
