@@ -162,5 +162,13 @@ class TireController extends Controller
      */
     public function destroy($id)
     {   
+        $tire = $this->tire->find($id);
+        
+        if(is_null($tire)) {
+            return redirect('/')->withErrors('ไม่พบข้อมูลการเปลี่ยนยาง');
+        }
+
+        $tire->delete();
+        return redirect('/');
     }
 }

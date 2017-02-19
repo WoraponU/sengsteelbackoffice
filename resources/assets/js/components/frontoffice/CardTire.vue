@@ -33,7 +33,7 @@
                 <a @click="showModalEditTire = true" href="#modalEditTire" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">mode_edit</i>
                 </a>
-                <a @click="" class="btn-floating waves-effect waves-light">
+                <a @click="showModalDeleteTire = true"  href="#modalDeleteTire" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">delete</i>
                 </a>
             </div>
@@ -61,6 +61,14 @@
             :totalAmoutCost="totalAmoutCost"
             :note="note"
         ></ModalEditTire>
+
+        <ModalDeleteTire v-if="showModalDeleteTire"
+            :id="id"
+            :firstName="firstName"
+            :lastName="lastName"
+            :licensePlate="licensePlate"
+            :tireDate="tireDate"
+        ></ModalDeleteTire>
     </div>
 </template>
 
@@ -68,7 +76,8 @@
     export default {
         data() {
             return {
-                showModalEditTire: false
+                showModalEditTire: false,
+                showModalDeleteTire: false
             }
         },
         props: {
@@ -98,6 +107,7 @@
             $('.modal').modal({
                 complete: function() { 
                     this.showModalEditTire = false
+                    this.showModalDeleteTire = false
                 }
             });
         }

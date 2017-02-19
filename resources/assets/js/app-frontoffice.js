@@ -33,6 +33,7 @@ Vue.component('ModalEditFuel', require('./components/frontoffice/ModalEditFuel.v
 Vue.component('ModalEditTire', require('./components/frontoffice/ModalEditTire.vue'));
 Vue.component('ModalEditMaintain', require('./components/frontoffice/ModalEditMaintain.vue'));
 Vue.component('ModalDeleteFuel', require('./components/frontoffice/ModalDeleteFuel.vue'));
+Vue.component('ModalDeleteTire', require('./components/frontoffice/ModalDeleteTire.vue'));
 
 const app = new Vue({
     el: '#app'
