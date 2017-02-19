@@ -39,13 +39,13 @@
             return {
                 userSelected: this.truckDriver,
                 userOptions: [
-                    { text: 'Choose your option', value: '', disabled: true },
+                    { text: 'โปรดระบุ', value: '', disabled: true },
                 ],
                 userPhoto: this.truckDriverPhoto,
 
                 truckSelected: this.licensePlate,  
                 truckOptions: [
-                    { text: 'Choose your option', value: '', disabled: true },
+                    { text: 'โปรดระบุ', value: '', disabled: true },
                 ],
                 truckPhoto: this.truckImage,
             }

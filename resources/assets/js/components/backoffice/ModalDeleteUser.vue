@@ -4,13 +4,13 @@
             <input type="hidden" name="_token" v-model="csrfToken">
             <input type="hidden" name="_method" value="DELETE">
 			<div class="modal-content">
-				<h4>Detlete User</h4>
+				<h4>ลบข้อมูลพนักงาน</h4>
 				<div class="divider"></div>
 				<p>&emsp;{{ firstname }} {{ lastname }}</p>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class="modal-action waves-effect waves-green btn-flat">Delete</button>
-				<button type="button" class="modal-close modal-action waves-effect waves-green btn-flat">Cancel</button>
+				<button type="submit" class="modal-action waves-effect waves-green btn-flat">ลบ</button>
+				<button type="button" class="modal-close modal-action waves-effect waves-green btn-flat">ปิด</button>
 			</div>
 		</form>
 	</div>

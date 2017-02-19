@@ -12,12 +12,12 @@
                 <span class="card-title grey-text text-darken-4">{{ firstname }} {{ lastname }}<i class="material-icons right">close</i></span>
                 <div class="section">
                     <blockquote>
-                        <p>Role: {{ role }}</p>
-                        <p>ID Number: {{ identificationNumber }}</p>
-                        <p>Driver's License: {{ driverLicense }}</p>
-                        <p>Tel. {{ phone }}</p>
-                        <p>Email: {{ email }}</p>
-                        <p>Address: {{ address }}</p>
+                        <p>ตำแหน่ง: {{ role }}</p>
+                        <p>เลขประจำตัวประชาชน: {{ identificationNumber }}</p>
+                        <p>เลขใบขับขี่: {{ driverLicense }}</p>
+                        <p>เบอร์ 0{{ phone }}</p>
+                        <p>อีเมลล์: {{ email }}</p>
+                        <p>ที่อยู่: {{ address }}</p>
                     </blockquote>
                 </div>
             </div>

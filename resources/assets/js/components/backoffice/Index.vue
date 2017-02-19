@@ -2,7 +2,7 @@
     <div>
         <NavBar></NavBar>
         <tabs>
-            <tab name="User Management" :selected="true">
+            <tab name="จัดการพนักงาน" :selected="true">
                 <div class="container center-align">
                     <div class="row">
                         <a href="#modalAddUser" class="btn-floating btn-large waves-effect waves-light right"><i class="material-icons">add</i></a>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </tab>
-            <tab name="Tuck Management">
+            <tab name="จัดการรถบรรทุก">
             <div class="container center-align">
                     <div class="row">
                         <a href="#modalAddTruck" class="btn-floating btn-large waves-effect waves-light right"><i class="material-icons">add</i></a>

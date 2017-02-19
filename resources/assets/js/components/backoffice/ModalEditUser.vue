@@ -4,7 +4,7 @@
             <input type="hidden" name="_token" v-model="csrfToken">
             <input type="hidden" name="_method" value="PUT">
             <div class="modal-content">
-                <h4>Edit User Infomation</h4>
+                <h4>แก้ไขข้อมูลพนักงาน</h4>
                 <div class="divider"></div>
 
                 <div class="row mt25">
@@ -21,42 +21,42 @@
                 <div class="row">
                     <div class="input-field col s12 m12 l6">
                         <input name="firstname" id="firstname" type="text" class="validate" :value="user.firstname" required>
-                        <label for="firstname">First Name <span class="icon-star">*</span></label>
+                        <label for="firstname">ชื่อจริง <span class="icon-star">*</span></label>
                     </div>
                     <div class="input-field col s12 m12 l6">
                         <input name="lastname" id="lastname" type="text" class="validate" :value="user.lastname" required>
-                        <label for="lastname">Last Name <span class="icon-star">*</span></label>
+                        <label for="lastname">นามสกุล <span class="icon-star">*</span></label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m12 l6">
                         <input name="identificationNumber" id="identificationNumber" type="text" class="validate" :value="user.identification_number" required>
-                        <label for="identificationNumber">Identification Number <span class="icon-star">*</span></label>
+                        <label for="identificationNumber">เลขประจำตัวประชาชน <span class="icon-star">*</span></label>
                     </div>
                     <div class="input-field col s12 m12 l6">
                         <input name="driverLicense" id="driverLicense" type="text" class="validate" :value="user.driver_license" required>
-                        <label for="driverLicense">Driver's License <span class="icon-star">*</span></label>
+                        <label for="driverLicense">เลขใบขับขี่ <span class="icon-star">*</span></label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m12 l6">
                         <input name="phone" id="phone" type="text" class="validate" :value="user.phone" required>
-                        <label for="phone">Tel <span class="icon-star">*</span></label>
+                        <label for="phone">เบอร์ <span class="icon-star">*</span></label>
                     </div>
                     <div class="input-field col s12 m12 l6">
                         <input name="email" id="email" type="email" class="validate" :value="user.email">
-                        <label for="email" data-error="wrong format">Email</label>
+                        <label for="email" data-error="wrong format">อีเมลล์</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m12 l12">
                         <textarea name="address" id="address" class="materialize-textarea" :value="user.address"></textarea>
-                        <label for="address">Address</label>
+                        <label for="address">ที่อยู่</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col s12 m12 l6">
-                        <label class="role-label">Role <span class="icon-star">*</span></label>
+                        <label class="role-label">ตำแหน่ง <span class="icon-star">*</span></label>
                         <select name="role" class="browser-default" v-model="selected" @change="onRoleChange" required>
                             <option v-for="option in options" v-bind:value="option.value" :disabled="option.disabled">
                                 {{ option.text }}
@@ -76,8 +76,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="modal-action waves-effect waves-green btn-flat">Update</button>
-                <button type="button" class="modal-close modal-action waves-effect waves-green btn-flat">Cancel</button>
+                <button type="submit" class="modal-action waves-effect waves-green btn-flat">แก้ไข</button>
+                <button type="button" class="modal-close modal-action waves-effect waves-green btn-flat">ปิด</button>
             </div>
         </form>
     </div>
@@ -96,10 +96,10 @@
                 isShowUserPass: false,
                 selected: '',
                 options: [
-                    { text: 'Choose your option', value: '', disabled: true },
-                    { text: 'Owner', value: 'owner' },
-                    { text: 'Admin', value: 'admin' },
-                    { text: 'Truck Driver', value: 'truck_driver' }
+                    { text: 'โปรดระบุ', value: '', disabled: true },
+                    { text: 'เจ้าของ', value: 'owner' },
+                    { text: 'ผู้ดูแล', value: 'admin' },
+                    { text: 'พนักงานขับรถ', value: 'truck_driver' }
                 ],
                 photoPreview: '/images/user_icon.png',
                 user: [],
