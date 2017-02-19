@@ -42,5 +42,6 @@ elixir(mix => {
         .webpack([           
             'app-login.js',
             'plugins/materialize.js',
+            'components/login/main.js',
         ], 'public/js/app-login.js')
 });

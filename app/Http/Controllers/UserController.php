@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\MessageBag;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -145,5 +146,19 @@ class UserController extends Controller
 
         $user->delete();
         return redirect('backoffice');        
+    }
+
+    public function auth(Request $request)
+    {
+        $user = $this->user
+                ->where('username', $request->username)
+                ->where('password', $request->password);
+        if ($user->count() != 0) {
+            Auth::login($user->get()->first());
+            
+            return redirect('/');
+        } else {
+            return redirect('login')->withErrors('ไม่พบข้อมูลบัญชีผู้ใช้นี้');
+        }
     }
 }

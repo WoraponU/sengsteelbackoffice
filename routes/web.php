@@ -10,11 +10,14 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-Route::get('login', function () {
-    return view('login.login');    
-}); 
+Route::group(['prefix' => 'login'], function () {
+    Route::get('', function () {
+        return view('login.login');    
+    }); 
+    Route::post('auth', 'UserController@auth'); 
+});
 
-Route::group(['prefix' => 'backoffice'], function () {
+Route::group(['prefix' => 'backoffice', 'middleware' => 'auth.login'], function () {
     Route::get('', function () {
         return view('backoffice.main');
     });
@@ -25,7 +28,7 @@ Route::group(['prefix' => 'backoffice'], function () {
     Route::resource('truckdriver', 'UserController@getTruckDriver');
 });
 
-Route::group(['prefix' => ''], function () {
+Route::group(['prefix' => '', 'middleware' => 'auth.login'], function () {
     Route::get('', function () {
         return view('frontoffice.main');    
     });
