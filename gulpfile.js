@@ -37,7 +37,7 @@ elixir(mix => {
 
         .sass([
             'app.scss',
-            // 'components/main.scss'
+            'components/login.scss'
         ], 'public/css/app-login.css')
         .webpack([           
             'app-login.js',
