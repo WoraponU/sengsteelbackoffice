@@ -1,12 +1,18 @@
 <template>
     <div id="modalEditMaintain" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <h4>Modal Header</h4>
-            <div class="container center-align">
-                <form action="/maintain" method="POST">
-                    <input type="hidden" name="_token" v-model="csrfToken">
-                    
-                    <TruckAndDriverMap></TruckAndDriverMap>
+        <form :action="action" method="POST">
+            <input type="hidden" name="_token" v-model="csrfToken">
+            <input type="hidden" name="_method" value="PUT">
+
+            <div class="modal-content">
+                <h4>Modal Header</h4>
+                <div class="container center-align">
+                    <TruckAndDriverMap 
+                        :truckDriver="thisTruckDriver"
+                        :truckDriverPhoto="thisUserPhoto"
+                        :licensePlate="thisLicensePlate"
+                        :truckImage="thisTruckPhoto"
+                    ></TruckAndDriverMap>
                     <div class="container tire-tab">
                         <div class="row left-align card-panel">
                             <div class="row">
@@ -30,7 +36,7 @@
                                     <div class="col s8 m8 l8 offset-l2">
                                         <span class="section-header">รายการที่ซ่อม</span>
                                         <a class="btn-floating btn waves-effect waves-light right" @click="onAddListClick"><i class="material-icons">add</i></a>
-								        <a class="btn-floating btn waves-effect waves-light right" @click="onSubListClick"><i class="material-icons">remove</i></a>
+                                        <a class="btn-floating btn waves-effect waves-light right" @click="onSubListClick"><i class="material-icons">remove</i></a>
                                     </div>
                                 </div>
                                 <div class="row" v-for="(list, index) in thisDataMaintainLists">
@@ -71,12 +77,13 @@
                             </div>
                         </div>
                     </div>       
-                </form>          
+                </div>
             </div>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
+            <div class="modal-footer">
+                <button type="submit" class="modal-action waves-effect waves-green btn-flat ">แก้ไข</button>
+                <button class="modal-action modal-close waves-effect waves-green btn-flat ">ปิด</button>
+            </div>
+        </form>                  
     </div>
 </template>
 
@@ -85,6 +92,7 @@
         data() {
             return {
                 csrfToken: window.Laravel.csrfToken,
+                action: '/maintain/' + this.id,
 
                 thisId: this.id,
                 thisFirstName: this.firstName,

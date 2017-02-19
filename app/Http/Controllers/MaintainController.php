@@ -84,7 +84,6 @@ class MaintainController extends Controller
             'amount_cost'    => $request->amountCost,
             'note'          => $request->note,
         ];
-        // dd($params);
         $this->maintain->create($params);
         
         return redirect('/');
@@ -98,7 +97,7 @@ class MaintainController extends Controller
      */
     public function show($id)
     {
-        //
+        dd('fjkdsla;');
     }
 
     /**
@@ -119,7 +118,30 @@ class MaintainController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   
+        $params = [
+            'truck_driver'  => $request->truckDriver,
+            'license_plate' => $request->licensePlate,
+            'maintain_date'  => date('Y-m-d', strtotime($request->maintainDate)),
+            'maintain_employee'  => $request->maintainEmployee,
+            'maintain_lists' => json_encode($request->maintainLists),
+            'wage_per_list'   => json_encode($request->wagePerList),
+            'spare_per_list'  => json_encode($request->sparePerList),
+            'total_wage'     => $request->totalWage,
+            'total_spare'    => $request->totalSpare,
+            'amount_cost'    => $request->amountCost,
+            'note'          => $request->note,
+        ];
+
+       
+        $maintain = $this->maintain->find($id);
+        if(is_null($maintain)) {
+            return redirect('/')->withErrors('ไม่พบข้อมูลการซ่อมบำรุง');
+        }
+
+        $maintain->update($params);
+        
+        return redirect('/');
     }
 
     /**
