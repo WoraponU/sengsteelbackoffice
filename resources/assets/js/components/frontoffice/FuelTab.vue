@@ -35,11 +35,11 @@
 					</div>
 					<div class="row">
 						<div class="input-field col s12 m6 l4 offset-l2">
-							<input id="lastNumberCar" name="lastNumberCar" type="number" v-model="lastNumberCar" class="validate" required>
+							<input id="lastNumberCar" name="lastNumberCar" type="number" min="1" v-model="lastNumberCar" class="validate" required>
 							<label for="lastNumberCar">หมายเลขกิโลเมตรครั้งก่อน</label>
 						</div>   
 						<div class="input-field col s12 m6 l4">
-							<input id="presentNumberCar" name="presentNumberCar" type="number" :min="lastNumberCar" v-model="presentNumberCar" class="validate" required>
+							<input id="presentNumberCar" name="presentNumberCar" type="number" :min="lastNumberCar+1" v-model="presentNumberCar" class="validate" required>
 							<label for="presentNumberCar">หมายเลขกิโลเมตรล่าสุด <span class="icon-star">*</span></label>
 						</div>  
 					</div>
@@ -88,8 +88,8 @@
             return {
                 csrfToken: window.Laravel.csrfToken,
 
-				lastNumberCar: 100,
-				presentNumberCar: 100,
+				lastNumberCar: 1,
+				presentNumberCar: 2,
 				liter: 1,
             }
         },
