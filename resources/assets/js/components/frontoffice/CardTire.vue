@@ -30,10 +30,10 @@
                 </div>
             </div>
             <div class="card-action right-align">
-                <a @click="showModalEditTire = true" href="#modalEditTire" class="btn-floating waves-effect waves-light">
+                <a  v-if="userModelRole == 'main_admin'" @click="showModalEditTire = true" href="#modalEditTire" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">mode_edit</i>
                 </a>
-                <a @click="showModalDeleteTire = true"  href="#modalDeleteTire" class="btn-floating waves-effect waves-light">
+                <a  v-if="userModelRole == 'main_admin'" @click="showModalDeleteTire = true"  href="#modalDeleteTire" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">delete</i>
                 </a>
             </div>
@@ -102,6 +102,7 @@
             totalTirePrice: { require: true },
             totalAmoutCost: { require: true },
             note: { require: true },
+            userModelRole: { require: true },
         },
         updated() {
             $('.modal').modal({

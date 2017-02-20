@@ -40,10 +40,10 @@
                 </div>
             </div>
             <div class="card-action right-align">
-                <a href="#modalEditMaintain" @click="showModalEditMaintain = true" class="btn-floating waves-effect waves-light">
+                <a  v-if="userModelRole == 'main_admin'" href="#modalEditMaintain" @click="showModalEditMaintain = true" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">mode_edit</i>
                 </a>
-                <a href="#modalDeleteMaintain" @click="showModalDeleteMaintain = true" class="btn-floating waves-effect waves-light">
+                <a  v-if="userModelRole == 'main_admin'" href="#modalDeleteMaintain" @click="showModalDeleteMaintain = true" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">delete</i>
                 </a>
             </div>
@@ -96,6 +96,7 @@
             note: { require: true },
             truckDriver: { require: true },
             truckPhoto: { require: true },
+            userModelRole: { require: true },
         },
         data() {
             return {

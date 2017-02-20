@@ -19,6 +19,7 @@
                             :photo="user.photo"
                             :address="user.address"
                             :role="user.role"
+                            :userModelRole="userModel.role"
                         ></CardUser>
                     </div>
 
@@ -50,6 +51,7 @@
                             :lastNumberCar="truck.last_number_car"
                             :numberWheelPerRow="truck.number_wheel_per_row"
                             :rowOfWheel="truck.row_of_wheel"
+                        	:userModelRole="userModel.role"
                         ></CardTruck>
                     </div>
 
@@ -76,7 +78,9 @@
                 users: [],
                 trucks: [],
                 dataUserNotFound: false,
-                dataTruckNotFound: false
+                dataTruckNotFound: false,
+
+                userModel: '',
             }
         },
         beforeMount() {
@@ -104,5 +108,8 @@
                 console.log(error);
             });
         },
+        mounted() {
+			this.userModel = JSON.parse(localStorage.getItem('auth'));
+		}
     }
 </script>

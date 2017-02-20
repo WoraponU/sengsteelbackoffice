@@ -22,10 +22,10 @@
                 </div>
             </div>
             <div class="card-action right-align">
-                <a @click="onCallModalEdit" class="btn-floating waves-effect waves-light">
+                <a v-if="userModelRole == 'main_admin'" @click="onCallModalEdit" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">mode_edit</i>
                 </a>
-                <a @click="onCallModalDelete" class="btn-floating waves-effect waves-light">
+                <a v-if="userModelRole == 'main_admin'" @click="onCallModalDelete" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">delete</i>
                 </a>
             </div>
@@ -48,6 +48,7 @@
             photo: { require: true },
             address: { require: true },
             role: { require: true },
+            userModelRole: { require: true },
         },
         data() {
             return {

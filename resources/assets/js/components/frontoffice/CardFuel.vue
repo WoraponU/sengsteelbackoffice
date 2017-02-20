@@ -26,10 +26,10 @@
                 </div>
             </div>
             <div class="card-action right-align">
-                <a @click="showModalEditFuel = true" href="#modalEditFuel" class="btn-floating waves-effect waves-light">
+                <a v-if="userModelRole == 'main_admin'" @click="showModalEditFuel = true" href="#modalEditFuel" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">mode_edit</i>
                 </a>
-                <a @click="showModalDeleteFuel = true" href="#modalDeleteFuel" class="btn-floating waves-effect waves-light">
+                <a  v-if="userModelRole == 'main_admin'" @click="showModalDeleteFuel = true" href="#modalDeleteFuel" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">delete</i>
                 </a>
             </div>
@@ -87,6 +87,7 @@
             note: { require: true },
             gasPerDistance: { require: true },
             totalDistance: { require: true },
+            userModelRole: { require: true },
         },
         updated() {
             $('.modal').modal({

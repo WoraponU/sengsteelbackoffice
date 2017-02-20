@@ -102,6 +102,7 @@
 					:presentNumberCar="fuel.fuel.present_number_car"
 					:totalDistance="fuel.fuel.total_distance"
 					:truckDriver="fuel.fuel.truck_driver"
+					:userModelRole="userModel.role"
 				></CardFuel>
 				<DataNotFound v-if="dataFuelNotFound"></DataNotFound>
 			</div>        
@@ -139,6 +140,7 @@
 					:totalTirePrice="tire.tire.total_tire_price"
 					:totalAmoutCost="tire.tire.total_amout_cost"
 					:note="tire.tire.note"
+					:userModelRole="userModel.role"
 				></CardTire>
 				<DataNotFound v-if="dataTireNotFound"></DataNotFound>				
 			</div> 
@@ -173,6 +175,7 @@
 					:totalSpare="maintain.maintain.total_spare"
 					:amountCost="maintain.maintain.amount_cost"
 					:note="maintain.maintain.note" 
+					:userModelRole="userModel.role"
 				></CardMaintain>
 				<DataNotFound v-if="dataMaintainNotFound"></DataNotFound>				
 			</div>   
@@ -210,6 +213,8 @@
                     { text: 'ทุกคน', value: 'all' },
                 ],
 				userSelected: 'all',
+
+				userModel: '',
             }
         },
 		beforeMount() {
@@ -375,5 +380,8 @@
 			$('.modal').modal();
 			$('.collapsible').collapsible();
 		},
+		mounted() {
+			this.userModel = JSON.parse(localStorage.getItem('auth'));
+		}
     }
 </script>

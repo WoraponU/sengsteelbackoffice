@@ -20,6 +20,9 @@
     </script>
 </head>
 <body>
+    @if (Auth::check())
+        <input type="hidden" id="userModel" value="{{ Auth::user() }}">
+    @endif
     @if (count($errors) > 0)
         <input type="hidden" id="errorMessage" value="{{ $errors->first() }}">
     @endif
@@ -28,6 +31,12 @@
     </div>
 
     <!-- Scripts -->
+    <script>
+        if (typeof(Storage) !== "undefined") {
+            var userModel = document.getElementById('userModel').value;
+            localStorage.setItem('auth', userModel);
+        }
+    </script>
     @yield('js')
 </body>
 </html>
