@@ -96,6 +96,10 @@ class TruckController extends Controller
     public function update(Request $request, $id)
     {
         $validator = $this->validate($request, [
+            'licensePlate' => [
+                'numeric',
+                Rule::unique('trucks', 'license_plate')->ignore($id)
+            ],    
             'lastNumberCar' => 'numeric',
         ]);
         $params = [
