@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Maintain;
+use App\User;
+use App\Truck;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\MessageBag;
@@ -71,6 +74,10 @@ class MaintainController extends Controller
      */
     public function store(Request $request)
     {   
+        $validator = $this->validate($request, [
+            'truckDriver' => 'exists:users,id',
+            'licensePlate' => 'exists:trucks,id',
+        ]);
         $params = [
             'truck_driver'  => $request->truckDriver,
             'license_plate' => $request->licensePlate,
@@ -97,7 +104,6 @@ class MaintainController extends Controller
      */
     public function show($id)
     {
-        dd('fjkdsla;');
     }
 
     /**
@@ -119,6 +125,10 @@ class MaintainController extends Controller
      */
     public function update(Request $request, $id)
     {   
+        $validator = $this->validate($request, [
+            'truckDriver' => 'exists:users,id',
+            'licensePlate' => 'exists:trucks,id',
+        ]);
         $params = [
             'truck_driver'  => $request->truckDriver,
             'license_plate' => $request->licensePlate,
