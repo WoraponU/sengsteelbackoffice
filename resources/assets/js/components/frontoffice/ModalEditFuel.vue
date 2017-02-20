@@ -9,7 +9,7 @@
                     <TruckAndDriverMap 
                         :truckDriver="thisTruckDriver"
                         :truckDriverPhoto="thisUserPhoto"
-                        :licensePlate="thisLicensePlate"
+                        :licensePlate="truckId"
                         :truckImage="thisTruckPhoto"
                     ></TruckAndDriverMap>
                     <div class="container">
@@ -130,6 +130,7 @@
             note: { require: true },
             gasPerDistance: { require: true },
             totalDistance: { require: true },
+            truckId: { require: true },      
         },
 		mounted() {
             $('.datepicker').pickadate({

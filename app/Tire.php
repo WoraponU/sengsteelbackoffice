@@ -36,6 +36,6 @@ class Tire extends Model
     }
     public function truck()
     {
-        return $this->hasOne('App\Truck', 'license_plate', 'license_plate' );
+        return $this->hasOne('App\Truck', 'id', 'license_plate' );
     }
 }

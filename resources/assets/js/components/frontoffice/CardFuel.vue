@@ -45,6 +45,7 @@
             :fuelDate="fuelDate"
             :gasEmployee="gasEmployee"
             :gasType="gasType"
+            :truckId="truckId"
             :lastNumberCar="lastNumberCar"
             :presentNumberCar="presentNumberCar"
             :liter="liter"
@@ -77,6 +78,7 @@
             userPhoto: { require: true },
             licensePlate: { require: true },
             truckPhoto: { require: true },
+            truckId: { require: true },
             truckDriver: { require: true },
             fuelDate: { require: true },
             gasEmployee: { require: true },

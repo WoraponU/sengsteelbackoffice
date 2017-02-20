@@ -48,7 +48,7 @@ class DatabaseSeeder extends Seeder
         $dataFuel = [
             [
                 'truck_driver'  => 1,
-                'license_plate' => 123,
+                'license_plate' => 1,
                 'fuel_date' => '2017-02-12',
                 'gas_employee'  => 'test',
                 'gas_type'  => 'gasoline',
@@ -64,7 +64,7 @@ class DatabaseSeeder extends Seeder
         $dataFuel = [
             [
                 'truck_driver'  => 1,
-                'license_plate' => 123,
+                'license_plate' => 1,
                 'fuel_date' => '2017-02-12',
                 'gas_employee'  => 'test',
                 'gas_type'  => 'gasoline',
@@ -80,7 +80,7 @@ class DatabaseSeeder extends Seeder
         $dataTire = [
             [
                 'truck_driver'  => 1,
-                'license_plate' => 123,
+                'license_plate' => 1,
                 'tire_date' => '2017-02-12',
                 'tire_employee' => 'test',
                 'type_of_tire'  => 'test',

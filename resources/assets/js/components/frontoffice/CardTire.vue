@@ -52,6 +52,7 @@
             :brandOfTire="brandOfTire"
             :pricePerUnit="pricePerUnit"
             :wagePerUnit="wagePerUnit"
+            :truckId="truckId"
             :photoTire="photoTire"
             :sectionOfTire="sectionOfTire"
             :rowOfTire="rowOfTire"
@@ -89,6 +90,7 @@
             truckPhoto: { require: true },
             licensePlate: { require: true },
             tireDate: { require: true },
+            truckId: { require: true },
             tireEmployee: { require: true },
             typeOfTire: { require: true },
             brandOfTire: { require: true },

@@ -20,7 +20,7 @@
                         <tbody>
                             <tr v-for="maintain in maintains">
                                 <td>{{ maintain.user.firstname }} {{ maintain.user.lastname }}</td>
-                                <td>{{ maintain.maintain.license_plate }}</td>
+                                <td>{{ maintain.truck.license_plate }}</td>
                                 <td>{{ maintain.maintain.maintain_date }}</td>
                                 <td>{{ maintain.maintain.maintain_employee }}</td>
                                 <td>{{ maintain.maintain.total_wage }}</td>

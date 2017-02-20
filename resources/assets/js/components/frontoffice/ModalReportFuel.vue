@@ -21,7 +21,7 @@
 						<tbody>
 							<tr v-for="fuel in fuels">
 								<td>{{ fuel.user.firstname }} {{ fuel.user.lastname }}</td>
-								<td>{{ fuel.fuel.license_plate }}</td>
+								<td>{{ fuel.truck.license_plate }}</td>
 								<td>{{ fuel.fuel.fuel_date }}</td>
 								<td>{{ fuel.fuel.gas_employee }}</td>
 								<td>{{ fuel.fuel.gas_type }}</td>
@@ -53,7 +53,6 @@
 </template>
 
 <script>
-	// import 'print.js';
     export default {
 		data() {
 			return {

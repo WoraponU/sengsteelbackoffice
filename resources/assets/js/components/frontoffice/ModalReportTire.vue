@@ -20,7 +20,7 @@
                         <tbody>
                             <tr v-for="tire in tires">
                                 <td>{{ tire.user.firstname }} {{ tire.user.lastname }}</td>
-                                <td>{{ tire.tire.license_plate }}</td>
+                                <td>{{ tire.truck.license_plate }}</td>
                                 <td>{{ tire.tire.tire_date }}</td>
                                 <td>{{ tire.tire.tire_employee }}</td>
                                 <td>{{ tire.tire.quantity }}</td>

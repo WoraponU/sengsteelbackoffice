@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\MessageBag;
 use Carbon\Carbon;
+use Illuminate\Validation\Rule;
 
 class TruckController extends Controller
 {
@@ -147,9 +148,9 @@ class TruckController extends Controller
     {
         $truck = $this->truck->find($id);
 
-        $fuel = $this->fuel->where('license_plate', $truck->license_plate)->count();
-        $tire = $this->tire->where('license_plate', $truck->license_plate)->count();
-        $maintain = $this->maintain->where('license_plate', $truck->license_plate)->count();
+        $fuel = $this->fuel->where('license_plate', $id)->count();
+        $tire = $this->tire->where('license_plate', $id)->count();
+        $maintain = $this->maintain->where('license_plate', $id)->count();
         
         if($fuel || $tire || $maintain) {
             return redirect('backoffice')->withErrors('ไม่สามารถลบพนักงานได้เนื่องจากมีการใช้งานอยู่');

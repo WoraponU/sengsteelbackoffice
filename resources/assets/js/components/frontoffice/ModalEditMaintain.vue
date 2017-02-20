@@ -9,7 +9,7 @@
                     <TruckAndDriverMap 
                         :truckDriver="thisTruckDriver"
                         :truckDriverPhoto="thisUserPhoto"
-                        :licensePlate="thisLicensePlate"
+                        :licensePlate="truckId"
                         :truckImage="thisTruckPhoto"
                     ></TruckAndDriverMap>
                     <div class="container tire-tab">
@@ -118,6 +118,7 @@
             lastName: { require: true },
             userPhoto: { require: true },
             licensePlate: { require: true },
+            truckId: { require: true },
             maintainDate: { require: true },
             maintainEmployee: { require: true },
             maintainLists: { require: true },

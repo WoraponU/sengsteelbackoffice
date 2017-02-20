@@ -9,7 +9,7 @@
                     <TruckAndDriverMap 
                         :truckDriver="thisTruckDriver"
                         :truckDriverPhoto="thisUserPhoto"
-                        :licensePlate="thisLicensePlate"
+                        :licensePlate="truckId"
                         :truckImage="thisTruckPhoto"
                     ></TruckAndDriverMap>
                     <div class="container tire-tab">
@@ -169,6 +169,7 @@
             tireDate: { require: true },
             tireEmployee: { require: true },
             typeOfTire: { require: true },
+            truckId: { require: true },
             brandOfTire: { require: true },
             pricePerUnit: { require: true },
             wagePerUnit: { require: true },

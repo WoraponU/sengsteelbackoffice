@@ -59,6 +59,7 @@
             :maintainDate="maintainDate"
             :maintainEmployee="maintainEmployee"
             :maintainLists="maintainLists"
+            :truckId="truckId"
             :wagePerList="wagePerList"
             :sparePerList="sparePerList"
             :totalWage="totalWage"
@@ -88,7 +89,8 @@
             maintainDate: { require: true },
             maintainEmployee: { require: true },
             maintainLists: { require: true },
-            wagePerList: { require: true },
+            wagePerList: { require: true },            
+            truckId: { require: true },
             sparePerList: { require: true },
             totalWage: { require: true },
             totalSpare: { require: true },
