@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Truck;
+use App\Fuel;
+use App\Tire;
+use App\Maintain;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\MessageBag;
@@ -11,8 +15,15 @@ use Carbon\Carbon;
 class TruckController extends Controller
 {
     protected $truck;
-    function __construct(Truck $truck) {
+    protected $fuel;
+    protected $tire;
+    protected $maintain;
+
+    function __construct(Truck $truck, Fuel $fuel, Tire $tire, Maintain $maintain) {
         $this->truck = $truck;
+        $this->fuel = $fuel;
+        $this->tire = $tire;
+        $this->maintain = $maintain;
     }
     /**
      * Display a listing of the resource.
@@ -135,6 +146,14 @@ class TruckController extends Controller
     public function destroy($id)
     {
         $truck = $this->truck->find($id);
+
+        $fuel = $this->fuel->where('license_plate', $truck->license_plate)->count();
+        $tire = $this->tire->where('license_plate', $truck->license_plate)->count();
+        $maintain = $this->maintain->where('license_plate', $truck->license_plate)->count();
+        
+        if($fuel || $tire || $maintain) {
+            return redirect('backoffice')->withErrors('ไม่สามารถลบพนักงานได้เนื่องจากมีการใช้งานอยู่');
+        }
         
         if(is_null($truck)) {
             return redirect('backoffice')->withErrors('ไม่พบข้อมูลรถบรรทุก');

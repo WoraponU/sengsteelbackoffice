@@ -19,6 +19,7 @@ class UserController extends Controller
     protected $fuel;
     protected $tire;
     protected $maintain;
+    
     function __construct(User $user, Fuel $fuel, Tire $tire, Maintain $maintain) {
         $this->user = $user;
         $this->fuel = $fuel;
@@ -163,7 +164,7 @@ class UserController extends Controller
 
         $fuel = $this->fuel->where('truck_driver', $id)->count();
         $tire = $this->tire->where('truck_driver', $id)->count();
-        $maintain = $this->fuel->where('truck_driver', $id)->count();
+        $maintain = $this->maintain->where('truck_driver', $id)->count();
         
         if($fuel || $tire || $maintain) {
             return redirect('backoffice')->withErrors('ไม่สามารถลบพนักงานได้เนื่องจากมีการใช้งานอยู่');
