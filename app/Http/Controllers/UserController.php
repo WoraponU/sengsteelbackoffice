@@ -161,4 +161,10 @@ class UserController extends Controller
             return redirect('login')->withErrors('ไม่พบข้อมูลบัญชีผู้ใช้นี้');
         }
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('login');
+    }
 }

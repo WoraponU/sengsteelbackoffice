@@ -10,6 +10,9 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+
+Route::get('logout', 'UserController@logout'); 
+
 Route::group(['prefix' => 'login'], function () {
     Route::get('', function () {
         return view('login.login');    
