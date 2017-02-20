@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Fuel;
+use App\User;
+use App\Truck;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\MessageBag;
@@ -10,6 +13,7 @@ use Illuminate\Support\MessageBag;
 class FuelController extends Controller
 {
     protected $fuel;
+
     function __construct(Fuel $fuel) {
         $this->fuel = $fuel;
     }
@@ -71,6 +75,10 @@ class FuelController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = $this->validate($request, [
+            'truckDriver' => 'exists:users,id',
+            'licensePlate' => 'exists:trucks,id',
+        ]);
         $params = [
             'truck_driver'  => $request->truckDriver,
             'license_plate' => $request->licensePlate,
@@ -120,6 +128,10 @@ class FuelController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validator = $this->validate($request, [
+            'truckDriver' => 'exists:users,id',
+            'licensePlate' => 'exists:trucks,id',
+        ]);
         $params = [
             'truck_driver'  => $request->truckDriver,
             'license_plate' => $request->licensePlate,
