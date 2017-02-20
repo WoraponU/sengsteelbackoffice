@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -48,6 +49,8 @@ class UserController extends Controller
     {
         $validator = $this->validate($request, [
             'identificationNumber' => 'unique:users,identification_number|numeric',
+            'driverLicense' => 'unique:users,driver_license',
+            'username' => 'unique:users,username',
             'phone' => 'numeric',
         ]);
 
@@ -102,7 +105,15 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $validator = $this->validate($request, [
-            'identificationNumber' => 'numeric',
+            'identificationNumber' => [
+                'numeric',
+                Rule::unique('users', 'identification_number')->ignore($id)
+            ],    
+            'driverLicense' => [
+                'numeric',
+                Rule::unique('users', 'driver_license')->ignore($id)
+            ],                   
+            'username' => Rule::unique('users')->ignore($id),
             'phone' => 'numeric',
         ]);
 
