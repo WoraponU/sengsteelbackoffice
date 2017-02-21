@@ -6,7 +6,6 @@
 
 @section('js')
     <script src="/js/app-backoffice.js"></script>
-    <script src="/js/all-backoffice.js"></script>
 @endsection
 
 @section('css')

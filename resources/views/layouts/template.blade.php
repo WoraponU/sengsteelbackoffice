@@ -21,7 +21,11 @@
 </head>
 <body>
     @if (Auth::check())
-        <input type="hidden" id="userModel" value="{{ Auth::user() }}">
+        <input type="hidden" id="userModel" value="{{json_encode([
+            'firstname' => Auth::user()->firstname,
+            'lastname' => Auth::user()->lastname,
+            'role' => Auth::user()->role,
+        ])}}">
     @endif
     @if (count($errors) > 0)
         <input type="hidden" id="errorMessage" value="{{ $errors->first() }}">

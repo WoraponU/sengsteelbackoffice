@@ -5,8 +5,7 @@
 @endsection
 
 @section('js')
-    <script src="/js/app-frontoffice.js"></script>
-    <script src="/js/all-frontoffice.js"></script>    
+    <script src="/js/app-frontoffice.js"></script> 
 @endsection
 
 @section('css')
