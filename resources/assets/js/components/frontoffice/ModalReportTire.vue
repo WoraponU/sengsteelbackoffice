@@ -1,6 +1,6 @@
 <template>
     <div id="reportTire" class="modal bottom-sheet">
-		<div class="modal-content">
+		<div id="pdfTire" class="modal-content">
 			<h4>รายงานการเปลี่ยนยาง</h4>
             <div class="row">
                 <div class="col s12 m12 l12">
@@ -33,7 +33,7 @@
             </div>
             <div class="section left-align">
                 <div class="row">
-                    <div class="input-field col s12 m9 l4 offset-l8 offset-m3">
+                    <div class="input-field col s12 m9 l5 offset-l7 offset-m3">
                         <blockquote>
                             <p>ค่าใช้จ่ายทั้งหมด: {{ totalAmoutCost }} บาท</p>
                         </blockquote>
@@ -62,7 +62,7 @@
         },
         methods: {
             onClickPrintReportTire: function() {
-                printJS('reportTire', 'html');
+                printJS('pdfTire', 'html');
             }
         },
         mounted() {

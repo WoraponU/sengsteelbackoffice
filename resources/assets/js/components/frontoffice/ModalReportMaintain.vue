@@ -1,6 +1,6 @@
 <template>
     <div id="reportMaintain" class="modal bottom-sheet">
-		<div class="modal-content">
+		<div id="pdfMaintain" class="modal-content">
 			<h4>รายงานการเปลี่ยนยาง</h4>
             <div class="row">
                 <div class="col s12 m12 l12">
@@ -33,7 +33,7 @@
             </div>
             <div class="section left-align">
                 <div class="row">
-                    <div class="input-field col s12 m9 l4 offset-l8 offset-m3">
+                    <div class="input-field col s12 m9 l5 offset-l7 offset-m3">
                         <blockquote>
                             <p>ค่าแรงทั้งหมด: {{ totalWage }} บาท</p>
                             <p>ค่าอะไหล่ทั้งหมด: {{ totalSpare  }} บาท</p>
@@ -51,8 +51,6 @@
 </template>
 
 <script>
-	// import 'print.js';
-
     export default {
         data() {
 			return {
@@ -66,7 +64,7 @@
         },
         methods: {
             onClickPrintReportMaintain: function() {
-                printJS('reportMaintain', 'html');
+                printJS('pdfMaintain', 'html');
             }
         },
         mounted() {
