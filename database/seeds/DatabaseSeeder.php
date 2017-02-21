@@ -72,7 +72,7 @@ class DatabaseSeeder extends Seeder
                 'present_number_car'    => 1235,
                 'liter' => 3,
                 'total_distance'    => 4,
-                'gas_per_distance'  => 3,
+                'gas_per_distance'  => 32.543253,
                 'note'  => 'test',
             ],  
         ];
@@ -101,7 +101,7 @@ class DatabaseSeeder extends Seeder
         $dataMaintain = [
             [
                 'truck_driver'  => 1,  
-                'license_plate' => 123, 
+                'license_plate' => 1, 
                 'maintain_date' => '2017-02-12',  
                 'maintain_employee' => 'test',  
                 'maintain_lists'    => '["a","b"]', 
