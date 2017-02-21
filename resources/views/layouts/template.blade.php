@@ -32,8 +32,10 @@
 
     <!-- Scripts -->
     <script>
-        if (typeof(Storage) !== "undefined") {
-            var userModel = document.getElementById('userModel').value;
+        var userElement = document.getElementById('userModel');
+
+        if (typeof(Storage) !== "undefined" && userElement != null) {
+            var userModel = userElement.value;
             localStorage.setItem('auth', userModel);
         }
     </script>

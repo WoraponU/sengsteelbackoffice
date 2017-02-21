@@ -15,11 +15,11 @@
 							</div>
 							<div class="collapsible-body">
 								<div class="row" v-for="(expired, index) in expireds">
-									<div class="col s12 m6 l5 offset-l1">
+									<div class="col s12 m5 l4 offset-l2">
 										<p>{{ index+1 }}. เลขทะเบียน: {{ expired.licensePlate }}</p>
 									</div>
-									<div class="col s12 m6 l6" >
-										<p>ต่อทะเบียนล่าสุดเมื่อ: {{ expired.lastAnnualTaxDate }}</p>
+									<div class="col s12 m7 l6" >
+										<p>ต่อทะเบียนล่าสุด: {{ expired.lastAnnualTaxDate }}</p>
 									</div>
 								</div>
 								<DataNotFound v-if="newExpired == 0"></DataNotFound>				
@@ -79,7 +79,7 @@
 		<!--//////////////////////////////////////////////////////////////////////////-->		
 		<div class="section">
            	<div class="row">
-				<span class="section-header col s11 m11 l11 left-align">เติมน้ำมัน</span>
+				<span class="section-header col s10 m11 l11 left-align">เติมน้ำมัน</span>
 				<div class="col s1 m1 l1">
 					<a href="#reportFuel" class="btn-floating btn-large waves-effect waves-light btn"><i class="material-icons">insert_chart</i></a>
 				</div>
@@ -113,7 +113,7 @@
 		<!--//////////////////////////////////////////////////////////////////////////-->		
 		<div class="section">
            	<div class="row">
-				<span class="section-header col s11 m11 l11 left-align">เปลี่ยนยาง</span>
+				<span class="section-header col s10 m11 l11 left-align">เปลี่ยนยาง</span>
 				<div class="col s1 m1 l1">
 					<a href="#reportTire" class="btn-floating btn-large waves-effect waves-light btn" ><i class="material-icons">insert_chart</i></a>
 				</div>
@@ -154,7 +154,7 @@
 		<!--//////////////////////////////////////////////////////////////////////////-->		
 		<div class="section">
            	<div class="row">
-				<span class="section-header col s11 m11 l11 left-align">ซ่อมบำรุง</span>
+				<span class="section-header col s10 m11 l11 left-align">ซ่อมบำรุง</span>
 				<div class="col s1 m1 l1">
 					<a href="#reportMaintain" class="btn-floating btn-large waves-effect waves-light btn"><i class="material-icons">insert_chart</i></a>
 				</div>
