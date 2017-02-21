@@ -26,6 +26,7 @@ class UserController extends Controller
         $this->tire = $tire;
         $this->maintain = $maintain;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -58,12 +59,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = $this->validate($request, [
+        $rules = [
             'identificationNumber' => 'unique:users,identification_number|numeric',
             'driverLicense' => 'unique:users,driver_license',
             'username' => 'unique:users,username',
             'phone' => 'numeric',
-        ]);
+        ];
+        $messages = [
+            'unique' => ':attribute ไม่สามารถซ้ำได้',
+        ];
+
+        $validator = $this->validate($request, $rules, $messages);
 
         $params = [
             'firstname' => $request->firstname,
@@ -115,7 +121,8 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = $this->validate($request, [
+
+        $rules = [
             'identificationNumber' => [
                 'numeric',
                 Rule::unique('users', 'identification_number')->ignore($id)
@@ -126,7 +133,12 @@ class UserController extends Controller
             ],                   
             'username' => Rule::unique('users')->ignore($id),
             'phone' => 'numeric',
-        ]);
+        ];
+        $messages = [
+            'unique' => ':attribute ไม่สามารถซ้ำได้',
+        ];
+
+        $validator = $this->validate($request, $rules, $messages);
 
         $params = [
             'firstname' => $request->firstname,

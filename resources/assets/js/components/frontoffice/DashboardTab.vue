@@ -33,10 +33,10 @@
 							</div>
 							<div class="collapsible-body">
 								<div class="row" v-for="(willExpire, index) in willExpires">
-									<div class="col s12 m6 l5 offset-l1">
+									<div class="col s12 m5 l4 offset-l2">
 										<p>{{ index+1 }}. เลขทะเบียน: {{ willExpire.licensePlate }}</p>
 									</div>
-									<div class="col s12 m6 l6">
+									<div class="col s12 m7 l6">
 										<p>ต่อทะเบียนล่าสุดเมื่อ: {{ willExpire.lastAnnualTaxDate }}</p>
 									</div>
 								</div>

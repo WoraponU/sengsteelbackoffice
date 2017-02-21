@@ -53,10 +53,13 @@ class TruckController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = $this->validate($request, [
-            'licensePlate' => 'unique:trucks,license_plate',
-            'lastNumberCar' => 'numeric',
-        ]);
+        $rules = [
+            'licensePlate' => 'unique:trucks,license_plate', 
+        ];
+        $messages = [
+            'unique' => ':attribute ไม่สามารถซ้ำได้',
+        ];
+        $validator = $this->validate($request, $rules, $messages);
 
         $params = [
             'license_plate'	=> $request->licensePlate,
@@ -107,13 +110,17 @@ class TruckController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = $this->validate($request, [
+        $rules = [
             'licensePlate' => [
                 'numeric',
                 Rule::unique('trucks', 'license_plate')->ignore($id)
             ],    
-            'lastNumberCar' => 'numeric',
-        ]);
+        ];
+        $messages = [
+            'unique' => ':attribute ไม่สามารถซ้ำได้',
+        ];
+
+        $validator = $this->validate($request, $rules, $messages);
         $params = [
             'license_plate'	=> $request->licensePlate,
 			'owner'	=> $request->owner,

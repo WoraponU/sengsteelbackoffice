@@ -75,10 +75,14 @@ class FuelController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = $this->validate($request, [
+        $rules = [
             'truckDriver' => 'exists:users,id',
             'licensePlate' => 'exists:trucks,id',
-        ]);
+        ];
+        $messages = [
+            'exists' => 'ไม่พบ :attribute นี้',
+        ];
+        $validator = $this->validate($request, $rules, $messages);
         $params = [
             'truck_driver'  => $request->truckDriver,
             'license_plate' => $request->licensePlate,
@@ -128,10 +132,14 @@ class FuelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = $this->validate($request, [
+        $rules = [
             'truckDriver' => 'exists:users,id',
             'licensePlate' => 'exists:trucks,id',
-        ]);
+        ];
+        $messages = [
+            'exists' => 'ไม่พบ :attribute นี้',
+        ];
+        $validator = $this->validate($request, $rules, $messages);
         $params = [
             'truck_driver'  => $request->truckDriver,
             'license_plate' => $request->licensePlate,
