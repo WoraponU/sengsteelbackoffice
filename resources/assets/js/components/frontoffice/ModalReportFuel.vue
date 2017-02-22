@@ -33,7 +33,19 @@
 					</table>
 				</div>
 			</div>
+		</div>
 
+		<div class="modal-content">
+			<div class="section materialboxed">
+				<div class="row">
+					<div class="col s12 m8 l6 offset-l3 offset-m2">
+						<canvas id="myChart" width="100%" height="100%"></canvas>								
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-content">
 			<div class="section left-align">
 				<div class="row">
 					<div class="input-field col s12 m9 l5 offset-l7 offset-m3">
@@ -47,21 +59,9 @@
 			</div>
 		</div>
 
-		<div class="modal-content">
-			<div class="divider"></div>
-			<div class="section">
-				<div class="row">
-					<div class="col s12 m10 l8 offset-l2 offset-m1">
-						<canvas id="myChart" width="100%" height="100%"></canvas>								
-						
-					</div>
-				</div>
-			</div>
-		</div>
 		<div class="modal-footer">
-			<a @click="onClickPrintReportFuel" class="modal-action waves-effect waves-green btn-flat">Print</a>
-			<a @click="onClickShowGraphFuel" class="modal-action waves-effect waves-green btn-flat">Graph</a>
-			<a class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+			<a @click="onClickPrintReportFuel" class="modal-action waves-effect waves-green btn-flat">PRINT</a>
+			<a class="modal-action modal-close waves-effect waves-green btn-flat">ปิด</a>
 		</div>
 	</div>
 </template>
@@ -84,20 +84,7 @@
 			onClickPrintReportFuel: function() {
 				printJS('pdfFuel', 'html');
 			},
-			onClickShowGraphFuel: function() {
-				let date = [];
-				let gasPerDistance = [];
-				let liter = [];
-				let distance = [];
-
-				$.each(this.fuels, function(index, fuel) {
-					date.push(fuel.fuel.fuel_date);
-
-					gasPerDistance.push(fuel.fuel.gas_per_distance)
-					liter.push(fuel.fuel.liter)
-					distance.push(fuel.fuel.total_distance)
-				}); 
-
+			showGraph: function(date, gasPerDistanceGraph, literGraph, distanceGraph) {
 				var ctx = document.getElementById("myChart");
 				var myChart = new Chart(ctx, {
 					type: 'line',
@@ -106,19 +93,19 @@
 						datasets: [
 							{
 								label: 'อัตราการใช้น้ำมัน (กิโลเมตร/ลิตร)',
-								data: gasPerDistance,
+								data: gasPerDistanceGraph,
 								fill: false,
 								borderColor: 'rgba(255,99,132,1)',
 							},
 							{
 								label: 'ระยะทางที่วิ่ง (กิโลเมตร)',
-								data: distance,
+								data: distanceGraph,
 								fill: false,							
 								borderColor: 'rgba(75,192,192,1)',
 							},
 							{
 								label: 'น้ำมันที่เติม (ลิตร)',
-								data: liter,
+								data: literGraph,
 								fill: false,							
 								borderColor: 'rgba(54, 162, 235, 1)',
 							},
@@ -143,6 +130,22 @@
 			this.totalDistance = distance;
 			this.totalLiter = liter;
 			this.gasPerDistance = gasPerDistance / count
+			/////////////////////////////////
+
+			let date = [];
+			let gasPerDistanceGraph = [];
+			let literGraph = [];
+			let distanceGraph = [];
+
+			$.each(this.fuels, function(index, fuel) {
+				date.push(fuel.fuel.fuel_date);
+
+				gasPerDistanceGraph.push(fuel.fuel.gas_per_distance)
+				literGraph.push(fuel.fuel.liter)
+				distanceGraph.push(fuel.fuel.total_distance)
+			}); 
+			this.showGraph(date, gasPerDistanceGraph, literGraph, distanceGraph);
+				
 		},
     }
 </script>
