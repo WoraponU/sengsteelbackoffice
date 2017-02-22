@@ -4,7 +4,7 @@
             <input type="hidden" name="_token" v-model="csrfToken">
 
             <div class="row">
-                <div class="card-panel col s8 m6 l4 offset-l4 offset-m3 offset-s2">
+                <div class="card-panel col s10 m6 l4 offset-l4 offset-m3 offset-s1">
                     <div class="row">
                         <div class="col s12 m12 l12 center-align">
                             <h3>เข้าสู่ระบบ</h3>
