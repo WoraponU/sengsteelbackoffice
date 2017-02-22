@@ -39,7 +39,7 @@
 			<div class="section materialboxed">
 				<div class="row">
 					<div class="col s12 m8 l6 offset-l3 offset-m2">
-						<canvas id="myChart" width="100%" height="100%"></canvas>								
+						<canvas id="myChartFuel" width="100%" height="100%"></canvas>								
 					</div>
 				</div>
 			</div>
@@ -85,8 +85,8 @@
 				printJS('pdfFuel', 'html');
 			},
 			showGraph: function(date, gasPerDistanceGraph, literGraph, distanceGraph) {
-				var ctx = document.getElementById("myChart");
-				var myChart = new Chart(ctx, {
+				const ctxFuel = document.getElementById("myChartFuel");
+				const myChartFuel = new Chart(ctxFuel, {
 					type: 'line',
 					data: {
 						labels: date,
@@ -147,5 +147,8 @@
 			this.showGraph(date, gasPerDistanceGraph, literGraph, distanceGraph);
 				
 		},
+		updated() {
+			
+		}
     }
 </script>

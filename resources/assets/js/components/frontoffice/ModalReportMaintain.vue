@@ -1,7 +1,7 @@
 <template>
     <div id="reportMaintain" class="modal bottom-sheet">
 		<div id="pdfMaintain" class="modal-content">
-			<h4>รายงานการเปลี่ยนยาง</h4>
+			<h4>รายงานการซ่อมบำรุง</h4>
             <div class="row">
                 <div class="col s12 m12 l12">
                     <table class="centered">
@@ -31,7 +31,20 @@
                     </table>
                 </div>
             </div>
-            <div class="section left-align">
+		</div>
+
+        <div class="modal-content">
+			<div class="section materialboxed">
+				<div class="row">
+					<div class="col s12 m8 l6 offset-l3 offset-m2">
+						<canvas id="myChartMaintain" width="100%" height="100%"></canvas>								
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-content">
+			<div class="section left-align">
                 <div class="row">
                     <div class="input-field col s12 m9 l5 offset-l7 offset-m3">
                         <blockquote>
@@ -43,9 +56,10 @@
                 </div>						
             </div>
 		</div>
+
 		<div class="modal-footer">
-            <a @click="onClickPrintReportMaintain" class="modal-action modal-close waves-effect waves-green btn-flat">Print</a>
-			<a class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            <a @click="onClickPrintReportMaintain" class="modal-action waves-effect waves-green btn-flat">Print</a>
+			<a class="modal-action modal-close waves-effect waves-green btn-flat">ปิด</a>
 		</div>
 	</div>
 </template>
@@ -65,9 +79,39 @@
         methods: {
             onClickPrintReportMaintain: function() {
                 printJS('pdfMaintain', 'html');
-            }
+            },
+            showGraph: function(date, wageGraph, spareGraph, costGraph) {
+				const ctxMaintain = document.getElementById("myChartMaintain");
+				const myChartMaintain = new Chart(ctxMaintain, {
+					type: 'line',
+					data: {
+						labels: date,
+						datasets: [
+							{
+								label: 'ค่าแรง (บาท)',
+								data: wageGraph,
+								fill: false,
+								borderColor: 'rgba(255,99,132,1)',
+							},
+							{
+								label: 'ค่าอะไหล่ (บาท)',
+								data: spareGraph,
+								fill: false,							
+								borderColor: 'rgba(75,192,192,1)',
+							},
+							{
+								label: 'ค่าใช้จ่าย (บาท)',
+								data: costGraph,
+								fill: false,							
+								borderColor: 'rgba(54, 162, 235, 1)',
+							},
+						]
+					},
+				});
+			}
         },
         mounted() {
+            $('.materialboxed').materialbox();
 			let wage = 0;
 			let spare = 0;
 			let cost = 0;
@@ -79,6 +123,22 @@
 			this.totalWage = wage;
 			this.totalSpare = spare;
 			this.amountCost = cost;
+
+            ///////////////////////
+
+            let date = [];
+			let wageGraph = [];
+			let spareGraph = [];
+			let costGraph = [];
+
+			$.each(this.maintains, function(index, maintain) {
+				date.push(maintain.maintain.maintain_date);
+
+				wageGraph.push(maintain.maintain.total_wage)
+				spareGraph.push(maintain.maintain.total_spare)
+				costGraph.push(maintain.maintain.amount_cost)
+			}); 
+			this.showGraph(date, wageGraph, spareGraph, costGraph);
 		}
     }
 </script>
