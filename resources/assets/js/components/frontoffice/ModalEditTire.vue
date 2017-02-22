@@ -186,7 +186,8 @@
         mounted() {
             $('.datepicker').pickadate({
                 selectMonths: true,
-                selectYears: 15
+                selectYears: 15,
+                format: 'yyyy-mm-dd',
             });
         },
         computed: {
