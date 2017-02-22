@@ -33,6 +33,7 @@
 					</table>
 				</div>
 			</div>
+
 			<div class="section left-align">
 				<div class="row">
 					<div class="input-field col s12 m9 l5 offset-l7 offset-m3">
@@ -45,14 +46,29 @@
 				</div>						
 			</div>
 		</div>
+
+		<div class="modal-content">
+			<div class="divider"></div>
+			<div class="section">
+				<div class="row">
+					<div class="col s12 m10 l8 offset-l2 offset-m1">
+						<canvas id="myChart" width="100%" height="100%"></canvas>								
+						
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="modal-footer">
-			<a @click="onClickPrintReportFuel" class="modal-action modal-close waves-effect waves-green btn-flat">Print</a>
+			<a @click="onClickPrintReportFuel" class="modal-action waves-effect waves-green btn-flat">Print</a>
+			<a @click="onClickShowGraphFuel" class="modal-action waves-effect waves-green btn-flat">Graph</a>
 			<a class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
 		</div>
 	</div>
 </template>
 
 <script>
+	import Chart from 'chart.js'
+
     export default {
 		data() {
 			return {
@@ -67,9 +83,53 @@
 		methods: {
 			onClickPrintReportFuel: function() {
 				printJS('pdfFuel', 'html');
+			},
+			onClickShowGraphFuel: function() {
+				let date = [];
+				let gasPerDistance = [];
+				let liter = [];
+				let distance = [];
+
+				$.each(this.fuels, function(index, fuel) {
+					date.push(fuel.fuel.fuel_date);
+
+					gasPerDistance.push(fuel.fuel.gas_per_distance)
+					liter.push(fuel.fuel.liter)
+					distance.push(fuel.fuel.total_distance)
+				}); 
+
+				var ctx = document.getElementById("myChart");
+				var myChart = new Chart(ctx, {
+					type: 'line',
+					data: {
+						labels: date,
+						datasets: [
+							{
+								label: 'อัตราการใช้น้ำมัน (กิโลเมตร/ลิตร)',
+								data: gasPerDistance,
+								fill: false,
+								borderColor: 'rgba(255,99,132,1)',
+							},
+							{
+								label: 'ระยะทางที่วิ่ง (กิโลเมตร)',
+								data: distance,
+								fill: false,							
+								borderColor: 'rgba(75,192,192,1)',
+							},
+							{
+								label: 'น้ำมันที่เติม (ลิตร)',
+								data: liter,
+								fill: false,							
+								borderColor: 'rgba(54, 162, 235, 1)',
+							},
+						]
+					},
+				});
 			}
 		},
 		mounted() {
+			$('.materialboxed').materialbox();
+			
 			let distance = 0;
 			let liter = 0;
 			let gasPerDistance = 0;
@@ -83,6 +143,6 @@
 			this.totalDistance = distance;
 			this.totalLiter = liter;
 			this.gasPerDistance = gasPerDistance / count
-		}
+		},
     }
 </script>
