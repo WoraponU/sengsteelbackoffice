@@ -220,7 +220,9 @@
 				userModel: '',
             }
         },
-		beforeMount() {
+		mounted() {
+			this.userModel = JSON.parse(localStorage.getItem('auth'));
+			
 			axios.get('/fuel')
             .then((response) => {
                 this.fuels = response.data
@@ -383,8 +385,5 @@
 			$('.modal').modal();
 			$('.collapsible').collapsible();
 		},
-		mounted() {
-			this.userModel = JSON.parse(localStorage.getItem('auth'));
-		}
     }
 </script>

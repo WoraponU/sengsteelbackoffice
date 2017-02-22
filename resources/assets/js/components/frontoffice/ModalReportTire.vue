@@ -25,6 +25,7 @@
                                 <td>{{ tire.tire.tire_employee }}</td>
                                 <td>{{ tire.tire.quantity }}</td>
                                 <td>{{ tire.tire.total_tire_price }}</td>
+                                <td>{{ tire.tire.total_tire_price }}</td>
                                 <td>{{ tire.tire.total_amout_cost }}</td>
                             </tr>
                         </tbody>
@@ -56,8 +57,8 @@
 		</div>
 
 		<div class="modal-footer">
-            <a @click="onClickPrintReportTire" class="modal-action modal-close waves-effect waves-green btn-flat">Print</a>
-			<a class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            <a @click="onClickPrintReportTire" class="modal-action waves-effect waves-green btn-flat">Print</a>
+			<a class="modal-action modal-close waves-effect waves-green btn-flat">ปิด</a>
 		</div>
 	</div>
 </template>
