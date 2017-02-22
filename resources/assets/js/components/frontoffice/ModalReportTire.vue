@@ -13,6 +13,7 @@
                             <th>ผู้เปลี่ยนยาง</th>
                             <th>จำนวน <br>(เส้น)</th>
                             <th>ราคายางทั้งหมด <br>(บาท)</th>
+                            <th>ราคาค่าแรงทั้งหมด <br>(บาท)</th>
                             <th>ค่าใช้จ่ายทั้งหมด <br>(บาท)</th>
                         </tr>
                         </thead>
@@ -25,7 +26,7 @@
                                 <td>{{ tire.tire.tire_employee }}</td>
                                 <td>{{ tire.tire.quantity }}</td>
                                 <td>{{ tire.tire.total_tire_price }}</td>
-                                <td>{{ tire.tire.total_tire_price }}</td>
+                                <td>{{ tire.tire.total_amout_cost - tire.tire.total_tire_price }}</td>
                                 <td>{{ tire.tire.total_amout_cost }}</td>
                             </tr>
                         </tbody>
@@ -49,6 +50,8 @@
                 <div class="row">
                     <div class="input-field col s12 m9 l5 offset-l7 offset-m3">
                         <blockquote>
+                            <p>ราคายางทั้งหมด: {{ totalTirePrice }} บาท</p>
+                            <p>ราคาค่าแรงทั้งหมด: {{ totalWagePrice }} บาท</p>
                             <p>ค่าใช้จ่ายทั้งหมด: {{ totalAmoutCost }} บาท</p>
                         </blockquote>
                     </div>
@@ -69,6 +72,8 @@
     export default {
         data() {
 			return {
+                totalWagePrice: 0,
+                totalTirePrice: 0,
 				totalAmoutCost: 0,
 			}
 		},
@@ -79,18 +84,30 @@
             onClickPrintReportTire: function() {
                 printJS('pdfTire', 'html');
             },
-            showGraph: function(date, amoutCostGraph) {
+            showGraph: function(date, tireGraph, wageGraph, amoutCostGraph) {
 				const ctxTire = document.getElementById("myChartTire");
 				const myChartTire = new Chart(ctxTire, {
 					type: 'line',
 					data: {
 						labels: date,
 						datasets: [
-							{
-								label: 'อัตราการใช้น้ำมัน (กิโลเมตร/ลิตร)',
-								data: amoutCostGraph,
+                            {
+								label: 'ราคายาง (บาท)',
+								data: tireGraph,
 								fill: false,
 								borderColor: 'rgba(255,99,132,1)',
+							},
+                            {
+								label: 'ราคาค่าแรง (บาท)',
+								data: wageGraph,
+								fill: false,
+								borderColor: 'rgba(75,192,192,1)',
+							},
+							{
+								label: 'ค่าใช้จ่ายทั้งหมด (บาท)',
+								data: amoutCostGraph,
+								fill: false,
+								borderColor: 'rgba(54, 162, 235, 1)',
 							},
 						]
 					},
@@ -100,23 +117,33 @@
         mounted() {
             $('.materialboxed').materialbox();
 
+			let tirePrice = 0;
+            let wagePrice = 0;
 			let amoutCost = 0;
+
 			$.each(this.tires, function(index, tire) {
+                tirePrice = tirePrice + tire.tire.total_tire_price
+                wagePrice = wagePrice + ( tire.tire.total_amout_cost - tire.tire.total_tire_price )
 				amoutCost = amoutCost + tire.tire.total_amout_cost
 			}); 
 			this.totalAmoutCost = amoutCost;
+            this.totalWagePrice = wagePrice;
+            this.totalTirePrice = tirePrice;
+            
             ///////////////////////////
-            /////////////////////////////////
 
 			let date = [];
+			let tireGraph = [];
+			let wageGraph = [];
 			let amoutCostGraph = [];
 
 			$.each(this.tires, function(index, tire) {
 				date.push(tire.tire.tire_date);
+				tireGraph.push(tire.tire.total_tire_price)
+				wageGraph.push(tire.tire.total_amout_cost - tire.tire.total_tire_price)
 				amoutCostGraph.push(tire.tire.total_amout_cost)
 			}); 
-            console.log(amoutCostGraph);
-			this.showGraph(date, amoutCostGraph);
+			this.showGraph(date, tireGraph, wageGraph, amoutCostGraph);
 		}
     }
 </script>

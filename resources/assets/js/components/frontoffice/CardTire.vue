@@ -24,6 +24,7 @@
                         <p>หมายเลขยาง: {{ numberOfTire }}</p>
                         <p>จำนวน: {{ quantity }}</p>
                         <p>ราคายางทั้งหมด: {{ totalTirePrice }} บาท</p>
+                        <p>ราคาค่าแรงทั้งหมด: {{ totalWagePrice }} บาท</p>
                         <p>ค่าใช้จ่ายทั้งหมด: {{ totalAmoutCost }} บาท</p>
                         <p>บันทึกรายละเอียด: {{ note }}</p>
                     </blockquote>
@@ -121,6 +122,9 @@
                 } else {
                     return 'ตัวลูก';
                 }
+            },
+            totalWagePrice: function () {
+                return this.totalAmoutCost - this.totalTirePrice;
             }
         },
     }

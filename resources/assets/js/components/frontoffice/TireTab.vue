@@ -101,6 +101,7 @@
                             <div class="input-field col s12 m12 l8 offset-l2">
                                 <blockquote>
                                     <p class="flow-text">ราคายางทั้งหมด: {{ totalTirePrice }} บาท</p>
+                                    <p class="flow-text">ราคาค่าแรงทั้งหมด: {{ totalWagePrice }} บาท</p>
                                     <p class="flow-text">ค่าใช้จ่ายทั้งหมด: {{ totalAmoutCost  }} บาท</p>
                                 </blockquote>
                                 <input type="hidden" name="totalTirePrice" :value="totalTirePrice">
@@ -155,6 +156,9 @@
             },
             totalAmoutCost: function () {
                 return ( this.quantity * this.pricePerUnit ) +  ( this.quantity * this.wagePerUnit );
+            },
+            totalWagePrice: function () {
+                return this.quantity * this.wagePerUnit;
             }
         },
     }
