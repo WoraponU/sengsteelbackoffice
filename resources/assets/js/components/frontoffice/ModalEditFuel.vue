@@ -147,7 +147,7 @@
 				return this.thisLiter;
 			},
 			thisGasPerDistanceCompute: function () {
-				return (this.thisPresentNumberCar - this.thisLastNumberCar) / this.thisLiter;
+				return ((this.thisPresentNumberCar - this.thisLastNumberCar) / this.thisLiter).toFixed(2);
 			}
 		}
     }
