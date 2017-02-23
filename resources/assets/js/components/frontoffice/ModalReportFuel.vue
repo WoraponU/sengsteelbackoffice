@@ -129,7 +129,7 @@
 			}); 
 			this.totalDistance = distance;
 			this.totalLiter = liter;
-			this.gasPerDistance = gasPerDistance / count
+			this.gasPerDistance = (gasPerDistance / count).toFixed(2)
 			/////////////////////////////////
 
 			let date = [];
@@ -147,8 +147,5 @@
 			this.showGraph(date, gasPerDistanceGraph, literGraph, distanceGraph);
 				
 		},
-		updated() {
-			
-		}
     }
 </script>

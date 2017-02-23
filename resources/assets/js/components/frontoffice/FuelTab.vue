@@ -101,7 +101,7 @@
 				return this.liter;
 			},
 			gasPerDistance: function () {
-				return (this.presentNumberCar - this.lastNumberCar) / this.liter;
+				return ((this.presentNumberCar - this.lastNumberCar) / this.liter).toFixed(2);
 			}
 		}
 	}
