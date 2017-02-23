@@ -80,7 +80,7 @@
             </div>
             <div class="modal-footer">
                 <button type="submit" class="modal-action waves-effect waves-green btn-flat ">แก้ไข</button>
-                <button class="modal-action modal-close waves-effect waves-green btn-flat ">ปิด</button>
+                <button type="button" class="modal-action modal-close waves-effect waves-green btn-flat ">ปิด</button>
             </div>
         </form>                  
     </div>

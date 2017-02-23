@@ -59,7 +59,7 @@
 
 		<div class="modal-footer">
             <a @click="onClickPrintReportMaintain" class="modal-action waves-effect waves-green btn-flat">Print</a>
-			<a class="modal-action modal-close waves-effect waves-green btn-flat">ปิด</a>
+			<a type="button" class="modal-action modal-close waves-effect waves-green btn-flat">ปิด</a>
 		</div>
 	</div>
 </template>
