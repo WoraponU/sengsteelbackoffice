@@ -22,6 +22,7 @@
 <body>
     @if (Auth::check())
         <input type="hidden" id="userModel" value="{{json_encode([
+            'userId' => Auth::user()->id,
             'firstname' => Auth::user()->firstname,
             'lastname' => Auth::user()->lastname,
             'role' => Auth::user()->role,

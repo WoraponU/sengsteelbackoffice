@@ -39,7 +39,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12 m12 l6">
-                        <input name="phone" id="phone" type="text" class="validate" required>
+                        <input name="phone" v-model="phone" id="phone" type="number" class="validate" required>
                         <label for="phone">เบอร์ <span class="icon-star">*</span></label>
                     </div>
                     <div class="input-field col s12 m12 l6">
@@ -98,6 +98,7 @@
                 ],
                 photoPreview: '/images/user_icon.png',
                 identificationNumber: '',
+                phone: '',
                 driverLicense: '',
             }
         },
@@ -115,6 +116,13 @@
                    driverLicenseString = driverLicenseString.substring(0, 8)
                 }
                 this.driverLicense = driverLicenseString
+            },
+            phone: function() {
+                let phoneString = this.phone.toString()
+                if (phoneString.toString().length > 9) {
+                   phoneString = phoneString.substring(0, 10)
+                }
+                this.phone = phoneString
             }
         },
         methods: {

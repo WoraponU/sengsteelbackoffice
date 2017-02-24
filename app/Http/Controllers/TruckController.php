@@ -112,7 +112,6 @@ class TruckController extends Controller
     {
         $rules = [
             'licensePlate' => [
-                'numeric',
                 Rule::unique('trucks', 'license_plate')->ignore($id)
             ],    
         ];
