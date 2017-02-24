@@ -25,7 +25,7 @@
                 <a v-if="userModelRole == 'main_admin'" @click="onCallModalEdit" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">mode_edit</i>
                 </a>
-                <a v-if="userModelRole == 'main_admin'" @click="onCallModalDelete" class="btn-floating waves-effect waves-light">
+                <a v-if="userModelRole == 'main_admin' && userModelId != id" @click="onCallModalDelete" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">delete</i>
                 </a>
             </div>
@@ -49,6 +49,7 @@
             address: { require: true },
             role: { require: true },
             userModelRole: { require: true },
+            userModelId: { require: true },
         },
         data() {
             return {

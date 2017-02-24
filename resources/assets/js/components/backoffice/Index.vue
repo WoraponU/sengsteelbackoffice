@@ -20,6 +20,7 @@
                             :address="user.address"
                             :role="user.role"
                             :userModelRole="userModel.role"
+                            :userModelId="userModel.id"
                         ></CardUser>
                     </div>
 
