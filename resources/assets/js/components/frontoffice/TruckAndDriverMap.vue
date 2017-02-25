@@ -116,6 +116,7 @@
                 });
 
                 this.userPhoto = setUserSelectedPhoto;
+
             },
             onTruckSelectedChange() {
                 const truckSelected = this.truckSelected;
@@ -126,6 +127,8 @@
                     }
                 });
                 this.truckPhoto = setTruckSelectedPhoto;
+
+                this.$emit('truckIdSelected', truckSelected)                
             }
         }
     }

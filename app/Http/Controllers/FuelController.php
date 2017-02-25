@@ -182,4 +182,11 @@ class FuelController extends Controller
         $fuel->delete();
         return redirect('/');     
     }
+
+    public function getLastNumberCar(Request $request,$id) {
+        $fuels = $this->fuel->where('gas_type', $request->gasType)->where('license_plate', $id)->get();
+        $lastNumberCar = $fuels->max('present_number_car');
+        
+        return response()->json($lastNumberCar);        
+    }
 }

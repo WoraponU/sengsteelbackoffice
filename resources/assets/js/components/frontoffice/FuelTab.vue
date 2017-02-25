@@ -1,9 +1,9 @@
 <template>
-  	<div class="container center-align">
+	<div class="container center-align">
 		<form action="/fuel" method="POST">
 			<input type="hidden" name="_token" v-model="csrfToken">
 
-			<TruckAndDriverMap></TruckAndDriverMap>
+			<TruckAndDriverMap v-on:truckIdSelected="truckIdSelected"></TruckAndDriverMap>
 			<div class="container">
 				<div class="row left-align card-panel">
 					<div class="row">
@@ -22,21 +22,21 @@
 							<input id="gasEmployee" name="gasEmployee" type="text" class="validate" required>
 							<label for="gasEmployee">ผู้เติม <span class="icon-star">*</span></label>
 						</div>  
-						<div class="input-field col s12 m6 l4">
-							<select name="gasType" required>
+						<div class="col s12 m6 l4">
+							<label>ประเภทน้ำมัน <span class="icon-star">*</span></label>
+							<select @change="truckIdSelected(truckId)" name="gasType" ref="gasType" class="browser-default" required>
 								<option value="" disabled>โปรดระบุ</option>
 								<option value="gasoline" selected>น้ำมันเครื่องยนต์</option>
 								<option value="lubricator">น้ำมันห้องเครื่อง</option>
 								<option value="gear_box_oil">น้ำมันห้องเกียร์</option>
 								<option value="final_gear_oil">น้ำมันเฟืองท้าย</option>
 							</select>
-							<label>ประเภทน้ำมัน <span class="icon-star">*</span></label>
 						</div>   
 					</div>
 					<div class="row">
 						<div class="input-field col s12 m6 l4 offset-l2">
 							<input id="lastNumberCar" name="lastNumberCar" type="number" min="1" v-model="lastNumberCar" class="validate" required>
-							<label for="lastNumberCar">หมายเลขกิโลเมตรครั้งก่อน</label>
+							<label for="lastNumberCar">หมายเลขกิโลเมตรครั้งก่อน <span class="icon-star">*</span></label>
 						</div>   
 						<div class="input-field col s12 m6 l4">
 							<input id="presentNumberCar" name="presentNumberCar" type="number" :min="lastNumberCar+1" v-model="presentNumberCar" class="validate" required>
@@ -83,16 +83,19 @@
 </template>
 
 <script>
-    export default {
+    import axios from 'axios';
+
+	export default {
 		data() {
-            return {
-                csrfToken: window.Laravel.csrfToken,
+			return {
+				csrfToken: window.Laravel.csrfToken,
 
 				lastNumberCar: 1,
 				presentNumberCar: 2,
 				liter: 1,
-            }
-        },
+				truckId: '',
+			}
+		},
 		computed: {
 			totalDistance: function () {
 				return this.presentNumberCar - this.lastNumberCar;
@@ -102,6 +105,36 @@
 			},
 			gasPerDistance: function () {
 				return ((this.presentNumberCar - this.lastNumberCar) / this.liter).toFixed(2);
+			}
+		},
+		updated() {
+			Materialize.updateTextFields();					
+		},
+		methods: {
+			truckIdSelected: function (truckIdSelected) {
+				if (truckIdSelected != '') {
+					this.truckId = truckIdSelected
+					const gasType = this.$refs.gasType.value	
+					
+					axios.get(`/fuel/last-number-car/${truckIdSelected}`, {
+						params: {
+							gasType: gasType						
+						}
+					})
+					.then((response) => {
+						if (!(Object.keys(response.data).length === 0 
+						&& response.data.constructor === Object)) {
+							this.lastNumberCar = response.data
+							this.presentNumberCar = parseInt(response.data) + 1
+						} else {
+							this.lastNumberCar = 1
+							this.presentNumberCar = 2
+						}
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+				}
 			}
 		}
 	}

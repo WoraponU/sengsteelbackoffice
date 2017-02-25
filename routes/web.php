@@ -39,4 +39,6 @@ Route::group(['prefix' => '', 'middleware' => 'auth.login'], function () {
     Route::resource('fuel', 'FuelController');        
     Route::resource('tire', 'TireController');    
     Route::resource('maintain', 'MaintainController');    
+    
+    Route::get('fuel/last-number-car/{id}', 'FuelController@getLastNumberCar');        
 });
