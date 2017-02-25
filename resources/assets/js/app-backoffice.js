@@ -20,6 +20,7 @@ Vue.component('Tab', require('./components/backoffice/Tab.vue'));
 Vue.component('CardUser', require('./components/backoffice/CardUser.vue'));
 Vue.component('CardTruck', require('./components/backoffice/CardTruck.vue'));
 Vue.component('ModalAddUser', require('./components/backoffice/ModalAddUser.vue'));
+Vue.component('ModalReportUser', require('./components/backoffice/ModalReportUser.vue'));
 Vue.component('ModalAddTruck', require('./components/backoffice/ModalAddTruck.vue'));
 Vue.component('ModalEditUser', require('./components/backoffice/ModalEditUser.vue'));
 Vue.component('ModalEditTruck', require('./components/backoffice/ModalEditTruck.vue'));

@@ -66,11 +66,11 @@
                 <div class="row" v-if="isShowUserPass">
                     <div class="input-field col s12 m12 l6" >
                         <input name="username" id="username" type="text" class="validate" required>
-                        <label for="username">บัญชีผู้ใช้</label>
+                        <label for="username">บัญชีผู้ใช้ <span class="icon-star">*</span></label>
                     </div>
                     <div class="input-field col s12 m12 l6">
                         <input name="password" id="password" type="password" class="validate" required>
-                        <label for="password">รหัสผ่าน</label>
+                        <label for="password">รหัสผ่าน <span class="icon-star">*</span></label>
                     </div>
                 </div>
             </div>

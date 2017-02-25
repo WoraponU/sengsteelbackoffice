@@ -21,6 +21,7 @@ elixir(mix => {
        .webpack([           
             'app-backoffice.js',
             'plugins/materialize.js',
+            'plugins/print.min.js',            
             'components/backoffice/main.js',
         ], 'public/js/app-backoffice.js')
 

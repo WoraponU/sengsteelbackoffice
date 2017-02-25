@@ -25,13 +25,17 @@
                 <a v-if="userModelRole == 'main_admin'" @click="onCallModalEdit" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">mode_edit</i>
                 </a>
+                <a v-if="userModelRole == 'main_admin'" @click="onCallModalReport" class="btn-floating waves-effect waves-light">
+                    <i class="material-icons">print</i>
+                </a>
                 <a v-if="userModelRole == 'main_admin' && userModelId != id" @click="onCallModalDelete" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">delete</i>
                 </a>
             </div>
         </div>
+        <ModalReportUser v-if="showModalReport" :id="id"></ModalReportUser>        
         <ModalEditUser v-if="showModalEdit" :id="id"></ModalEditUser>        
-        <ModalDeleteUser v-if="showModalDelete" :id="id" :firstname="firstname" :lastname="lastname"></ModalDeleteUser>        
+        <ModalDeleteUser v-if="showModalDelete" :id="id" :firstname="firstname" :lastname="lastname"></ModalDeleteUser>     
     </div>
 </template>
 
@@ -55,6 +59,7 @@
             return {
                 showModalEdit: false,
                 showModalDelete: false,
+                showModalReport: false,
             }
         },
         computed: {
@@ -71,6 +76,7 @@
         updated: function() {
             $('.modal').modal({
                 complete: () => {
+                    this.showModalReport = false
                     this.showModalEdit = false
                     this.showModalDelete = false
                 }
@@ -84,7 +90,10 @@
             },
             onCallModalDelete() {
                 this.showModalDelete = true
-            }
+            },
+            onCallModalReport() {
+                this.showModalReport = true
+            },
         }
     }
 </script>

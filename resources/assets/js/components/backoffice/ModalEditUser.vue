@@ -67,11 +67,11 @@
                 <div class="row" v-if="isShowUserPass">
                     <div class="input-field col s12 m12 l6" >
                         <input name="username" id="username" type="text" class="validate" :value="user.username" required>
-                        <label for="username">บัญชีผู้ใช้</label>
+                        <label for="username">บัญชีผู้ใช้ <span class="icon-star">*</span></label>
                     </div>
                     <div class="input-field col s12 m12 l6">
                         <input name="password" id="password" type="password" class="validate" :value="user.password" required>
-                        <label for="password">รหัสผ่าน</label>
+                        <label for="password">รหัสผ่าน <span class="icon-star">*</span></label>
                     </div>
                 </div>
             </div>
@@ -112,7 +112,6 @@
             axios.get('/backoffice/user/' + this.id + '/edit')
             .then((response) => {
                 this.user = response.data
-                this.identificationNumber = this.user.identification_number
                 this.identificationNumber = this.user.identification_number
                 this.driverLicense = this.user.driver_license
                 this.phone = '0' + this.user.phone;
