@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="sectiton">
-                    <h5>Fuel</h5>
+                    <h5>ข้อมูลเชื้อเพลิง</h5>
                     <div class="row">
                         <div class="input-field col s12 m12 l6">
                             <input name="gasoline" id="gasoline" type="text" class="validate" :value="truck.gasoline" required>

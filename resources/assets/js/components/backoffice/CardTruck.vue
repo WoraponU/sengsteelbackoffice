@@ -28,11 +28,15 @@
                 <a v-if="userModelRole == 'main_admin'" @click="onCallModalEdit" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">mode_edit</i>
                 </a>
+                <a v-if="userModelRole == 'main_admin'" @click="onCallModalReport" class="btn-floating waves-effect waves-light">
+                    <i class="material-icons">print</i>
+                </a>
                 <a v-if="userModelRole == 'main_admin'" @click="onCallModalDelete" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">delete</i>
                 </a>
             </div>
         </div>
+        <ModalReportTruck v-if="showModalReport" :id="id"></ModalReportTruck>        
         <ModalEditTruck v-if="showModalEdit" :id="id"></ModalEditTruck>        
         <ModalDeleteTruck v-if="showModalDelete" :id="id" :licensePlate="licensePlate" ></ModalDeleteTruck>        
     </div>
@@ -60,6 +64,7 @@
             return {
                 showModalEdit: false,
                 showModalDelete: false,
+                showModalReport: false,
                 thisNumberWheelPerRow: '',
             }
         },
@@ -74,8 +79,9 @@
                     this.showModalDelete = false
                 }
             });
+
             $('#modalEdit').modal('open');
-            $('#modalDelete').modal('open');
+            $('#modalDelete').modal('open');         
         },
         methods: {
             onCallModalEdit() {
@@ -83,6 +89,9 @@
             },
             onCallModalDelete() {
                 this.showModalDelete = true
+            },
+            onCallModalReport() {
+                this.showModalReport = true
             }
         }
     }

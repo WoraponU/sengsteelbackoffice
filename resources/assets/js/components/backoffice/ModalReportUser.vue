@@ -1,5 +1,5 @@
 <template>
-    <div id="modalReport" class="modal modal-fixed-footer left-align">
+    <div id="modalReportUser" class="modal modal-fixed-footer left-align">
         <input type="hidden" name="_token" v-model="csrfToken">
         <input type="hidden" name="_method" value="PUT">
         <div id="pdfUser" class="modal-content">
@@ -8,7 +8,7 @@
 
             <div class="row mt25">
                 <div class="col s12 m12 l12 center-align">
-                    <img style="height: 150px; margin-left:40%; margin-bottom: 30px" class="circle responsive-img" :src="photoPreview" alt="photo">
+                    <img style="height: 150px; margin-left:38%; margin-bottom: 30px" class="circle responsive-img" :src="photoPreview" alt="photo">
                 </div>
             </div>
             <div class="row">
@@ -76,7 +76,7 @@
                 selected: '',
             }
         },
-        beforeMount() {
+        mounted() {
             axios.get('/backoffice/user/' + this.id + '/edit')
             .then((response) => {
                 this.user = response.data
@@ -94,6 +94,8 @@
                 } else {
                     this.selected =  'พนักงานขับรถ';
                 }
+
+			    printJS('pdfUser', 'html');                
             })
             .catch(function (error) {
                 console.log(error);
