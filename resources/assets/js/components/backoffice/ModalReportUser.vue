@@ -1,5 +1,5 @@
 <template>
-    <div id="modalReportUser" class="modal modal-fixed-footer left-align">
+    <div id="modalReportUser" v-show="false" class="modal modal-fixed-footer left-align">
         <input type="hidden" name="_token" v-model="csrfToken">
         <input type="hidden" name="_method" value="PUT">
         <div id="pdfUser" class="modal-content">
@@ -93,9 +93,7 @@
                     this.selected =  'ผู้เพิ่มข้อมูล';
                 } else {
                     this.selected =  'พนักงานขับรถ';
-                }
-
-			    printJS('pdfUser', 'html');                
+                }           
             })
             .catch(function (error) {
                 console.log(error);
@@ -103,6 +101,7 @@
         },
         updated() {
 			printJS('pdfUser', 'html');
+            $('#modalReportUser').modal('close');
         },
     }
 </script>

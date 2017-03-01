@@ -1,5 +1,5 @@
 <template>
-    <div id="modalReportTruck" class="modal modal-fixed-footer left-align">
+    <div id="modalReportTruck" v-show="false" class="modal modal-fixed-footer left-align">
         <input type="hidden" name="_token" v-model="csrfToken">
         <input type="hidden" name="_method" value="PUT">
         <div id="pdfTruck" class="modal-content">
@@ -93,7 +93,7 @@
 				numberWheelPerRow: '',
             }
         },
-        beforeMount() {
+        mounted() {
             axios.get('/backoffice/truck/' + this.id + '/edit')
             .then((response) => {
                 this.truck = response.data
@@ -105,8 +105,9 @@
                 console.log(error);
             });
         },
-        updated() {          
+        updated() {       
             printJS('pdfTruck', 'html');
+            $('#modalReportTruck').modal('close');
         },
     }
 </script>

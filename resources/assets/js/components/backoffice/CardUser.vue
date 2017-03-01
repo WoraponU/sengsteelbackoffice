@@ -25,7 +25,7 @@
                 <a v-if="userModelRole == 'main_admin'" @click="onCallModalEdit" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">mode_edit</i>
                 </a>
-                <a v-if="userModelRole == 'main_admin'" @click="onCallModalReport" class="btn-floating waves-effect waves-light">
+                <a href="#modalReportUser" v-if="userModelRole == 'main_admin'" @click="onCallModalReport" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">print</i>
                 </a>
                 <a v-if="userModelRole == 'main_admin' && userModelId != id" @click="onCallModalDelete" class="btn-floating waves-effect waves-light">

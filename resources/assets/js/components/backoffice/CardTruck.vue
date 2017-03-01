@@ -28,7 +28,7 @@
                 <a v-if="userModelRole == 'main_admin'" @click="onCallModalEdit" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">mode_edit</i>
                 </a>
-                <a v-if="userModelRole == 'main_admin'" @click="onCallModalReport" class="btn-floating waves-effect waves-light">
+                <a href="#modalReportTruck" v-if="userModelRole == 'main_admin'" @click="onCallModalReport" class="btn-floating waves-effect waves-light">
                     <i class="material-icons">print</i>
                 </a>
                 <a v-if="userModelRole == 'main_admin'" @click="onCallModalDelete" class="btn-floating waves-effect waves-light">
@@ -75,6 +75,7 @@
         updated: function() {
             $('.modal').modal({
                 complete: () => {
+                    this.showModalReport = false
                     this.showModalEdit = false
                     this.showModalDelete = false
                 }

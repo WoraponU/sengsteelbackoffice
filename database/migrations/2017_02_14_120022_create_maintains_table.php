@@ -20,9 +20,9 @@ class CreateMaintainsTable extends Migration
             $table->date('maintain_date');
             $table->string('maintain_employee');
 
-            $table->string('maintain_lists');
-            $table->string('wage_per_list');
-            $table->string('spare_per_list');
+            $table->mediumText('maintain_lists');
+            $table->mediumText('wage_per_list');
+            $table->mediumText('spare_per_list');
             $table->integer('total_wage');
             $table->integer('total_spare');
             $table->integer('amount_cost');
