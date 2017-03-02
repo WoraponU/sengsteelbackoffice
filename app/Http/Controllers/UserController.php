@@ -128,7 +128,6 @@ class UserController extends Controller
                 Rule::unique('users', 'identification_number')->ignore($id)
             ],    
             'driverLicense' => [
-                'numeric',
                 Rule::unique('users', 'driver_license')->ignore($id)
             ],                   
             'username' => Rule::unique('users')->ignore($id),

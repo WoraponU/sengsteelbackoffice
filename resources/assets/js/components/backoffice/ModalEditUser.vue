@@ -34,8 +34,8 @@
                         <label for="identificationNumber">เลขประจำตัวประชาชน <span class="icon-star">*</span></label>
                     </div>
                     <div class="input-field col s12 m12 l6">
-                        <input name="driverLicense" id="driverLicense" type="text" class="validate" v-model="driverLicense" required>
-                        <label for="driverLicense">เลขใบขับขี่ <span class="icon-star">*</span></label>
+                        <input name="driverLicense" id="driverLicense" type="text" class="validate" v-model="driverLicense">
+                        <label for="driverLicense">เลขใบขับขี่</label>
                     </div>
                 </div>
                 <div class="row">
