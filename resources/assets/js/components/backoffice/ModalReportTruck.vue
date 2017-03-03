@@ -8,7 +8,7 @@
 
             <div class="row mt25">
                 <div class="col s12 m12 l12 center-align">
-                    <img style="height: 150px; margin-left:38%; margin-bottom: 30px"  class="responsive-img" :src="photoPreview" alt="photo">
+                    <img style="height: 150px; margin-left:35%; margin-bottom: 30px"  class="responsive-img" :src="photo" alt="photo">
                 </div>
             </div>
 
@@ -59,7 +59,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="section">
                 <h5>ข้อมูลล้อรถ</h5>
                 <div class="row">
@@ -84,29 +84,30 @@
     export default {
         props: {
             id: { require: true },
+            photo: { require: true },
         },
         data() {
             return {
-                photoPreview: '/images/truck_icon.png',
                 truck: [],
 				rowsOfWheel: '',
 				numberWheelPerRow: '',
             }
         },
-        mounted() {
+        beforeMount() {
             axios.get('/backoffice/truck/' + this.id + '/edit')
             .then((response) => {
                 this.truck = response.data
-                this.photoPreview = this.truck.photo
                 this.rowsOfWheel = this.truck.row_of_wheel
-                this.numberWheelPerRow = JSON.parse(this.truck.number_wheel_per_row)
+                this.numberWheelPerRow = JSON.parse(this.truck.number_wheel_per_row) 
+                Vue.nextTick(function () {
+                    printJS('pdfTruck', 'html');   
+                })
             })
             .catch(function (error) {
                 console.log(error);
             });
         },
-        updated() {       
-            printJS('pdfTruck', 'html');
+        updated() { 
             $('#modalReportTruck').modal('close');
         },
     }

@@ -33,7 +33,7 @@
                 </a>
             </div>
         </div>
-        <ModalReportUser v-if="showModalReport" :id="id"></ModalReportUser>        
+        <ModalReportUser :photo="photo" v-if="showModalReport" :id="id"></ModalReportUser>        
         <ModalEditUser v-if="showModalEdit" :id="id"></ModalEditUser>        
         <ModalDeleteUser v-if="showModalDelete" :id="id" :firstname="firstname" :lastname="lastname"></ModalDeleteUser>     
     </div>
