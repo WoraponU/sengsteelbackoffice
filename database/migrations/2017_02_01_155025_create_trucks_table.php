@@ -19,8 +19,8 @@ class CreateTrucksTable extends Migration
             $table->string('owner')->nullable();
             $table->longText('photo')->nullable();
 
-            $table->date('register_date');
-            $table->date('annual_tax_date');
+            $table->date('register_date')->nullable();
+            $table->date('annual_tax_date')->nullable();
 
             $table->string('gasoline')->comment('น้ำมันเครื่องยนต์');
             $table->string('lubricator')->comment('น้ำมันห้องเครื่อง');

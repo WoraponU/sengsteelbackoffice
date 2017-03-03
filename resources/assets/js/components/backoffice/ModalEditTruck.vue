@@ -33,12 +33,12 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m12 l6">
-                            <input name="registerDate" id="registerDate" type="date" class="datepicker" :value="truck.register_date" required>
-                            <label for="registerDate">วันที่จดทะเบียน <span class="icon-star">*</span></label>
+                            <input name="registerDate" id="registerDate" type="date" class="datepicker" :value="truck.register_date">
+                            <label for="registerDate">วันที่จดทะเบียน</label>
                         </div>
                         <div class="input-field col s12 m12 l6">
-                            <input name="annualTaxDate" id="annualTaxDate" type="date" class="datepicker" :value="truck.annual_tax_date" required>
-                            <label for="annualTaxDate">วันที่ต่อทะเบียน <span class="icon-star">*</span></label>
+                            <input name="annualTaxDate" id="annualTaxDate" type="date" class="datepicker" :value="truck.annual_tax_date">
+                            <label for="annualTaxDate">วันที่ต่อทะเบียน</label>
                         </div>
                     </div>
                 </div>
