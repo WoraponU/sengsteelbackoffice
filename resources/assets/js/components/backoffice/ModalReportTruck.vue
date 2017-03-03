@@ -8,7 +8,7 @@
 
             <div class="row mt25">
                 <div class="col s12 m12 l12 center-align">
-                    <img style="height: 150px; margin-left:38%; margin-bottom: 30px"  class="responsive-img" :src="photoPreview" alt="photo">
+                    <img style="height: 150px; margin-left:35%; margin-bottom: 30px"  class="responsive-img" :src="photoPreview" alt="photo">
                 </div>
             </div>
 
@@ -36,7 +36,7 @@
                 </div>
             </div>
 
-            <div class="sectiton">
+            <div class="sectiton" style="display: inline;">
                 <h5>ข้อมูลเชื้อเพลิง</h5>
                 <div class="row">
                     <div class="input-field col s12 m12 l6">
@@ -59,8 +59,8 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="section">
+
+            <div class="section" style="display: inline;">
                 <h5>ข้อมูลล้อรถ</h5>
                 <div class="row">
                     <div class="input-field col s6 m6 l6">
@@ -93,20 +93,22 @@
 				numberWheelPerRow: '',
             }
         },
-        mounted() {
+        beforeMount() {
             axios.get('/backoffice/truck/' + this.id + '/edit')
             .then((response) => {
                 this.truck = response.data
                 this.photoPreview = this.truck.photo
                 this.rowsOfWheel = this.truck.row_of_wheel
                 this.numberWheelPerRow = JSON.parse(this.truck.number_wheel_per_row)
+                Vue.nextTick(function () {
+                    printJS('pdfTruck', 'html');                                  
+                })  
             })
             .catch(function (error) {
                 console.log(error);
             });
         },
-        updated() {       
-            printJS('pdfTruck', 'html');
+        updated() { 
             $('#modalReportTruck').modal('close');
         },
     }
