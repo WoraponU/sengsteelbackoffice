@@ -26,7 +26,7 @@ class CreateMaintainsTable extends Migration
             $table->integer('total_wage');
             $table->integer('total_spare');
             $table->integer('amount_cost');
-            $table->string('note')->nullable();
+            $table->mediumText('note')->nullable();
 
             $table->timestamps();
         });
