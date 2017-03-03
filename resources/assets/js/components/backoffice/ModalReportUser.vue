@@ -8,7 +8,7 @@
 
             <div class="row mt25">
                 <div class="col s12 m12 l12 center-align">
-                    <img style="height: 150px; margin-left:38%; margin-bottom: 30px" class="circle responsive-img" :src="photoPreview" alt="photo">
+                    <img style="height: 150px; margin-left:35%; margin-bottom: 30px" class="circle responsive-img" :src="photoPreview" alt="photo">
                 </div>
             </div>
             <div class="row">
@@ -76,7 +76,7 @@
                 selected: '',
             }
         },
-        mounted() {
+        created() {            
             axios.get('/backoffice/user/' + this.id + '/edit')
             .then((response) => {
                 this.user = response.data
@@ -93,15 +93,15 @@
                     this.selected =  'ผู้เพิ่มข้อมูล';
                 } else {
                     this.selected =  'พนักงานขับรถ';
-                }           
+                }    
             })
             .catch(function (error) {
                 console.log(error);
             });
         },
-        updated() {
-			printJS('pdfUser', 'html');
+        updated() {  
             $('#modalReportUser').modal('close');
+            printJS('pdfUser', 'html');                   
         },
     }
 </script>
