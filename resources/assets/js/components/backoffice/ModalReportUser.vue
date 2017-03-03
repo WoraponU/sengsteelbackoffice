@@ -76,7 +76,7 @@
                 selected: '',
             }
         },
-        beforeMount() {            
+        created() {            
             axios.get('/backoffice/user/' + this.id + '/edit')
             .then((response) => {
                 this.user = response.data
@@ -93,17 +93,15 @@
                     this.selected =  'ผู้เพิ่มข้อมูล';
                 } else {
                     this.selected =  'พนักงานขับรถ';
-                } 
-                Vue.nextTick(function () {
-                    printJS('pdfUser', 'html');
-                })      
+                }    
             })
             .catch(function (error) {
                 console.log(error);
             });
         },
-        updated() {         
+        updated() {  
             $('#modalReportUser').modal('close');
+            printJS('pdfUser', 'html');                   
         },
     }
 </script>

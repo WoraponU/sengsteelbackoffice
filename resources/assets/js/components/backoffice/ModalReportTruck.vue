@@ -36,7 +36,7 @@
                 </div>
             </div>
 
-            <div class="sectiton" style="display: inline;">
+            <div class="sectiton">
                 <h5>ข้อมูลเชื้อเพลิง</h5>
                 <div class="row">
                     <div class="input-field col s12 m12 l6">
@@ -60,7 +60,7 @@
                 </div>
             </div>
 
-            <div class="section" style="display: inline;">
+            <div class="section">
                 <h5>ข้อมูลล้อรถ</h5>
                 <div class="row">
                     <div class="input-field col s6 m6 l6">
@@ -93,16 +93,13 @@
 				numberWheelPerRow: '',
             }
         },
-        beforeMount() {
+        created() {
             axios.get('/backoffice/truck/' + this.id + '/edit')
             .then((response) => {
                 this.truck = response.data
                 this.photoPreview = this.truck.photo
                 this.rowsOfWheel = this.truck.row_of_wheel
-                this.numberWheelPerRow = JSON.parse(this.truck.number_wheel_per_row)
-                Vue.nextTick(function () {
-                    printJS('pdfTruck', 'html');                                  
-                })  
+                this.numberWheelPerRow = JSON.parse(this.truck.number_wheel_per_row) 
             })
             .catch(function (error) {
                 console.log(error);
@@ -110,6 +107,7 @@
         },
         updated() { 
             $('#modalReportTruck').modal('close');
+            printJS('pdfTruck', 'html');                                              
         },
     }
 </script>
