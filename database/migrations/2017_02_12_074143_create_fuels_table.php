@@ -26,7 +26,7 @@ class CreateFuelsTable extends Migration
             $table->integer('liter');
             $table->integer('total_distance');
             $table->float('gas_per_distance', 10, 2);
-            $table->string('note')->nullable();
+            $table->mediumText('note')->nullable();
 
             $table->timestamps();
         });

@@ -31,7 +31,7 @@ class CreateTiresTable extends Migration
             $table->string('quantity');
             $table->integer('total_tire_price');
             $table->integer('total_amout_cost');
-            $table->string('note')->nullable();
+            $table->mediumText('note')->nullable();
 
             $table->timestamps();
         });
