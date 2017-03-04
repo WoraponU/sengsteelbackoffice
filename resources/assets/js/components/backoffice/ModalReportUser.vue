@@ -8,7 +8,7 @@
 
             <div class="row mt25">
                 <div class="col s12 m12 l12 center-align">
-                    <img style="height: 150px; margin-left:35%; margin-bottom: 30px" class="circle responsive-img" :src="photoPreview" alt="photo">
+                    <img style="height: 150px; margin-left:35%; margin-bottom: 30px" class="circle responsive-img" :src="photo" alt="photo">
                 </div>
             </div>
             <div class="row">
@@ -65,10 +65,10 @@
     export default {
         props: {
             id: { require: true },
+            photo: { require: true },
         },
         data() {
             return {
-                photoPreview: '/images/user_icon.png',
                 user: [],
                 identificationNumber: '',
                 driverLicense: '',
@@ -76,7 +76,7 @@
                 selected: '',
             }
         },
-        created() {            
+        beforeMount() {            
             axios.get('/backoffice/user/' + this.id + '/edit')
             .then((response) => {
                 this.user = response.data
@@ -84,7 +84,6 @@
                 this.driverLicense = this.user.driver_license
                 this.phone = '0' + this.user.phone;
 
-                this.photoPreview = this.user.photo
                 this.selected = this.user.role
 
                 if (this.selected == 'main_admin') {
@@ -93,7 +92,10 @@
                     this.selected =  'ผู้เพิ่มข้อมูล';
                 } else {
                     this.selected =  'พนักงานขับรถ';
-                }    
+                }
+                Vue.nextTick(function () {
+                    printJS('pdfUser', 'html'); 
+                })    
             })
             .catch(function (error) {
                 console.log(error);
@@ -101,7 +103,6 @@
         },
         updated() {  
             $('#modalReportUser').modal('close');
-            printJS('pdfUser', 'html');                   
         },
     }
 </script>

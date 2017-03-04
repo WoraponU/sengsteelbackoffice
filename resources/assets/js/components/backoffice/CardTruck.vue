@@ -36,7 +36,7 @@
                 </a>
             </div>
         </div>
-        <ModalReportTruck v-if="showModalReport" :id="id"></ModalReportTruck>        
+        <ModalReportTruck :photo="photo" v-if="showModalReport" :id="id"></ModalReportTruck>        
         <ModalEditTruck v-if="showModalEdit" :id="id"></ModalEditTruck>        
         <ModalDeleteTruck v-if="showModalDelete" :id="id" :licensePlate="licensePlate" ></ModalDeleteTruck>        
     </div>
