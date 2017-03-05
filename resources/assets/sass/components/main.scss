@@ -82,11 +82,8 @@ body {
             height: 220px;
 
             img {
-                position: fixed; 
-                top: -5%; 
-                left: 0; 
-                min-width: 100%;
-                min-height: 100%;
+                display: block;
+                margin: 0 auto;
             }
             
         }
