@@ -45,7 +45,7 @@
 					</div>
 					<div class="row">
 						<div class="input-field col s12 m6 l4 offset-l2">
-							<input id="liter" name="liter" type="number" min="1" v-model="liter" class="validate" required>
+							<input id="liter" name="liter" type="number" min="1" step="0.01" v-model="liter" class="validate" required>
 							<label for="liter">จำนวนลิตร <span class="icon-star">*</span></label>
 						</div> 
 					</div>
