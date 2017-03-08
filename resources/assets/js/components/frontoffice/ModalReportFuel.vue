@@ -24,7 +24,7 @@
 								<td>{{ fuel.truck.license_plate }}</td>
 								<td>{{ fuel.fuel.fuel_date }}</td>
 								<td>{{ fuel.fuel.gas_employee }}</td>
-								<td>{{ fuel.fuel.gas_type }}</td>
+								<td>{{ tranGasType(fuel.fuel.gas_type) }}</td>
 								<td>{{ fuel.fuel.liter }}</td>
 								<td>{{ fuel.fuel.total_distance }}</td>
 								<td>{{ fuel.fuel.gas_per_distance }}</td>
@@ -69,7 +69,7 @@
 <script>
 	import Chart from 'chart.js'
 
-    export default {
+	export default {
 		data() {
 			return {
 				totalDistance: 0,
@@ -77,9 +77,9 @@
 				totalGasPerDistance: 0,
 			}
 		},
-        props: {
-            fuels: { require: true },
-        },
+		props: {
+			fuels: { require: true },
+		},
 		methods: {
 			onClickPrintReportFuel: function() {
 				printJS('pdfFuel', 'html');
@@ -112,6 +112,19 @@
 						]
 					},
 				});
+			},
+			tranGasType: function(gasType) {
+				if (gasType == 'gasoline') {
+                    return 'น้ำมันเครื่องยนต์';
+                } else if (gasType == 'lubricator') { 
+                    return 'น้ำมันห้องเครื่อง';
+                } else if (gasType == 'gear_box_oil') { 
+                    return 'น้ำมันห้องเกียร์';
+                } else if (gasType == 'final_gear_oil') { 
+                    return 'น้ำมันเฟืองท้าย';
+                } else {
+                    return '';
+                }
 			}
 		},
 		mounted() {
@@ -147,5 +160,5 @@
 			this.showGraph(date, gasPerDistanceGraph, literGraph, distanceGraph);
 				
 		},
-    }
+	}
 </script>
