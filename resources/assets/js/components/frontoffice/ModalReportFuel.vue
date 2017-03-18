@@ -96,7 +96,7 @@
 					count = index + 1;	
 				}); 
 				this.totalDistance = distance;
-				this.totalLiter = liter;
+				this.totalLiter = liter.toFixed(2);
 				this.gasPerDistance = (gasPerDistance / count).toFixed(2)
 				////////////////////
 				let date = [];
@@ -144,16 +144,16 @@
 			},
 			tranGasType: function(gasType) {
 				if (gasType == 'gasoline') {
-                    return 'น้ำมันเครื่องยนต์';
-                } else if (gasType == 'lubricator') { 
-                    return 'น้ำมันห้องเครื่อง';
-                } else if (gasType == 'gear_box_oil') { 
-                    return 'น้ำมันห้องเกียร์';
-                } else if (gasType == 'final_gear_oil') { 
-                    return 'น้ำมันเฟืองท้าย';
-                } else {
-                    return '';
-                }
+					return 'น้ำมันเครื่องยนต์';
+				} else if (gasType == 'lubricator') { 
+						return 'น้ำมันห้องเครื่อง';
+				} else if (gasType == 'gear_box_oil') { 
+						return 'น้ำมันห้องเกียร์';
+				} else if (gasType == 'final_gear_oil') { 
+						return 'น้ำมันเฟืองท้าย';
+				} else {
+						return '';
+				}
 			}
 		},
 		watch: {
