@@ -84,6 +84,34 @@
             onClickPrintReportTire: function() {
                 printJS('pdfTire', 'html');
             },
+            computeGraph: function() {
+                let tirePrice = 0;
+                let wagePrice = 0;
+                let amoutCost = 0;
+
+                $.each(this.tires, function(index, tire) {
+                    tirePrice = tirePrice + tire.tire.total_tire_price
+                    wagePrice = wagePrice + ( tire.tire.total_amout_cost - tire.tire.total_tire_price )
+                    amoutCost = amoutCost + tire.tire.total_amout_cost
+                }); 
+                this.totalAmoutCost = amoutCost;
+                this.totalWagePrice = wagePrice;
+                this.totalTirePrice = tirePrice;
+                
+                ///////////////////////////
+                let date = [];
+                let tireGraph = [];
+                let wageGraph = [];
+                let amoutCostGraph = [];
+
+                $.each(this.tires, function(index, tire) {
+                    date.push(tire.tire.tire_date);
+                    tireGraph.push(tire.tire.total_tire_price)
+                    wageGraph.push(tire.tire.total_amout_cost - tire.tire.total_tire_price)
+                    amoutCostGraph.push(tire.tire.total_amout_cost)
+                }); 
+                this.showGraph(date, tireGraph, wageGraph, amoutCostGraph);
+            },
             showGraph: function(date, tireGraph, wageGraph, amoutCostGraph) {
 				const ctxTire = document.getElementById("myChartTire");
 				const myChartTire = new Chart(ctxTire, {
@@ -114,36 +142,14 @@
 				});
 			}
         },
+        watch: {
+			tires: function () {
+				this.computeGraph();
+			}
+		},
         mounted() {
             $('.materialboxed').materialbox();
-
-			let tirePrice = 0;
-            let wagePrice = 0;
-			let amoutCost = 0;
-
-			$.each(this.tires, function(index, tire) {
-                tirePrice = tirePrice + tire.tire.total_tire_price
-                wagePrice = wagePrice + ( tire.tire.total_amout_cost - tire.tire.total_tire_price )
-				amoutCost = amoutCost + tire.tire.total_amout_cost
-			}); 
-			this.totalAmoutCost = amoutCost;
-            this.totalWagePrice = wagePrice;
-            this.totalTirePrice = tirePrice;
-            
-            ///////////////////////////
-
-			let date = [];
-			let tireGraph = [];
-			let wageGraph = [];
-			let amoutCostGraph = [];
-
-			$.each(this.tires, function(index, tire) {
-				date.push(tire.tire.tire_date);
-				tireGraph.push(tire.tire.total_tire_price)
-				wageGraph.push(tire.tire.total_amout_cost - tire.tire.total_tire_price)
-				amoutCostGraph.push(tire.tire.total_amout_cost)
-			}); 
-			this.showGraph(date, tireGraph, wageGraph, amoutCostGraph);
+            this.computeGraph();
 		}
     }
 </script>

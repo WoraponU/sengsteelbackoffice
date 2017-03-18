@@ -84,6 +84,35 @@
 			onClickPrintReportFuel: function() {
 				printJS('pdfFuel', 'html');
 			},
+			computeGraph:function() {
+				let distance = 0;
+				let liter = 0;
+				let gasPerDistance = 0;
+				let count = 0;
+				$.each(this.fuels, function(index, fuel) {
+					distance = distance + fuel.fuel.total_distance	
+					liter = liter + fuel.fuel.liter	
+					gasPerDistance = gasPerDistance + fuel.fuel.gas_per_distance
+					count = index + 1;	
+				}); 
+				this.totalDistance = distance;
+				this.totalLiter = liter;
+				this.gasPerDistance = (gasPerDistance / count).toFixed(2)
+				////////////////////
+				let date = [];
+				let gasPerDistanceGraph = [];
+				let literGraph = [];
+				let distanceGraph = [];
+
+				$.each(this.fuels, function(index, fuel) {
+					date.push(fuel.fuel.fuel_date);
+
+					gasPerDistanceGraph.push(fuel.fuel.gas_per_distance)
+					literGraph.push(fuel.fuel.liter)
+					distanceGraph.push(fuel.fuel.total_distance)
+				}); 
+				this.showGraph(date, gasPerDistanceGraph, literGraph, distanceGraph);
+			},
 			showGraph: function(date, gasPerDistanceGraph, literGraph, distanceGraph) {
 				const ctxFuel = document.getElementById("myChartFuel");
 				const myChartFuel = new Chart(ctxFuel, {
@@ -127,38 +156,14 @@
                 }
 			}
 		},
+		watch: {
+			fuels: function () {
+				this.computeGraph();
+			}
+		},
 		mounted() {
 			$('.materialboxed').materialbox();
-			
-			let distance = 0;
-			let liter = 0;
-			let gasPerDistance = 0;
-			let count = 0;
-			$.each(this.fuels, function(index, fuel) {
-				distance = distance + fuel.fuel.total_distance	
-				liter = liter + fuel.fuel.liter	
-				gasPerDistance = gasPerDistance + fuel.fuel.gas_per_distance
-				count = index + 1;	
-			}); 
-			this.totalDistance = distance;
-			this.totalLiter = liter;
-			this.gasPerDistance = (gasPerDistance / count).toFixed(2)
-			/////////////////////////////////
-
-			let date = [];
-			let gasPerDistanceGraph = [];
-			let literGraph = [];
-			let distanceGraph = [];
-
-			$.each(this.fuels, function(index, fuel) {
-				date.push(fuel.fuel.fuel_date);
-
-				gasPerDistanceGraph.push(fuel.fuel.gas_per_distance)
-				literGraph.push(fuel.fuel.liter)
-				distanceGraph.push(fuel.fuel.total_distance)
-			}); 
-			this.showGraph(date, gasPerDistanceGraph, literGraph, distanceGraph);
-				
+			this.computeGraph();
 		},
 	}
 </script>

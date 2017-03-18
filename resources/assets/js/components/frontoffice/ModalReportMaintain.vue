@@ -80,6 +80,34 @@
             onClickPrintReportMaintain: function() {
                 printJS('pdfMaintain', 'html');
             },
+			computeGraph: function() {
+				let wage = 0;
+				let spare = 0;
+				let cost = 0;
+				$.each(this.maintains, function(index, maintain) {
+					wage = wage + maintain.maintain.total_wage
+					spare = spare + maintain.maintain.total_spare
+					cost = cost + maintain.maintain.amount_cost
+				}); 
+				this.totalWage = wage;
+				this.totalSpare = spare;
+				this.amountCost = cost;
+
+				///////////////////////
+				let date = [];
+				let wageGraph = [];
+				let spareGraph = [];
+				let costGraph = [];
+
+				$.each(this.maintains, function(index, maintain) {
+					date.push(maintain.maintain.maintain_date);
+
+					wageGraph.push(maintain.maintain.total_wage)
+					spareGraph.push(maintain.maintain.total_spare)
+					costGraph.push(maintain.maintain.amount_cost)
+				}); 
+				this.showGraph(date, wageGraph, spareGraph, costGraph);
+			},
             showGraph: function(date, wageGraph, spareGraph, costGraph) {
 				const ctxMaintain = document.getElementById("myChartMaintain");
 				const myChartMaintain = new Chart(ctxMaintain, {
@@ -110,35 +138,14 @@
 				});
 			}
         },
+		watch: {
+			maintains: function () {
+				this.computeGraph();
+			}
+		},
         mounted() {
             $('.materialboxed').materialbox();
-			let wage = 0;
-			let spare = 0;
-			let cost = 0;
-			$.each(this.maintains, function(index, maintain) {
-				wage = wage + maintain.maintain.total_wage
-				spare = spare + maintain.maintain.total_spare
-				cost = cost + maintain.maintain.amount_cost
-			}); 
-			this.totalWage = wage;
-			this.totalSpare = spare;
-			this.amountCost = cost;
-
-            ///////////////////////
-
-            let date = [];
-			let wageGraph = [];
-			let spareGraph = [];
-			let costGraph = [];
-
-			$.each(this.maintains, function(index, maintain) {
-				date.push(maintain.maintain.maintain_date);
-
-				wageGraph.push(maintain.maintain.total_wage)
-				spareGraph.push(maintain.maintain.total_spare)
-				costGraph.push(maintain.maintain.amount_cost)
-			}); 
-			this.showGraph(date, wageGraph, spareGraph, costGraph);
+			this.computeGraph();
 		}
     }
 </script>
