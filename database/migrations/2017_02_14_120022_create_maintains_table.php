@@ -23,9 +23,9 @@ class CreateMaintainsTable extends Migration
             $table->mediumText('maintain_lists');
             $table->mediumText('wage_per_list');
             $table->mediumText('spare_per_list');
-            $table->integer('total_wage');
-            $table->integer('total_spare');
-            $table->integer('amount_cost');
+            $table->float('total_wage', 10, 2);
+            $table->float('total_spare', 10, 2);
+            $table->float('amount_cost', 10, 2);
             $table->mediumText('note')->nullable();
 
             $table->timestamps();

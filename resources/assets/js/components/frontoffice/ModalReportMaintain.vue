@@ -89,9 +89,9 @@
 					spare = spare + maintain.maintain.total_spare
 					cost = cost + maintain.maintain.amount_cost
 				}); 
-				this.totalWage = wage;
-				this.totalSpare = spare;
-				this.amountCost = cost;
+				this.totalWage = wage.toFixed(2);
+				this.totalSpare = spare.toFixed(2);
+				this.amountCost = cost.toFixed(2);
 
 				///////////////////////
 				let date = [];

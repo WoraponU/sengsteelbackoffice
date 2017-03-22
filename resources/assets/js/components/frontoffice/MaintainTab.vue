@@ -36,11 +36,11 @@
 								<label for="maintainLists">รายการ {{ list }} <span class="icon-star">*</span></label>
 							</div> 
 							<div class="input-field col s3 m3 l2">
-								<input id="wagePerList" name="wagePerList[]" ref="wages" @change="onWagePerListChange" type="number" class="validate" required>
+								<input id="wagePerList" name="wagePerList[]" ref="wages" @change="onWagePerListChange" step="0.01" type="number" class="validate" required>
 								<label for="wagePerList">ค่าแรง(บาท) <span class="icon-star">*</span></label>
 							</div>
 							<div class="input-field col s3 m3 l2">
-								<input id="sparePerList" name="sparePerList[]" ref="spares" @change="onSparePerListChange" type="number" class="validate" required>
+								<input id="sparePerList" name="sparePerList[]" step="0.01" ref="spares" @change="onSparePerListChange" type="number" class="validate" required>
 								<label for="sparePerList">ค่าอะไหล่(บาท) <span class="icon-star">*</span></label>
 							</div>
 						</div>
@@ -102,21 +102,21 @@
 			onWagePerListChange: function () {
 				let totalWage = 0;
 				this.$refs.wages.forEach(function(wage) {
-					totalWage = totalWage + parseInt(wage.value);
+					totalWage = totalWage + parseFloat(wage.value);
                 });
-				this.totalWage = totalWage;
+				this.totalWage = totalWage.toFixed(2);
 			},
 			onSparePerListChange: function () {
 				let totalSpare = 0;
 				this.$refs.spares.forEach(function(spare) {
-					totalSpare = totalSpare + parseInt(spare.value);
+					totalSpare = totalSpare + parseFloat(spare.value);
                 });
-				this.totalSpare = totalSpare;
+				this.totalSpare = totalSpare.toFixed(2);
 			},
 		},
 		computed: {
 			amountCost: function () {
-                return this.totalWage + this.totalSpare;
+                return parseFloat(this.totalWage) + parseFloat(this.totalSpare);
             },
         },
     }
