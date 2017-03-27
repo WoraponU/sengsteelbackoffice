@@ -44,11 +44,11 @@
                                         <label for="maintainLists">รายการ {{ index + 1 }} <span class="icon-star">*</span></label>
                                     </div> 
                                     <div class="input-field col s3 m3 l2">
-                                        <input id="wagePerList" name="wagePerList[]" ref="wages" v-model="list.wageList" @change="onWagePerListChange" type="number" class="validate" required>
+                                        <input id="wagePerList" name="wagePerList[]" step="0.01" ref="wages" v-model="list.wageList" @change="onWagePerListChange" type="number" class="validate" required>
                                         <label for="wagePerList">ค่าแรง(บาท) <span class="icon-star">*</span></label>
                                     </div>
                                     <div class="input-field col s3 m3 l2">
-                                        <input id="sparePerList" name="sparePerList[]" ref="spares" v-model="list.spareList" @change="onSparePerListChange" type="number" class="validate" required>
+                                        <input id="sparePerList" name="sparePerList[]" step="0.01" ref="spares" v-model="list.spareList" @change="onSparePerListChange" type="number" class="validate" required>
                                         <label for="sparePerList">ค่าอะไหล่(บาท) <span class="icon-star">*</span></label>
                                     </div>
                                 </div>
