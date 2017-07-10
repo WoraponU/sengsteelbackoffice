@@ -82,7 +82,35 @@
         },
         methods: {
             onClickPrintReportTire: function() {
-                printJS('pdfTire', 'html');
+                let printData = [];
+				$.each(this.tires, function(index, tire) {
+					const dataPush = {
+						name: `${tire.user.firstname} ${tire.user.lastname}`,
+						licensePlate: tire.truck.license_plate,
+						tireDate: tire.tire.tire_date,
+						tireEmployee: tire.tire.tire_employee,
+						quantity: tire.tire.quantity,
+						totalTirePrice: tire.tire.total_tire_price,
+						totalWage: (tire.tire.total_amout_cost - tire.tire.total_tire_price),
+						amountCost: tire.tire.total_amout_cost,
+					}
+					printData.push(dataPush);
+				}); 
+				printJS({
+					printable: printData, 
+					properties: [
+						'name', 
+						'licensePlate', 
+						'tireDate', 
+						'tireEmployee', 
+						'quantity',
+						'totalTirePrice', 
+						'totalWage', 
+						'amountCost', 
+					],
+					header: 'รายงานการซ่อมบำรุง',
+					type: 'json'
+				});
             },
             computeGraph: function() {
                 let tirePrice = 0;
