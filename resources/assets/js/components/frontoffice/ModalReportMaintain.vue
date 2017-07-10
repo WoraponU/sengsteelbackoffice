@@ -78,7 +78,33 @@
         },
         methods: {
             onClickPrintReportMaintain: function() {
-                printJS('pdfMaintain', 'html');
+				let printData = [];
+				$.each(this.maintains, function(index, maintain) {
+					const dataPush = {
+						name: `${maintain.user.firstname} ${maintain.user.lastname}`,
+						licensePlate: maintain.truck.license_plate,
+						maintainDate: maintain.maintain.maintain_date,
+						maintainEmployee: maintain.maintain.maintain_employee,
+						totalWage: maintain.maintain.total_wage,
+						totalSpare: maintain.maintain.total_spare,
+						amountCost: maintain.maintain.amount_cost,
+					}
+					printData.push(dataPush);
+				}); 
+				printJS({
+					printable: printData, 
+					properties: [
+						'name', 
+						'licensePlate', 
+						'maintainDate', 
+						'maintainEmployee', 
+						'totalWage',
+						'totalSpare', 
+						'amountCost', 
+					],
+					header: 'รายงานการซ่อมบำรุง',
+					type: 'json'
+				});
             },
 			computeGraph: function() {
 				let wage = 0;
