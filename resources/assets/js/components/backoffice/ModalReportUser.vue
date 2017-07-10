@@ -93,9 +93,35 @@
                 } else {
                     this.selected =  'พนักงานขับรถ';
                 }
-                Vue.nextTick(function () {
-                    printJS('pdfUser', 'html'); 
-                })    
+
+                const printData = [{
+                    name: `${this.user.firstname} ${this.user.lastname}`,
+                    licensePlate: this.identificationNumber,
+                    driverLicense: this.driverLicense,
+                    phone: this.phone,
+                    email: this.user.email,
+                    address: this.user.address,
+                    role: this.selected,
+                }];
+
+                printJS({
+                    printable: printData, 
+                    properties: [
+                        'name', 
+                        'licensePlate', 
+
+                        'driverLicense', 
+                        'phone', 
+                        'email',
+                        'address', 
+                        'role', 
+                    ],
+                    header: 'ข้อมูลพนักงาน',
+                    type: 'json'
+                });
+                // Vue.nextTick(function () {
+                    // printJS('pdfUser', 'html'); 
+                // })    
             })
             .catch(function (error) {
                 console.log(error);

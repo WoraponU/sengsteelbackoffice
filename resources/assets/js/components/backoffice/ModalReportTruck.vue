@@ -99,9 +99,40 @@
                 this.truck = response.data
                 this.rowsOfWheel = this.truck.row_of_wheel
                 this.numberWheelPerRow = JSON.parse(this.truck.number_wheel_per_row) 
-                Vue.nextTick(function () {
-                    printJS('pdfTruck', 'html');   
-                })
+
+                const printData = [{
+                    licensePlate: this.truck.license_plate,
+                    owner: this.truck.owner,
+                    registerDate: this.truck.register_date,
+                    annualTaxDate: this.truck.annual_tax_date,
+                    gasoline: this.truck.gasoline,
+                    lubricator: this.truck.lubricator,
+                    gearBoxOil: this.truck.gear_box_oil,
+                    finalGearOil: this.truck.final_gear_oil,
+                    rowsOfWheel: this.rowsOfWheel,
+                    numberWheelPerRow: JSON.stringify(this.numberWheelPerRow),
+                }];
+
+                printJS({
+                    printable: printData, 
+                    properties: [
+                        'licensePlate',
+                        'owner',
+                        'registerDate',
+                        'annualTaxDate',
+                        'gasoline',
+                        'lubricator',
+                        'gearBoxOil',
+                        'finalGearOil',
+                        'rowsOfWheel',
+                        'numberWheelPerRow',
+                    ],
+                    header: 'ข้อมูลรถบรรทุก',
+                    type: 'json'
+                });
+                // Vue.nextTick(function () {
+                //     printJS('pdfTruck', 'html');   
+                // })
             })
             .catch(function (error) {
                 console.log(error);
