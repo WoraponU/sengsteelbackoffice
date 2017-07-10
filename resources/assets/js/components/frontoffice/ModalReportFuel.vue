@@ -82,7 +82,49 @@
 		},
 		methods: {
 			onClickPrintReportFuel: function() {
-				printJS('pdfFuel', 'html');
+				let printData = [];
+				$.each(this.fuels, function(index, fuel) {
+					let gasType = fuel.fuel.gas_type;
+
+					if (gasType == 'gasoline') {
+						gasType =  'น้ำมันเครื่องยนต์';
+					} else if (gasType == 'lubricator') { 
+							gasType =  'น้ำมันห้องเครื่อง';
+					} else if (gasType == 'gear_box_oil') { 
+							gasType =  'น้ำมันห้องเกียร์';
+					} else if (gasType == 'final_gear_oil') { 
+							gasType =  'น้ำมันเฟืองท้าย';
+					} else {
+							gasType =  '';
+					}
+					
+					const dataPush = {
+						name: `${fuel.user.firstname} ${fuel.user.lastname}`,
+						licensePlate: fuel.truck.license_plate,
+						fueDate: fuel.fuel.fuel_date,
+						gasEmployee: fuel.fuel.gas_employee,
+						gasType,
+						liter: fuel.fuel.liter,
+						totalDistance: fuel.fuel.total_distance,
+						gasPerDistance: fuel.fuel.gas_per_distance,
+					}
+					printData.push(dataPush);
+				}); 
+				printJS({
+					printable: printData, 
+					properties: [
+						'name', 
+						'licensePlate', 
+						'fueDate', 
+						'gasEmployee', 
+						'gasType',
+						'liter', 
+						'totalDistance', 
+						'gasPerDistance'
+					],
+					header: 'รายงานการเติมน้ำมัน',
+					type: 'json'
+				});
 			},
 			computeGraph:function() {
 				let distance = 0;
